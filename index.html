@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jonrich Bascug's Portfolio</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="container nav-container">
+      <a href="#" class="nav-brand"></a>
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#systems">Systems</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#news">News</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#certifications">Certifications</a></li>
+      </ul>
+      <button class="theme-toggle" aria-label="Toggle theme">
+        <span class="icon-light">&#9788;</span>
+        <span class="icon-dark">&#9790;</span>
+      </button>
+    </div>
+  </nav>
+
+  <main>
+    <section id="about" class="section hero">
+      <div class="container">
+        <div class="hero-content">
+          <div class="hero-avatar">
+            <img src="assets/img/photo.jpg" alt="Jonrich Bascug" id="avatar-img" onerror="this.onerror=null; this.parentElement.classList.add('avatar-placeholder');">
+            <div class="avatar-sprite" id="avatar-sprite"></div>
+            <div class="avatar-fallback">JB</div>
+          </div>
+          <div class="hero-text">
+            <div class="hero-name-row">
+              <h1>Jonrich Bascug</h1>
+              <div class="contact-icons">
+                <span class="contact-icon" data-contact="0908 668 3254" data-action="tel:+639086683254">
+                  <img src="assets/img/3d-contact.png" alt="Phone" class="contact-img">
+                  <span class="callout" id="callout-phone"><span class="callout-text">0908 668 3254</span></span>
+                </span>
+                <span class="contact-icon" data-contact="jbbascug20@gmail.com" data-action="mailto:jbbascug20@gmail.com">
+                  <img src="assets/img/gmail.png" alt="Email" class="contact-img">
+                  <span class="callout" id="callout-email"><span class="callout-text">jbbascug20@gmail.com</span></span>
+                </span>
+                <span class="contact-icon" data-contact="linkedin.com/in/jonrich-bascug" data-action="https://linkedin.com/in/jonrich-bascug">
+                  <img src="assets/img/linkedin.png" alt="LinkedIn" class="contact-img">
+                  <span class="callout" id="callout-linkedin"><span class="callout-text">linkedin.com/in/jonrich-bascug</span></span>
+                </span>
+              </div>
+            </div>
+            <p class="hero-title">Web Application Developer</p>
+            <p class="hero-bio">
+              Results-driven Web Application Developer and Application Support Specialist with proven experience designing, building, and maintaining enterprise-grade web applications. Proficient in the Laravel framework, database optimization, and implementing scalable software solutions. Combines deep technical problem-solving with a forward-thinking approach, utilizing AI automation workflows and agentic tools to streamline development cycles and maintain high system reliability.
+            </p>
+            <div class="hero-links">
+              <a href="assets/Jonrich_Bascug_Web_Developer.pdf" download class="btn btn-outline">Download Resume</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="section">
+      <div class="container">
+        <h2 class="section-title">Technical Skills</h2>
+        <div class="skills-group">
+          <div class="skills-category">
+            <h3>Backend Technologies</h3>
+            <div class="skills-tags">
+              <span class="skill-tag">PHP / Laravel</span>
+              <span class="skill-tag">Modular Monolith Architecture</span>
+              <span class="skill-tag">System Design &amp; Architecture</span>
+              <span class="skill-tag">MVC Architecture</span>
+              <span class="skill-tag">RESTful API Development</span>
+              <span class="skill-tag">OOP</span>
+            </div>
+          </div>
+          <div class="skills-category">
+            <h3>Frontend Technologies</h3>
+            <div class="skills-tags">
+              <span class="skill-tag">HTML5 / CSS3</span>
+              <span class="skill-tag">JavaScript</span>
+              <span class="skill-tag">Blade Templating</span>
+              <span class="skill-tag">Responsive Web Design</span>
+            </div>
+          </div>
+          <div class="skills-category">
+            <h3>Databases &amp; Version Control</h3>
+            <div class="skills-tags">
+              <span class="skill-tag">MySQL / Relational Database Design</span>
+              <span class="skill-tag">Database Query Optimization</span>
+              <span class="skill-tag">Git / GitHub / Bitbucket</span>
+            </div>
+          </div>
+          <div class="skills-category">
+            <h3>Operations &amp; Internal Systems</h3>
+            <div class="skills-tags">
+              <span class="skill-tag">Application Performance Monitoring</span>
+              <span class="skill-tag">Internal Portal &amp; Tracking Systems</span>
+              <span class="skill-tag">Data Validation &amp; Auditing</span>
+              <span class="skill-tag">Technical Documentation</span>
+            </div>
+          </div>
+          <div class="skills-category">
+            <h3>Productivity &amp; AI Automation</h3>
+            <div class="skills-tags">
+              <span class="skill-tag">AI-Augmented Code Generation</span>
+              <span class="skill-tag">Autonomous Agent Workflows</span>
+              <span class="skill-tag">Technical Workflow Automation</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="systems" class="section">
+      <div class="container">
+        <h2 class="section-title">Web Systems</h2>
+        <p class="section-subtitle">Systems I developed and maintain</p>
+        <div class="systems-grid" id="systems-grid">
+        </div>
+      </div>
+    </section>
+
+    <section id="experience" class="section">
+      <div class="container">
+        <h2 class="section-title">Experience</h2>
+        <div class="experience-item">
+          <div class="experience-header">
+            <h3>CDO Foodsphere, Inc.</h3>
+            <span class="experience-date">December 2024 - Present</span>
+          </div>
+          <p class="experience-role">Web Application Developer</p>
+          <p class="experience-location">Valenzuela City, Philippines</p>
+
+          <h4 class="experience-subsection">System Architecture &amp; Modular Design</h4>
+          <ul class="experience-details">
+            <li>Maintained, designed, and optimized high-impact backend modules using PHP and Laravel within a Modular Monolith architecture, supporting critical business operations for a company of over 5,000 employees.</li>
+          </ul>
+
+          <h4 class="experience-subsection">Database &amp; Query Optimization</h4>
+          <ul class="experience-details">
+            <li>Re-architected and optimized database performance to ensure fast, reliable data handling and resolved query bottlenecks to support high-traffic operations.</li>
+          </ul>
+
+          <h4 class="experience-subsection">Legacy System Maintenance</h4>
+          <ul class="experience-details">
+            <li>Maintained backend stability for core legacy platforms, including the Food Distribution Information System (FDIS), by managing critical monthly updates and invoice tracking workflows.</li>
+          </ul>
+
+          <h4 class="experience-subsection">System Modernization &amp; AI Agent Orchestration</h4>
+          <ul class="experience-details">
+            <li>Successfully spearheaded the end-to-end framework and infrastructure upgrade of two critical enterprise applications: the Customer Complaint Tracking System (CCTR) and Overall Equipment Effectiveness (OEE) dashboard.</li>
+            <li>Programmed and orchestrated a custom network of AI Agents and specialized subagents to automate the detection of deprecated syntax, breaking changes, and framework lifecycle mismatches across the legacy codebase.</li>
+            <li>Streamlined the modernization of legacy frontend architectures, utilizing agentic workflows to upgrade JavaScript, Bootstrap, AdminLTE, jQuery, and DataTables with zero operational downtime.</li>
+          </ul>
+
+          <h4 class="experience-subsection">Advanced Feature Delivery &amp; Real-Time Systems</h4>
+          <ul class="experience-details">
+            <li>Architected and integrated a secure AI processing feature within the Customer Complaint Tracking System (CCTR) dashboard; utilized the OpenRouter API to dynamically ingest core query filters (baseQuery) and automatically synthesize plain-English data trends.</li>
+            <li>Developed a real-time event application featuring timestamped eligibility rules, custom admin prize-management panels, and highly responsive data streaming using AJAX API chaining to sync data across smart displays.</li>
+          </ul>
+
+          <h4 class="experience-subsection">Application Security &amp; Compliance</h4>
+          <ul class="experience-details">
+            <li>Implemented stringent Role-Based Access Control (RBAC) policies across multiple enterprise applications (Clinic, Complaint, BizCard systems) to enforce data isolation by plant location, department boundaries, and job seniority tiers.</li>
+            <li>Strengthened system security and strictly adhered to Data Privacy regulations by implementing Two-Factor Authentication (2FA) via Authenticator Apps and Email OTP.</li>
+            <li>Integrated robust audit logging capabilities using Spatie Laravel packages to track detailed immutable historical state changes (capturing user context, IP addresses, geo-location, and before/after delta values).</li>
+          </ul>
+
+          <h4 class="experience-subsection">Production Support &amp; AI-Augmented Workflows</h4>
+          <ul class="experience-details">
+            <li>Provided comprehensive Level 3 application support across all production internal applications; utilized Freshservice to systematically monitor Service Level Agreements (SLAs), isolate root causes, and deploy critical production hotfixes.</li>
+            <li>Utilized advanced context-prompting techniques with LLM architectures to rapidly map out complex legacy architectures and significantly accelerate the feature prototyping lifecycle while enforcing strict human-in-the-loop code reviews.</li>
+          </ul>
+
+          <h4 class="experience-subsection">Event Tech Implementation &amp; Support</h4>
+          <ul class="experience-details">
+            <li>IT Week (Tech'ka Muna!) - Game Developer &amp; Tech Support Lead: Successfully implemented interactive event games and provided comprehensive technical booth support for the company's first-ever tech event with 500+ attendees.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="news" class="section">
+      <div class="container">
+        <h2 class="section-title">News</h2>
+        <ul class="news-list">
+          <li><span class="news-date">May 2026:</span> Led technical delivery for IT Week (Tech'ka Muna!), the first company-wide IT event with 500+ attendees; leadership endorsed annual recurrence.</li>
+          <li><span class="news-date">Dec 2024:</span> Joined CDO Foodsphere, Inc. as Web Application Developer, building enterprise systems for manufacturing and distribution.</li>
+          <li><span class="news-date">Aug 2024:</span> Earned CompTIA ITF+ certification.</li>
+          <li><span class="news-date">Aug 2024:</span> Graduated with a B.S. in Computer Science from Our Lady of Fatima University.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="education" class="section">
+      <div class="container">
+        <h2 class="section-title">Education</h2>
+        <div class="education-item">
+          <h3>Bachelor of Science in Computer Science</h3>
+          <p class="education-school">Our Lady of Fatima University</p>
+          <p class="education-location">Valenzuela, PH</p>
+          <p class="education-date">January 2020 - August 2024</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="certifications" class="section">
+      <div class="container">
+        <h2 class="section-title">Certifications</h2>
+        <div class="cert-item">
+          <h3><a href="https://www.credly.com/badges/af0746d6-8bee-4d73-89e6-81cffc662989" target="_blank" class="cert-link">CompTIA ITF+</a></h3>
+          <p class="cert-date">August 2024</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="modal-overlay" id="modal-overlay">
+    <div class="modal" id="modal">
+      <button class="modal-close" id="modal-close" aria-label="Close">&times;</button>
+      <div class="modal-carousel" id="modal-carousel">
+        <div class="carousel-track" id="carousel-track"></div>
+        <div class="carousel-dots" id="carousel-dots"></div>
+      </div>
+      <div class="modal-body">
+        <h2 class="modal-title" id="modal-title"></h2>
+        <p class="modal-description" id="modal-description"></p>
+        <div class="modal-details" id="modal-details"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightbox-close" aria-label="Close">&times;</button>
+    <button class="lightbox-nav lightbox-prev" id="lightbox-prev" aria-label="Previous">&#8249;</button>
+    <div class="lightbox-image" id="lightbox-image"></div>
+    <button class="lightbox-nav lightbox-next" id="lightbox-next" aria-label="Next">&#8250;</button>
+    <div class="lightbox-counter" id="lightbox-counter"></div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2026 Jonrich Bascug.</p>
+    </div>
+  </footer>
+
+  <script src="assets/js/script.js"></script>
+</body>
+</html>
