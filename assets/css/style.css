@@ -247,7 +247,7 @@ a:hover {
 
 .contact-icons {
   display: flex;
-  gap: 10px;
+  gap: 8px;
   flex-shrink: 0;
 }
 
@@ -256,8 +256,8 @@ a:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 44px;
-  height: 44px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   border: 1.5px solid var(--border);
   cursor: pointer;
@@ -270,8 +270,8 @@ a:hover {
 }
 
 .contact-img {
-  width: 24px;
-  height: 24px;
+  width: 18px;
+  height: 18px;
   object-fit: contain;
   pointer-events: none;
 }
