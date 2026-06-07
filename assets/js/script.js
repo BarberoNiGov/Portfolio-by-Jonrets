@@ -20,11 +20,6 @@
   var avatarSprite = document.getElementById('avatar-sprite');
   var spriteTimer = null;
 
-  var spriteLoaded = false;
-  var preloader = new Image();
-  preloader.onload = function () { spriteLoaded = true; };
-  preloader.src = 'assets/img/proper_sprite_sheet_1024.png';
-
   var SPRITE_COLS = 4;
   var SPRITE_ROWS = 3;
   var TOTAL_FRAMES = SPRITE_COLS * SPRITE_ROWS;
@@ -91,8 +86,6 @@
     var current = html.getAttribute('data-theme');
     var next = current === 'dark' ? 'light' : 'dark';
     setTheme(next);
-
-    if (!spriteLoaded) return;
 
     if (next === 'dark') {
       playForward();
