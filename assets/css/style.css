@@ -821,14 +821,9 @@ a:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  opacity: 0;
-  transition: opacity 0.2s, background 0.2s;
+  transition: background 0.2s;
   z-index: 5;
   line-height: 1;
-}
-
-.carousel-slide:hover .carousel-expand-btn {
-  opacity: 1;
 }
 
 .carousel-expand-btn:hover {
