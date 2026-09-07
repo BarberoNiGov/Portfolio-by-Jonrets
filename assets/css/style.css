@@ -581,6 +581,13 @@ a:hover {
   margin-bottom: 12px;
 }
 
+.experience-summary {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  font-style: italic;
+  margin-bottom: 12px;
+}
+
 .experience-details {
   list-style: disc;
   padding-left: 20px;

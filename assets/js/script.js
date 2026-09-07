@@ -134,15 +134,15 @@
   var systemsData = [
     {
       id: 'e-raffle',
-      name: 'E-Raffle System',
-      shortDesc: 'Automated corporate raffle deployed to 5,000+ employees across two plants with real-time dashboard and optimized draw execution',
-      longDesc: 'Developed an automated corporate raffle platform deployed to 5,000+ employees across P2 Valenzuela and P3 Batangas plants. Eliminated manual selection bias and reduced draw execution time through an event-driven session system with timestamped eligibility rules. Features an optimized 3-tier database schema, live participant dashboard, prize sequencing engine, and winner registration UI.',
+      name: 'Event Management + E-Raffle System',
+      shortDesc: 'Automated in/out for company events — removed manual ticket design and cutting for 5,000 employees, saving days of work every event',
+      longDesc: 'Automated in/out for company events. The E-Raffle feature removed the need to manually design and cut tickets for 5,000 employees — saving days of manual work every event. Built as an event-driven session system with timestamped eligibility rules, live participant dashboard, prize sequencing engine, and winner registration UI across P2 Valenzuela and P3 Batangas plants.',
       techStack: ['Laravel', 'PHP', 'MySQL', 'JavaScript', 'AJAX'],
       features: [
+        'Automated event in/out + E-Raffle — saved days of manual ticket work per event',
         'Event-driven session system with timestamped eligibility',
         'Live participant dashboard with real-time tracking',
-        'Prize sequencing engine with winner registration UI',
-        '3-tier optimized database schema'
+        'Prize sequencing engine with winner registration UI'
       ],
       images: [
         {
@@ -154,89 +154,10 @@
       ]
     },
     {
-      id: 'cctr',
-      name: 'Customer Complaint Tracking System (CCTR)',
-      shortDesc: 'Centralized complaint lifecycle tracking complaints from plant submissions with AI analytics and enhanced security',
-      longDesc: 'Built a centralized complaint lifecycle platform now tracking complaints from plant submissions. Architected and integrated a secure AI processing feature using the OpenRouter API to dynamically ingest core query filters and automatically synthesize plain-English data trends, enabling non-technical QA staff to query trends. Hardened security with MFA using authenticator app and email OTP, plus comprehensive audit trail logging user, IP, location, and before/after values. Spearheaded end-to-end framework upgrade of the application using AI agent orchestration.',
-      techStack: ['Laravel', 'PHP', 'MySQL', 'AJAX', 'JavaScript', 'OpenRouter API', 'MFA'],
-      features: [
-        'AI analytics via OpenRouter API — dynamically ingests query filters, synthesizes plain-English trends',
-        'Real-time analytics dashboard',
-        'MFA using Authenticator App and Email OTP',
-        'Comprehensive audit trail (user, IP, location, before/after values)',
-        'End-to-end framework upgrade via AI agent orchestration'
-      ],
-      images: [
-        {
-          type: 'video',
-          src: 'assets/img/Portfolio Images/CCTR/1.mp4',
-          poster: 'assets/img/Portfolio Images/CCTR/2.png'
-        },
-        'assets/img/Portfolio Images/CCTR/2.png',
-        'assets/img/Portfolio Images/CCTR/3.webp',
-        'assets/img/Portfolio Images/CCTR/4.png',
-        'assets/img/Portfolio Images/CCTR/5.png',
-        'assets/img/Portfolio Images/CCTR/6.png'
-      ]
-    },
-    {
-      id: 'cis',
-      name: 'Clinic Information System (CIS) \u2013 Security Enhancement',
-      shortDesc: 'MFA and audit logging to strengthen patient data protection and meet compliance requirements',
-      longDesc: 'Hardened security in the Clinic Information System with MFA using authenticator app and email OTP, plus comprehensive audit trail logging user, IP, location, and before/after values to strengthen patient data protection and meet internal compliance requirements.',
-      techStack: ['Laravel', 'PHP', 'MySQL', 'JavaScript'],
-      features: [
-        'MFA using Authenticator App and Email OTP',
-        'Comprehensive audit trail (user, IP, location, before/after values)',
-        'Compliance-aligned patient data access controls'
-      ],
-      images: [
-        'assets/img/Portfolio Images/CIS/1.webp',
-        'assets/img/Portfolio Images/CIS/2.webp',
-        'assets/img/Portfolio Images/CIS/3.webp',
-        'assets/img/Portfolio Images/CIS/4.webp',
-        'assets/img/Portfolio Images/CIS/5.webp',
-        'assets/img/Portfolio Images/CIS/6.webp'
-      ]
-    },
-    {
-      id: 'fdis',
-      name: 'Food Distribution Information System (FDIS)',
-      shortDesc: 'Invoice modification subsystem handling 10+ invoice types to ensure accurate billing operations in the distribution workflow',
-      longDesc: 'Supported and maintained a critical invoice modification subsystem handling 10+ invoice types within the Food Distribution Information System, ensuring accurate billing operations for the company\'s distribution workflow.',
-      techStack: ['Laravel', 'PHP', 'MySQL'],
-      features: [
-        'Invoice modification subsystem supporting 10+ invoice types',
-        'Distribution workflow integration'
-      ],
-      images: [
-        'assets/img/Portfolio Images/FDIS/1.webp'
-      ]
-    },
-    {
-      id: 'bizcard',
-      name: 'CDO BizCard \u2013 Security Enhancement',
-      shortDesc: 'RBAC, 2FA, and audit logging for the digital business card system to enforce data isolation and meet privacy regulations',
-      longDesc: 'Strengthened security in the CDO BizCard system by implementing stringent Role-Based Access Control (RBAC) policies to enforce data isolation by plant location, department boundaries, and job seniority tiers. Adhered to Data Privacy regulations by implementing Two-Factor Authentication (2FA) via Authenticator Apps and Email OTP. Integrated robust audit logging using Spatie Laravel packages to track detailed immutable historical state changes, capturing user context, IP addresses, geo-location, and before/after delta values.',
-      techStack: ['Laravel', 'PHP', 'MySQL', 'JavaScript', 'MFA'],
-      features: [
-        'RBAC with data isolation by plant, department, and seniority tier',
-        'Two-Factor Authentication (2FA) via Authenticator App and Email OTP',
-        'Immutable audit trail with Spatie (user, IP, geo-location, before/after values)',
-        'Data Privacy regulation compliance'
-      ],
-      images: [
-        'assets/img/Portfolio Images/BizCard/1.webp',
-        'assets/img/Portfolio Images/BizCard/2.webp',
-        'assets/img/Portfolio Images/BizCard/3.webp',
-        'assets/img/Portfolio Images/BizCard/4.webp'
-      ]
-    },
-    {
       id: 'it-week',
       name: 'IT Week (Tech\'ka Muna!)',
-      shortDesc: 'First company-wide IT event with 500+ attendees featuring three original interactive web systems and comprehensive technical support',
-      longDesc: 'Game Developer & Tech Support Lead for the first company-wide IT week-long booth and game show with 500+ attendees; leadership endorsed annual recurrence. Successfully implemented interactive event games and provided comprehensive technical booth support. Featured three original web systems built for the event.',
+      shortDesc: 'Led implementation, 500+ attendees at P2 site — three original interactive web systems, leadership endorsed annual recurrence',
+      longDesc: 'Led implementation for IT Week (Tech\'ka Muna!) with 500+ attendees at the P2 site. Game Developer & Tech Support Lead for the first company-wide IT week-long booth and game show. Leadership said the event should be annual because it made IT visible to the company. Featured three original web systems built for the event.',
       type: 'container',
       children: ['image-carousel', 'real-or-fake', 'iconic-memory'],
       images: [
@@ -273,7 +194,7 @@
       id: 'real-or-fake',
       skipGrid: true,
       name: 'Real Or Fake \u2013 AI Detection Quiz',
-      shortDesc: 'Interactive quiz with anti-cheat controls and admin CRUD for media uploads, deployed at company-wide IT Week',
+      shortDesc: 'Interactive quiz with anti-cheat (shuffled questions) and admin CRUD, deployed at company-wide IT Week',
       longDesc: 'Created a session-based quiz game for the first company-wide IT Week where players identify AI-generated versus real media. Features session-based progression with cookie-persisted tokens, anti-cheat mechanism using composite database indexes to block repeat perfect-score attempts within 24 hours, random question rendering via PHP shuffle(), and an admin dashboard with full CRUD for image (25MB) and video (100MB) uploads.',
       techStack: ['Laravel', 'PHP', 'MySQL', 'JavaScript', 'AJAX'],
       features: [
