@@ -869,6 +869,10 @@ a:hover {
   padding: 24px;
 }
 
+.modal.no-carousel .modal-body {
+  border-radius: 12px;
+}
+
 .modal-title {
   font-size: 1.4rem;
   font-weight: 700;

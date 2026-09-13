@@ -172,6 +172,60 @@
       ]
     },
     {
+      id: 'vapt',
+      name: 'Post-Incident Security Hardening (VAPT Mitigation)',
+      shortDesc: 'Led a multi-system security overhaul \u2014 remediated 100+ vulnerabilities across five internal systems and passed security review',
+      longDesc: 'Led a post-incident security hardening program across five legacy internal systems (CMS, MES-OEE, ePaySlip, CCTR, BizCard). Remediated 100+ vulnerabilities from outdated Laravel, PHP, AdminLTE, Bootstrap, and jQuery, then added MFA (Email OTP + Authenticator), Spatie audit logging, password expiry, and auto-lock after 3 failed login attempts.',
+      techStack: ['Laravel', 'PHP', 'MySQL', 'MFA (Email OTP + Authenticator)', 'Spatie Audit Logging', 'OWASP / npm audit'],
+      features: [
+        'Remediated 100+ vulnerabilities across five legacy internal systems',
+        'Upgraded outdated Laravel, PHP, AdminLTE, Bootstrap, and jQuery',
+        'Added MFA (Email OTP + Authenticator)',
+        'Implemented Spatie audit logging, password expiry, and auto-lock after 3 failed logins',
+        'Covered CMS, MES-OEE, ePaySlip, CCTR, and BizCard',
+        'Closed critical vulnerabilities and passed security review'
+      ],
+      images: []
+    },
+    {
+      id: 'cctr',
+      name: 'Customer Complaint Tracking System (CCTR)',
+      shortDesc: 'Rescued a messy legacy complaint-tracking system \u2014 used AI-assisted analysis to refactor it safely in production, significantly reducing recurring bugs',
+      longDesc: 'Took ownership of CCTR, my first legacy system, which had messy code and unclear architecture. Used AI-assisted code mapping to understand and refactor it without breaking production. Stabilized the system into a maintainable state and significantly reduced recurring bugs and incidents.',
+      techStack: ['Laravel', 'PHP', 'MySQL', 'JavaScript', 'AJAX'],
+      features: [
+        'First legacy system ownership \u2014 unclear architecture and disorganized code',
+        'AI-assisted code mapping to refactor safely without breaking production',
+        'Significantly reduced recurring bugs and incidents',
+        'Stabilized and made maintainable for ongoing support'
+      ],
+      images: [
+        {
+          type: 'video',
+          src: 'assets/img/Portfolio Images/CCTR/1.mp4',
+          poster: 'assets/img/Portfolio Images/CCTR/3.webp'
+        },
+        'assets/img/Portfolio Images/CCTR/2.png',
+        'assets/img/Portfolio Images/CCTR/3.webp',
+        'assets/img/Portfolio Images/CCTR/4.png',
+        'assets/img/Portfolio Images/CCTR/5.png',
+        'assets/img/Portfolio Images/CCTR/6.png'
+      ]
+    },
+    {
+      id: 'clinic',
+      name: 'Clinic Management System',
+      shortDesc: 'Optimized clinic workflows \u2014 reduced manual data entry and improved data accuracy across administrative and clinical teams',
+      longDesc: 'Optimized clinic workflows by reducing manual data entry and improving data accuracy across administrative and clinical teams, supporting daily clinic operations for a 5,000+ employee workforce.',
+      techStack: ['Laravel', 'PHP', 'MySQL', 'JavaScript', 'AJAX'],
+      features: [
+        'Optimized clinic workflows across administrative and clinical teams',
+        'Reduced manual data entry',
+        'Improved data accuracy'
+      ],
+      images: []
+    },
+    {
       id: 'image-carousel',
       skipGrid: true,
       name: 'Image Carousel Display System',
@@ -251,8 +305,10 @@
     if (sys.skipGrid) return;
     var card = document.createElement('div');
     card.className = 'system-card';
-    var first = sys.images[0];
-    if (mediaType(first) === 'video') {
+    var first = sys.images && sys.images.length ? sys.images[0] : null;
+    if (!first) {
+      card.style.backgroundImage = cssBg('linear-gradient(135deg, #667eea 0%, #764ba2 100%)');
+    } else if (mediaType(first) === 'video') {
       card.style.backgroundImage = cssBg(mediaPoster(first) || 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)');
     } else {
       card.style.backgroundImage = cssBg(mediaSrc(first));
@@ -373,7 +429,17 @@
     var sys = systemsData.find(function (s) { return s.id === id; });
     if (!sys) return;
 
-    buildCarousel(sys.images);
+    var modalCarousel = document.getElementById('modal-carousel');
+    if (sys.images && sys.images.length) {
+      modal.classList.remove('no-carousel');
+      modalCarousel.style.display = '';
+      buildCarousel(sys.images);
+    } else {
+      modal.classList.add('no-carousel');
+      modalCarousel.style.display = 'none';
+      carouselTrack.innerHTML = '';
+      carouselDots.innerHTML = '';
+    }
     modalTitle.textContent = sys.name;
     modalDesc.textContent = sys.longDesc;
     modalDetails.innerHTML = '';
