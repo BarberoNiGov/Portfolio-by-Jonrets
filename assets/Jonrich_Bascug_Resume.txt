@@ -1,58 +1,37 @@
 JONRICH BASCUG
-AI-Native Full-Stack Web Developer
+UI/UX Designer — Designs internal tools at enterprise scale, then ships them — with a full-stack background.
 Valenzuela City, Philippines  |  jbbascug20@gmail.com  |  portfolio-by-jonrets.netlify.app  |  linkedin.com/in/jonrich-bascug  |  0908 668 3254
 
 
 SUMMARY
-Full-stack web developer building and supporting internal systems for 5,000+ employees at CDO Foodsphere. I ship new Laravel applications, rescue legacy systems, and lead security hardening — including a post-incident program that remediated 100+ vulnerabilities across five internal systems. I use AI as a force multiplier while owning the architecture, security, and risk decisions, delivering in days what used to take weeks. The team calls me Rich.
+UI/UX Designer with a full-stack background, focused on internal tools at enterprise scale. I build and support systems used across the corporation — audit, complaint tracking, clinic, events, payroll, and operations — covering workflow and information architecture, permissions, failure states, and the Laravel/MySQL implementation behind them. Because I build what I design, the interface stays feasible, scalable, and reliable in production.
+
+
+CORE SKILLS
+Design & Product: Workflow & information architecture design, form/table/data-entry UX for internal tools, permissions & RBAC design, error/empty/failure-state design, edge-case & concurrent-use handling, stakeholder discovery & requirements definition, process mapping for operations. Design tools: Figma, Google Stitch.
+Full-Stack Advantage: Laravel, PHP, MySQL, REST APIs, JavaScript, jQuery, AJAX, Blade, HTML5, CSS3, Bootstrap, AdminLTE.
+Security & Reliability: MFA (Email OTP + Authenticator), RBAC, Spatie audit logging, password policy & expiry, brute-force auto-lock, OWASP / npm audit.
+Tools & Workflow: Git (GitHub, GitLab, Bitbucket), OpenCode, Freshservice.
 
 
 EXPERIENCE
 
-Web Application Developer — CDO Foodsphere Inc. | Dec 2024 – Present
-Building, securing, and supporting internal systems for audits, complaint tracking, clinic, company events, payroll, and operations.
+Web Application Developer — CDO Foodsphere, Inc. | Dec 2024 – Present
+Valenzuela City, Philippines
 
-• Build and support internal apps used by 5,000+ employees across audits, complaint tracking, clinic, company events, payroll, and operations.
-• Security: Led a post-incident hardening program across five internal systems (CMS, MES-OEE, ePaySlip, CCTR, BizCard) — remediated 100+ vulnerabilities, upgraded outdated Laravel/PHP/AdminLTE/Bootstrap/jQuery, and added MFA (Email OTP + Authenticator), Spatie audit logging, password expiry, and auto-lock after 3 failed logins.
-• Legacy rescue: Took ownership of a messy legacy complaint-tracking system (CCTR) and used AI-assisted analysis to refactor it safely in production, significantly reducing recurring bugs and incidents.
-• Delivery: Pair AI agents with hands-on architecture and risk review to ship new builds and refactors in days instead of weeks.
-• Daily flow: Freshservice tickets, stakeholder conversations, system design, then building and fixing — urgent production incidents first.
-
-
-SELECTED PROJECTS
-
-1. Post-Incident Security Hardening (VAPT Mitigation) — 2026
-   • Covered CMS, MES-OEE, ePaySlip, CCTR, and BizCard.
-   • Remediated 100+ vulnerabilities from legacy framework and dependency debt.
-   • Added MFA, audit logging, password expiry, and brute-force auto-lock.
-   • Result: Closed critical vulnerabilities and passed security review.
-
-2. Customer Complaint Tracking (CCTR) — 2024
-   • Inherited a messy legacy system with unclear architecture.
-   • Used AI-assisted code mapping to refactor without breaking production.
-   • Result: Stabilized and made maintainable; significantly reduced recurring bugs/incidents.
-
-3. Event Management + E-Raffle — 2024
-   • Automated event in/out for company events.
-   • E-Raffle removed manual ticket design and cutting for 5,000 employees.
-   • Result: Saved days of manual work every event.
-
-4. Clinic Management System — 2025
-   • Optimized clinic workflows across administrative and clinical teams.
-   • Reduced manual data entry and improved data accuracy.
-
-5. IT Week (Tech'ka Muna!) — 2025
-   • Led implementation for 500+ attendees.
-   • Delivered three original systems: Image Carousel Display, Real Or Fake (AI Detection Quiz), and Icon-ic Memory Matching Game.
-   • Result: Ranked #1 for engagement; leadership endorsed annual recurrence.
+• For HR and event staff running company-wide event check-in, mapped the in/out flow across two plant sites, then designed and shipped an event-driven session system with timestamped eligibility and a live participant dashboard — removing manual ticket design and cutting for the enterprise workforce and saving days of work per event.
+• Maintain and support the customer complaint tracking system (CCTR) — added a dashboard with multi-dimension filters, KPI summaries, analysis charts, and an AI data analysis view that summarizes complaints, surfaces trends, and answers natural-language questions.
+• After a security incident, led hardening across five internal systems (CMS, MES-OEE, ePaySlip, CCTR, BizCard): remediated 100+ vulnerabilities and designed the login and MFA experience to balance protection against daily user friction — adding MFA (Email OTP + Authenticator), Spatie audit logging, password expiry, and auto-lock after 3 failed attempts — closing critical vulnerabilities and passing security review.
+• For clinic staff and administrators, mapped intake and records workflows and shipped a clinic management system that reduced manual data entry and improved data accuracy for the enterprise workforce.
+• Led delivery for IT Week (Tech'ka Muna!), the company's first company-wide IT event with 500+ attendees, designing three interactive web systems under deadline — an image carousel synced to Smart TVs, an "AI vs Real" detection quiz with anti-cheat, and a 6×6 memory game with a live leaderboard — ranked #1 for engagement, with leadership endorsing annual recurrence.
 
 
-TECHNICAL SKILLS
-Backend: PHP, Laravel, Blade, MySQL, REST APIs
-Frontend: JavaScript, jQuery, AJAX, DataTables, Bootstrap, AdminLTE, HTML5, CSS3
-Security: MFA (Email OTP + Authenticator), Spatie Audit Logging, OWASP / npm audit, RBAC, Password Policy
-AI Tools (daily): Claude Code, Codex, OpenCode, OpenRouter API, Gemini AI
-Developer Tools: Git (GitHub, GitLab, Bitbucket), Freshservice, Figma, Google Stitch
+SELECTED CASE STUDIES
+
+1. UI Redesign — Internal Security & Admin Tools — Rebuilt three shipped enterprise screens (audit trail, MFA settings, active users) in a modern component system, with before/after rationale and live mockups.
+2. Customer Complaint Tracking (CCTR) — Added a dashboard with multi-dimension filters, KPI summaries, analysis charts, and an AI data analysis view; maintain and support the system.
+3. Post-Incident Security Hardening — Balanced security requirements against daily usability across five internal systems — MFA, audit logging, and lockout policy — while remediating 100+ vulnerabilities.
+4. Event Management + E-Raffle — Designed event check-in for the enterprise, replacing manual ticket design and cutting with an automated, session-based workflow. Built a CMS-style theme designer that lets non-technical staff customize the registration and raffle pages on their own.
 
 
 EDUCATION & CERTIFICATION

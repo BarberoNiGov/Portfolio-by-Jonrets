@@ -206,6 +206,16 @@ a:hover {
   image-rendering: auto;
 }
 
+/* Dark theme shows the sprite's final frame immediately (no JS flash) */
+[data-theme="dark"] .avatar-sprite {
+  opacity: 1;
+  background-position: 100% 100%;
+}
+
+[data-theme="dark"] .hero-avatar img {
+  opacity: 0;
+}
+
 .avatar-fallback {
   display: none;
   width: 100%;
@@ -920,6 +930,12 @@ a:hover {
 
 .modal-details .feature-list li {
   margin-bottom: 4px;
+}
+
+.modal-details .modal-link {
+  display: block;
+  width: fit-content;
+  margin: 16px 0 0 auto;
 }
 
 .subsystem-list {

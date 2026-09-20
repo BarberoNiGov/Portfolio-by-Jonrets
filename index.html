@@ -3,7 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jonrich Bascug's Portfolio</title>
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('portfolio-theme');
+        if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
+  <title>Jonrich Bascug — UI/UX Designer</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='28' font-size='28'>👤</text></svg>">
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
@@ -58,9 +66,9 @@
                 </span>
               </div>
             </div>
-            <p class="hero-title">AI-Native Full-Stack Web Developer</p>
+            <p class="hero-title">UI/UX Designer | Full-Stack Background</p>
             <p class="hero-bio">
-              Full-stack web developer building and supporting internal systems for 5,000+ employees at CDO Foodsphere — new Laravel builds plus rescuing legacy code. I led a post-incident security hardening program across five internal systems, remediating 100+ vulnerabilities and adding MFA and audit logging. I use AI as a force multiplier while owning the architecture, security, and risk decisions — shipping in days what used to take weeks. The team calls me Rich.
+              UI/UX Designer with a full-stack background, focused on internal tools at enterprise scale. I build and support systems used across CDO Foodsphere — audit, complaint tracking, clinic, events, payroll, and operations — covering workflow and information architecture, permissions, failure states, and the Laravel/MySQL implementation behind them. Because I build what I design, the interface stays feasible, scalable, and reliable in production.
             </p>
             <div class="hero-links">
               <a href="assets/Jonrich_Bascug_Resume.pdf" download class="btn btn-outline">Download Resume</a>
@@ -75,52 +83,53 @@
         <h2 class="section-title">Technical Skills</h2>
         <div class="skills-group">
           <div class="skills-category">
-            <h3>Backend</h3>
+            <h3>Design &amp; Product</h3>
             <div class="skills-tags">
-              <span class="skill-tag">PHP</span>
-              <span class="skill-tag">Laravel</span>
-              <span class="skill-tag">Blade</span>
-              <span class="skill-tag">MySQL</span>
-              <span class="skill-tag">REST APIs</span>
+              <span class="skill-tag">Workflow &amp; Information Architecture</span>
+              <span class="skill-tag">Form / Table / Data-entry UX</span>
+              <span class="skill-tag">Permissions &amp; RBAC Design</span>
+              <span class="skill-tag">Error / Failure-state Design</span>
+              <span class="skill-tag">Edge-case &amp; Concurrent-use Handling</span>
+              <span class="skill-tag">Stakeholder Discovery</span>
+              <span class="skill-tag">Process Mapping</span>
+              <span class="skill-tag">Figma</span>
+              <span class="skill-tag">Google Stitch</span>
             </div>
           </div>
           <div class="skills-category">
-            <h3>Frontend</h3>
+            <h3>Full-Stack Advantage</h3>
             <div class="skills-tags">
+              <span class="skill-tag">Laravel</span>
+              <span class="skill-tag">PHP</span>
+              <span class="skill-tag">MySQL</span>
+              <span class="skill-tag">REST APIs</span>
               <span class="skill-tag">JavaScript</span>
               <span class="skill-tag">jQuery</span>
               <span class="skill-tag">AJAX</span>
-              <span class="skill-tag">DataTables</span>
-              <span class="skill-tag">Bootstrap</span>
-              <span class="skill-tag">AdminLTE</span>
+              <span class="skill-tag">Blade</span>
               <span class="skill-tag">HTML5</span>
               <span class="skill-tag">CSS3</span>
+              <span class="skill-tag">Bootstrap</span>
+              <span class="skill-tag">AdminLTE</span>
             </div>
           </div>
           <div class="skills-category">
-            <h3>Security</h3>
+            <h3>Security &amp; Reliability</h3>
             <div class="skills-tags">
               <span class="skill-tag">MFA (Email OTP + Authenticator)</span>
-              <span class="skill-tag">Audit Logging (Spatie)</span>
-              <span class="skill-tag">OWASP / npm audit</span>
               <span class="skill-tag">RBAC</span>
-              <span class="skill-tag">Password Policy</span>
+              <span class="skill-tag">Spatie Audit Logging</span>
+              <span class="skill-tag">Password Policy &amp; Expiry</span>
+              <span class="skill-tag">Brute-force Auto-lock</span>
+              <span class="skill-tag">OWASP / npm audit</span>
             </div>
           </div>
           <div class="skills-category">
-            <h3>AI Tools (Daily)</h3>
-            <div class="skills-tags">
-              <span class="skill-tag">OpenCode</span>
-              <span class="skill-tag">API format compatible with OpenAI/Anthropic</span>
-            </div>
-          </div>
-          <div class="skills-category">
-            <h3>Developer Tools</h3>
+            <h3>Tools &amp; Workflow</h3>
             <div class="skills-tags">
               <span class="skill-tag">Git (GitHub, GitLab, Bitbucket)</span>
+              <span class="skill-tag">OpenCode</span>
               <span class="skill-tag">Freshservice</span>
-              <span class="skill-tag">Figma</span>
-              <span class="skill-tag">Google Stitch</span>
             </div>
           </div>
         </div>
@@ -146,14 +155,14 @@
           </div>
           <p class="experience-role">Web Application Developer</p>
           <p class="experience-location">Valenzuela City, Philippines</p>
-          <p class="experience-summary">Building, securing, and supporting internal systems for audits, complaint tracking, clinic operations, company events, payroll, and operational workflows.</p>
+          <p class="experience-summary">Designing and shipping internal tools at enterprise scale — workflow and permission design, failure handling, and the Laravel/MySQL implementation behind them.</p>
 
           <ul class="experience-details">
-            <li><strong>Build and support internal apps</strong> used by 5,000+ employees across audits, complaint tracking, clinic, company events, payroll, and operations.</li>
-            <li><strong>Security:</strong> Led a post-incident hardening program across five internal systems (CMS, MES-OEE, ePaySlip, CCTR, BizCard) — remediated 100+ vulnerabilities, upgraded outdated frameworks, and added MFA, audit logging, password expiry, and brute-force auto-lock.</li>
-            <li><strong>Legacy rescue:</strong> Took ownership of a messy legacy complaint-tracking system (CCTR) and used AI-assisted analysis to refactor it safely in production, significantly reducing recurring bugs and incidents.</li>
-            <li><strong>Delivery:</strong> Pair AI agents with hands-on architecture and risk review to ship new builds and refactors in days instead of weeks.</li>
-            <li><strong>Daily flow:</strong> Freshservice tickets, stakeholder conversations, system design, then building and fixing. Urgent production incidents always come first.</li>
+            <li><strong>Event systems:</strong> Mapped the in/out flow across two plant sites, then designed and shipped an event-driven session system with timestamped eligibility and a live participant dashboard — removing manual ticket design and cutting for the enterprise workforce and saving days of work per event.</li>
+            <li><strong>Complaint tracking (CCTR):</strong> Maintain and support the customer complaint tracking system — added a dashboard with multi-dimension filters, KPI summaries, analysis charts, and an AI data analysis view that summarizes complaints, surfaces trends, and answers natural-language questions.</li>
+            <li><strong>Security:</strong> After a security incident, led hardening across five internal systems (CMS, MES-OEE, ePaySlip, CCTR, BizCard) — remediated 100+ vulnerabilities and designed the login and MFA experience around the protection-vs-friction tradeoff, adding MFA (Email OTP + Authenticator), Spatie audit logging, password expiry, and auto-lock after 3 failed attempts.</li>
+            <li><strong>Clinic:</strong> Mapped intake and records workflows for clinic staff and administrators, then shipped a clinic management system that reduced manual data entry and improved data accuracy for the enterprise workforce.</li>
+            <li><strong>IT Week:</strong> Led delivery for the company's first company-wide IT event (500+ attendees), designing three interactive web systems under deadline — an image carousel synced to Smart TVs, an "AI vs Real" detection quiz with anti-cheat, and a 6×6 memory game with a live leaderboard — ranked #1 for engagement, with leadership endorsing annual recurrence.</li>
           </ul>
         </div>
       </div>

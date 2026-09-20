@@ -51,6 +51,12 @@
     avatarImg.style.opacity = '';
   }
 
+  // Keep the avatar in sync with the saved theme on load
+  if (html.getAttribute('data-theme') === 'dark') {
+    setSpriteFrame(TOTAL_FRAMES - 1);
+    showSprite();
+  }
+
   function playForward() {
     stopSprite();
     setSpriteFrame(0);
@@ -133,16 +139,39 @@
 
   var systemsData = [
     {
+      id: 'ui-redesign',
+      name: 'UI Redesign — Internal Security & Admin Tools',
+      shortDesc: 'Rebuilt three shipped enterprise screens in a modern component system — audit trail, MFA settings, and active users',
+      longDesc: 'Redesigned three real internal systems I maintain and support (complaint tracking, clinic, and business card management) in a modern component language: consistent density, calmer chrome, clearer hierarchy, and a legible security-vs-friction tradeoff. Every screen has a before/after comparison and a live, clickable HTML mockup.',
+      techStack: ['HTML5', 'CSS3', 'Design System', 'Figma', 'Information Architecture'],
+      features: [
+        'Before/after redesign of three shipped enterprise screens',
+        'Shared component system: tokens, badges, tables, forms, states',
+        'CCTR audit trail — scannable table with tabular numerals',
+        'Clinic MFA settings — method-selection card clarifying the security tradeoff',
+        'BizCard active users — roster with role filtering and status chips',
+        'Live, clickable HTML mockups'
+      ],
+      link: { href: 'case-study-redesign.html', label: 'View full UI Redesign case study' },
+      images: [
+        'assets/img/redesign/cctr-audit-trail.png',
+        'assets/img/redesign/clinic-mfa-settings.png',
+        'assets/img/redesign/bizcard-active-users.png'
+      ]
+    },
+    {
       id: 'e-raffle',
       name: 'Event Management + E-Raffle System',
-      shortDesc: 'Automated in/out for company events — removed manual ticket design and cutting for 5,000 employees, saving days of work every event',
-      longDesc: 'Automated in/out for company events. The E-Raffle feature removed the need to manually design and cut tickets for 5,000 employees — saving days of manual work every event. Built as an event-driven session system with timestamped eligibility rules, live participant dashboard, prize sequencing engine, and winner registration UI across P2 Valenzuela and P3 Batangas plants.',
+      shortDesc: 'Replacing manual tickets for a whole workforce with a self-service event system',
+      longDesc: 'Company events required designing and physically cutting raffle and attendance tickets for the entire workforce, and check-in was manual and slow. I designed the in/out flow across two plant sites and shipped a session-based event system: timestamped eligibility rules that block duplicate and late entries, a live participant dashboard for real-time turnout instead of paper reconciliation, prize sequencing with winner registration, and a CMS-style theme designer that lets non-technical staff customize registration and raffle pages themselves. Designed for bursts of simultaneous check-ins on event day.',
       techStack: ['Laravel', 'PHP', 'MySQL', 'JavaScript', 'AJAX'],
       features: [
-        'Automated event in/out + E-Raffle — saved days of manual ticket work per event',
-        'Event-driven session system with timestamped eligibility',
-        'Live participant dashboard with real-time tracking',
-        'Prize sequencing engine with winner registration UI'
+        'Automated event in/out + E-Raffle — removed manual ticket design and cutting',
+        'Timestamped eligibility rules (blocks duplicate and late entries)',
+        'Live participant dashboard — real-time turnout, no paper reconciliation',
+        'Prize sequencing engine with winner registration UI',
+        'CMS-style theme designer for self-service registration and raffle page customization',
+        'Failure states handled: duplicate scan, invalid ticket, dropped connection'
       ],
       images: [
         {
@@ -174,15 +203,15 @@
     {
       id: 'vapt',
       name: 'Post-Incident Security Hardening (VAPT Mitigation)',
-      shortDesc: 'Led a multi-system security overhaul \u2014 remediated 100+ vulnerabilities across five internal systems and passed security review',
-      longDesc: 'Led a post-incident security hardening program across five legacy internal systems (CMS, MES-OEE, ePaySlip, CCTR, BizCard). Remediated 100+ vulnerabilities from outdated Laravel, PHP, AdminLTE, Bootstrap, and jQuery, then added MFA (Email OTP + Authenticator), Spatie audit logging, password expiry, and auto-lock after 3 failed login attempts.',
+      shortDesc: 'Adding MFA, lockouts, and audit logging across five systems without making daily life worse',
+      longDesc: 'After an incident, five internal systems (CMS, MES-OEE, ePaySlip, CCTR, BizCard) carried 100+ vulnerabilities from legacy dependencies. New controls were mandatory, but security controls add friction and friction creates workarounds. I led the hardening program and designed the login and MFA experience: Email OTP + Authenticator (including a mode for deskless and shared-terminal staff), auto-lock after 3 failed attempts tuned against support-ticket load, password expiry with proactive messaging instead of surprise lockouts, and Spatie audit logging that stays invisible to users but gives admins a full trail.',
       techStack: ['Laravel', 'PHP', 'MySQL', 'MFA (Email OTP + Authenticator)', 'Spatie Audit Logging', 'OWASP / npm audit'],
       features: [
         'Remediated 100+ vulnerabilities across five legacy internal systems',
-        'Upgraded outdated Laravel, PHP, AdminLTE, Bootstrap, and jQuery',
-        'Added MFA (Email OTP + Authenticator)',
-        'Implemented Spatie audit logging, password expiry, and auto-lock after 3 failed logins',
-        'Covered CMS, MES-OEE, ePaySlip, CCTR, and BizCard',
+        'MFA (Email OTP + Authenticator) with a mode for deskless/shared-terminal staff',
+        'Auto-lock after 3 failed attempts — tuned against support-ticket load',
+        'Password expiry with proactive messaging, not surprise lockouts',
+        'Spatie audit logging: invisible to users, full trail for admins',
         'Closed critical vulnerabilities and passed security review'
       ],
       images: []
@@ -190,14 +219,16 @@
     {
       id: 'cctr',
       name: 'Customer Complaint Tracking System (CCTR)',
-      shortDesc: 'Rescued a messy legacy complaint-tracking system \u2014 used AI-assisted analysis to refactor it safely in production, significantly reducing recurring bugs',
-      longDesc: 'Took ownership of CCTR, my first legacy system, which had messy code and unclear architecture. Used AI-assisted code mapping to understand and refactor it without breaking production. Stabilized the system into a maintainable state and significantly reduced recurring bugs and incidents.',
-      techStack: ['Laravel', 'PHP', 'MySQL', 'JavaScript', 'AJAX'],
+      shortDesc: 'Complaint dashboard with multi-dimension filters, analysis charts, and AI data analysis',
+      longDesc: 'CCTR records and tracks customer complaints end to end. I maintain and support the system and added dashboard and analysis features: multi-dimension complaint filters, KPI summaries, and analysis charts. Its AI data analysis view summarizes complaint records, surfaces trends, suggests likely root causes, and answers natural-language questions about the data. The system also includes account security screens — MFA settings, login history, audit trail, and active users — used to monitor and protect access.',
+      techStack: ['Laravel', 'PHP', 'MySQL', 'JavaScript', 'AJAX', 'AI Data Analysis'],
       features: [
-        'First legacy system ownership \u2014 unclear architecture and disorganized code',
-        'AI-assisted code mapping to refactor safely without breaking production',
-        'Significantly reduced recurring bugs and incidents',
-        'Stabilized and made maintainable for ongoing support'
+        'Dashboard with multi-dimension complaint filters',
+        'KPI summaries — total complaints received and valid plant-related (VPR) share',
+        'Analysis charts — monthly complaint trend and VPR vs. VNPR',
+        'AI data analysis: summarizes records, detects trends, suggests root causes, and answers natural-language questions',
+        'Account security screens: MFA settings, login history, audit trail, and active users',
+        'Maintains and supports the system; added the dashboard and analysis features'
       ],
       images: [
         {
@@ -216,7 +247,7 @@
       id: 'clinic',
       name: 'Clinic Management System',
       shortDesc: 'Optimized clinic workflows \u2014 reduced manual data entry and improved data accuracy across administrative and clinical teams',
-      longDesc: 'Optimized clinic workflows by reducing manual data entry and improving data accuracy across administrative and clinical teams, supporting daily clinic operations for a 5,000+ employee workforce.',
+      longDesc: 'Optimized clinic workflows by reducing manual data entry and improving data accuracy across administrative and clinical teams, supporting daily enterprise clinic operations.',
       techStack: ['Laravel', 'PHP', 'MySQL', 'JavaScript', 'AJAX'],
       features: [
         'Optimized clinic workflows across administrative and clinical teams',
@@ -475,7 +506,12 @@
       });
       featHtml += '</ul>';
 
-      modalDetails.innerHTML = techHtml + featHtml;
+      var linkHtml = '';
+      if (sys.link) {
+        linkHtml = '<a class="btn btn-outline modal-link" href="' + sys.link.href + '">' + sys.link.label + '</a>';
+      }
+
+      modalDetails.innerHTML = techHtml + featHtml + linkHtml;
     }
 
     overlay.classList.add('open');

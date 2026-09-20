@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>
+  (function () {
+    try {
+      var t = localStorage.getItem('portfolio-theme');
+      if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
+  })();
+</script>
+<title>UI Redesign — Internal Security &amp; Admin Tools | Jonrich Bascug</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='28' font-size='28'>👤</text></svg>">
+<link rel="stylesheet" href="assets/css/style.css">
+<style>
+  .cs-hero { padding: 120px 0 40px; }
+  .cs-eyebrow { font-size: 0.85rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+  .cs-title { font-size: 2rem; font-weight: 700; line-height: 1.2; margin-bottom: 16px; }
+  .cs-lede { color: var(--text-secondary); max-width: 640px; margin-bottom: 24px; }
+  .cs-note { font-size: 0.85rem; color: var(--text-secondary); border: 1px solid var(--border); border-radius: var(--radius); background: var(--bg-alt); padding: 12px 16px; max-width: 640px; }
+  .cs-system { padding: 48px 0; border-top: 1px solid var(--border); }
+  .cs-system-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 6px; }
+  .cs-system h2 { font-size: 1.25rem; font-weight: 700; }
+  .cs-rationale { color: var(--text-secondary); font-size: 0.95rem; max-width: 680px; margin-bottom: 20px; }
+  .cs-compare { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .cs-panel { border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; background: var(--card-bg); box-shadow: var(--shadow); }
+  .cs-panel-head { display: flex; align-items: center; justify-content: space-between; padding: 10px 14px; border-bottom: 1px solid var(--border); font-size: 0.8rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--text-secondary); }
+  .cs-tag { font-size: 0.7rem; padding: 2px 8px; border-radius: 999px; border: 1px solid var(--border); }
+  .cs-tag.before { color: var(--text-secondary); }
+  .cs-tag.after { color: var(--accent); border-color: var(--accent); }
+  .cs-panel img { display: block; width: 100%; height: auto; background: var(--bg-alt); }
+  .cs-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 18px; }
+  .cs-panel { cursor: zoom-in; }
+  .cs-panel img { transition: opacity 0.15s; }
+  .cs-panel:hover img { opacity: 0.94; }
+  .cs-foot { padding: 40px 0 64px; text-align: center; }
+
+  /* Lightbox */
+  .cs-lightbox { position: fixed; inset: 0; z-index: 4000; background: rgba(0,0,0,0.92); display: flex; align-items: center; justify-content: center; padding: 40px; }
+  .cs-lightbox[hidden] { display: none; }
+  .cs-lb-figure { margin: 0; display: flex; flex-direction: column; align-items: center; gap: 12px; max-width: 94vw; max-height: 90vh; }
+  .cs-lb-img { max-width: 94vw; max-height: 80vh; width: auto; height: auto; border-radius: 8px; box-shadow: 0 20px 60px rgba(0,0,0,0.5); background: #fff; }
+  .cs-lb-caption { color: #fff; font-size: 0.9rem; text-align: center; }
+  .cs-lb-counter { position: absolute; bottom: 18px; left: 50%; transform: translateX(-50%); color: rgba(255,255,255,0.65); font-size: 0.85rem; }
+  .cs-lb-close { position: absolute; top: 14px; right: 20px; background: none; border: none; color: #fff; font-size: 2.2rem; line-height: 1; cursor: pointer; opacity: 0.7; }
+  .cs-lb-close:hover { opacity: 1; }
+  .cs-lb-nav { position: absolute; top: 50%; transform: translateY(-50%); background: none; border: none; color: #fff; font-size: 3rem; line-height: 1; cursor: pointer; opacity: 0.55; padding: 8px 12px; }
+  .cs-lb-nav:hover { opacity: 1; }
+  .cs-lb-prev { left: 10px; }
+  .cs-lb-next { right: 10px; }
+
+  @media (max-width: 768px) {
+    .cs-hero { padding-top: 96px; }
+    .cs-compare { grid-template-columns: 1fr; }
+    .cs-title { font-size: 1.6rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="container nav-container">
+    <a href="index.html" class="nav-brand">← Jonrich Bascug</a>
+    <a href="index.html" class="btn btn-outline" style="margin-left:auto;">Back to portfolio</a>
+  </div>
+</nav>
+
+<main class="container">
+
+  <header class="cs-hero">
+    <div class="cs-eyebrow">Case Study · UI Redesign</div>
+    <h1 class="cs-title">Redesigning internal security &amp; admin tools</h1>
+    <p class="cs-lede">
+      I build and secure internal systems for a large enterprise — and I also design them. These three
+      screens are real shipped systems (complaint tracking, clinic, business card management), rebuilt in a
+      modern component language: consistent density, calmer chrome, and clearer hierarchy.
+    </p>
+    <p class="cs-note">
+      Redesigns of systems I maintain and support. All names, timestamps, IPs, and records shown are
+      dummy data. The original screenshots are the "before" state.
+    </p>
+  </header>
+
+  <section class="cs-system">
+    <div class="cs-system-head">
+      <h2>CCTR — Audit Trail</h2>
+      <span class="cs-tag">Complaint tracking</span>
+    </div>
+    <p class="cs-rationale">
+      Tightened the audit table: consistent action badges, quieter chrome, tabular numerals for
+      scanability, and search placed where the eye lands first. Same data — far less visual noise.
+    </p>
+    <div class="cs-compare">
+      <figure class="cs-panel">
+        <div class="cs-panel-head"><span>Before</span><span class="cs-tag before">Original</span></div>
+        <img src="assets/img/Portfolio Images/CCTR/5.png" alt="CCTR audit trail — original AdminLTE interface" loading="lazy">
+      </figure>
+      <figure class="cs-panel">
+        <div class="cs-panel-head"><span>After</span><span class="cs-tag after">Redesign</span></div>
+        <img src="assets/img/redesign/cctr-audit-trail.png" alt="CCTR audit trail — redesigned interface" loading="lazy">
+      </figure>
+    </div>
+    <div class="cs-actions">
+      <a class="btn btn-outline" href="mockups/cctr-audit-trail.html" target="_blank" rel="noopener">Open live mockup</a>
+    </div>
+  </section>
+
+  <section class="cs-system">
+    <div class="cs-system-head">
+      <h2>Clinic Information System — MFA Settings</h2>
+      <span class="cs-tag">Clinic operations</span>
+    </div>
+    <p class="cs-rationale">
+      Replaced stacked alert boxes and default radio controls with one clear method-selection card,
+      so the security-vs-friction tradeoff is legible at a glance.
+    </p>
+    <div class="cs-compare">
+      <figure class="cs-panel">
+        <div class="cs-panel-head"><span>Before</span><span class="cs-tag before">Original</span></div>
+        <img src="assets/img/Portfolio Images/CIS/1.webp" alt="Clinic MFA settings — original interface" loading="lazy">
+      </figure>
+      <figure class="cs-panel">
+        <div class="cs-panel-head"><span>After</span><span class="cs-tag after">Redesign</span></div>
+        <img src="assets/img/redesign/clinic-mfa-settings.png" alt="Clinic MFA settings — redesigned interface" loading="lazy">
+      </figure>
+    </div>
+    <div class="cs-actions">
+      <a class="btn btn-outline" href="mockups/clinic-mfa-settings.html" target="_blank" rel="noopener">Open live mockup</a>
+    </div>
+  </section>
+
+  <section class="cs-system">
+    <div class="cs-system-head">
+      <h2>BizCard — Active Users</h2>
+      <span class="cs-tag">Business card management</span>
+    </div>
+    <p class="cs-rationale">
+      Turned the active-users list into a scannable roster: role filtering, status chips, avatars,
+      and a clear column rhythm instead of an undifferentiated grid.
+    </p>
+    <div class="cs-compare">
+      <figure class="cs-panel">
+        <div class="cs-panel-head"><span>Before</span><span class="cs-tag before">Original</span></div>
+        <img src="assets/img/Portfolio Images/BizCard/4.webp" alt="BizCard active users — original interface" loading="lazy">
+      </figure>
+      <figure class="cs-panel">
+        <div class="cs-panel-head"><span>After</span><span class="cs-tag after">Redesign</span></div>
+        <img src="assets/img/redesign/bizcard-active-users.png" alt="BizCard active users — redesigned interface" loading="lazy">
+      </figure>
+    </div>
+    <div class="cs-actions">
+      <a class="btn btn-outline" href="mockups/bizcard-active-users.html" target="_blank" rel="noopener">Open live mockup</a>
+    </div>
+  </section>
+
+  <div class="cs-foot">
+    <a class="btn btn-outline" href="index.html">Back to portfolio</a>
+  </div>
+
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <p>&copy; 2026 Jonrich Bascug.</p>
+  </div>
+</footer>
+
+<div class="cs-lightbox" id="csLightbox" role="dialog" aria-modal="true" aria-label="Image viewer" hidden>
+  <button class="cs-lb-close" id="csLbClose" aria-label="Close">&times;</button>
+  <button class="cs-lb-nav cs-lb-prev" id="csLbPrev" aria-label="Previous image">&#8249;</button>
+  <figure class="cs-lb-figure">
+    <img class="cs-lb-img" id="csLbImg" src="" alt="">
+    <figcaption class="cs-lb-caption" id="csLbCaption"></figcaption>
+  </figure>
+  <button class="cs-lb-nav cs-lb-next" id="csLbNext" aria-label="Next image">&#8250;</button>
+  <div class="cs-lb-counter" id="csLbCounter"></div>
+</div>
+
+<script>
+(function () {
+  var imgs = Array.prototype.slice.call(document.querySelectorAll('.cs-panel img'));
+  if (!imgs.length) return;
+
+  var lb = document.getElementById('csLightbox');
+  var lbImg = document.getElementById('csLbImg');
+  var lbCaption = document.getElementById('csLbCaption');
+  var lbCounter = document.getElementById('csLbCounter');
+  var idx = 0;
+
+  function captionFor(img) {
+    var system = img.closest('.cs-system');
+    var head = img.closest('.cs-panel');
+    var name = system ? system.querySelector('h2').textContent.trim() : '';
+    var kind = head ? head.querySelector('.cs-panel-head span').textContent.trim() : '';
+    return kind ? name + ' \u2014 ' + kind : name;
+  }
+
+  function show(i) {
+    idx = (i + imgs.length) % imgs.length;
+    var img = imgs[idx];
+    lbImg.src = img.currentSrc || img.src;
+    lbImg.alt = img.alt;
+    lbCaption.textContent = captionFor(img);
+    lbCounter.textContent = (idx + 1) + ' / ' + imgs.length;
+  }
+
+  function open(i) {
+    show(i);
+    lb.hidden = false;
+    document.body.style.overflow = 'hidden';
+  }
+
+  function close() {
+    lb.hidden = true;
+    lbImg.src = '';
+    document.body.style.overflow = '';
+  }
+
+  imgs.forEach(function (img, i) {
+    img.setAttribute('tabindex', '0');
+    img.setAttribute('role', 'button');
+    img.title = 'Click to enlarge';
+    img.addEventListener('click', function () { open(i); });
+    img.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(i); }
+    });
+  });
+
+  document.getElementById('csLbClose').addEventListener('click', close);
+  document.getElementById('csLbPrev').addEventListener('click', function () { show(idx - 1); });
+  document.getElementById('csLbNext').addEventListener('click', function () { show(idx + 1); });
+  lb.addEventListener('click', function (e) { if (e.target === lb) close(); });
+
+  document.addEventListener('keydown', function (e) {
+    if (lb.hidden) return;
+    if (e.key === 'Escape') close();
+    if (e.key === 'ArrowLeft') show(idx - 1);
+    if (e.key === 'ArrowRight') show(idx + 1);
+  });
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CDO BizCard — Account Settings</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/shadcn.css">
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-dashboard" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></symbol>
+    <symbol id="i-user" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></symbol>
+    <symbol id="i-card" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></symbol>
+    <symbol id="i-settings" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></symbol>
+    <symbol id="i-history" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M12 7v5l4 2"/></symbol>
+    <symbol id="i-scroll" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7z"/><path d="M14 2v5h6"/><path d="M8 13h8"/><path d="M8 17h8"/><path d="M8 9h2"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+    <symbol id="i-bell" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></symbol>
+    <symbol id="i-monitor" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></symbol>
+    <symbol id="i-eye" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></symbol>
+    <symbol id="i-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h16"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9z"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></symbol>
+    <symbol id="i-warn" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.7 18-8-14a2 2 0 0 0-3.4 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.7-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></symbol>
+  </defs>
+</svg>
+
+<div class="app">
+  <aside class="sidebar">
+    <div class="brand">
+      <span class="brand-mark"><img src="../assets/img/CDO_CMYK_3D_Logo.png" alt="CDO"></span>
+      <div>
+        <div class="brand-name">BizCard</div>
+        <div class="brand-sub">Business Card Management</div>
+      </div>
+    </div>
+
+    <nav>
+      <div class="nav-item"><svg><use href="#i-dashboard"/></svg> Dashboard</div>
+      <div class="nav-item"><svg><use href="#i-user"/></svg> Profile</div>
+      <div class="nav-item active"><svg><use href="#i-settings"/></svg> Account Settings</div>
+      <div class="nav-item"><svg><use href="#i-card"/></svg> BizCard Management</div>
+      <div class="nav-item"><svg><use href="#i-scroll"/></svg> Maintenance <svg class="chev"><use href="#i-chev"/></svg></div>
+    </nav>
+  </aside>
+
+  <div class="main">
+    <header class="topbar">
+      <button class="icon-btn" aria-label="Toggle navigation"><svg><use href="#i-menu"/></svg></button>
+      <div class="spacer"></div>
+      <button class="icon-btn" aria-label="Toggle theme"><svg><use href="#i-moon"/></svg></button>
+      <button class="icon-btn" aria-label="Notifications"><svg><use href="#i-bell"/></svg></button>
+      <div class="userchip"><div class="avatar">JB</div><span class="name">Jonrich Bascug</span></div>
+    </header>
+
+    <main class="content">
+      <div class="page-head">
+        <svg><use href="#i-settings"/></svg>
+        <h1 class="page-title">Account Settings</h1>
+      </div>
+
+      <div class="tabs" data-tabs role="tablist">
+        <button class="tab" data-tab="mfa"><svg><use href="#i-shield"/></svg> MFA Settings</button>
+        <button class="tab" data-tab="login"><svg><use href="#i-history"/></svg> Login History</button>
+        <button class="tab" data-tab="audit"><svg><use href="#i-scroll"/></svg> Audit Trail</button>
+        <button class="tab active" data-tab="users"><svg><use href="#i-users"/></svg> Active Users</button>
+      </div>
+
+      <!-- MFA -->
+      <section data-panel="mfa" hidden>
+        <div class="stack" style="max-width: 860px;">
+          <div class="alert alert-info">
+            <svg><use href="#i-info"/></svg>
+            <div>Multi-Factor Authentication adds an extra layer of security to your account.</div>
+          </div>
+          <div class="alert alert-warning">
+            <svg><use href="#i-warn"/></svg>
+            <div>
+              <div class="alert-title">Setup instructions</div>
+              <ol>
+                <li>Choose your preferred MFA method below.</li>
+                <li>Follow the on-screen prompts to complete the setup.</li>
+                <li>Save your recovery codes in a secure location.</li>
+              </ol>
+            </div>
+          </div>
+          <section class="card">
+            <div class="card-header"><svg><use href="#i-shield"/></svg><h2 class="card-title">Multi-Factor Authentication</h2></div>
+            <div class="card-body">
+              <div class="section-label" style="margin-bottom: 4px;">Choose your MFA method</div>
+              <label class="radio-row">
+                <input type="radio" name="biz-mfa" checked>
+                <span class="radio"></span>
+                <span><span class="radio-label">Disabled</span><span class="radio-desc">MFA is off. Your account is protected by password only.</span></span>
+              </label>
+              <label class="radio-row">
+                <input type="radio" name="biz-mfa">
+                <span class="radio"></span>
+                <span><span class="radio-label">Authenticator App (TOTP)</span><span class="radio-desc">Use Google Authenticator or Microsoft Authenticator for time-based codes.</span></span>
+              </label>
+              <label class="radio-row">
+                <input type="radio" name="biz-mfa">
+                <span class="radio"></span>
+                <span><span class="radio-label">Email OTP</span><span class="radio-desc">Receive a 6-digit code by email each time you log in.</span></span>
+              </label>
+            </div>
+            <div class="card-footer">
+              <button class="btn">Cancel</button>
+              <button class="btn btn-primary">Save changes</button>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <!-- Login History -->
+      <section data-panel="login" hidden>
+        <section class="card">
+          <div class="card-header"><svg><use href="#i-history"/></svg><h2 class="card-title">Login History</h2></div>
+          <table class="table" data-table data-page-size="5">
+            <thead><tr><th>Date / Time</th><th>IP Address</th><th>Device</th><th>MFA Method</th></tr></thead>
+            <tbody>
+              <tr><td class="mono">Jun 03, 2026 05:19 PM</td><td class="mono">10.10.0.14</td><td>Desktop (Windows · Chrome)</td><td><span class="badge badge-blue">Email OTP</span></td></tr>
+              <tr><td class="mono">Jun 03, 2026 05:19 PM</td><td class="mono">10.10.0.14</td><td>Desktop (Windows · Chrome)</td><td><span class="badge badge-slate">Standard</span></td></tr>
+              <tr><td class="mono">Jun 03, 2026 09:36 AM</td><td class="mono">10.10.0.14</td><td>Desktop (Windows · Chrome)</td><td><span class="badge badge-blue">TOTP</span></td></tr>
+              <tr><td class="mono">Jun 03, 2026 09:05 AM</td><td class="mono">10.10.0.14</td><td>Desktop (Windows · Chrome)</td><td><span class="badge badge-amber">Recovery</span></td></tr>
+              <tr><td class="mono">Jun 03, 2026 09:04 AM</td><td class="mono">10.10.0.14</td><td>Desktop (Windows · Chrome)</td><td><span class="badge badge-amber">Recovery</span></td></tr>
+              <tr><td class="mono">Jun 03, 2026 09:01 AM</td><td class="mono">10.10.0.14</td><td>Desktop (Windows · Chrome)</td><td><span class="badge badge-slate">Standard</span></td></tr>
+            </tbody>
+          </table>
+          <div class="pager"><span class="meta" data-meta></span><nav data-pager></nav></div>
+        </section>
+      </section>
+
+      <!-- Audit Trail -->
+      <section data-panel="audit" hidden>
+        <section class="card">
+          <div class="card-header">
+            <svg><use href="#i-scroll"/></svg>
+            <h2 class="card-title">Audit Trail</h2>
+            <span class="badge badge-outline">Dev</span>
+            <div class="search">
+              <svg><use href="#i-search"/></svg>
+              <input class="input" type="search" placeholder="Search audit trail..." data-search aria-label="Search audit trail">
+            </div>
+          </div>
+          <table class="table" data-table data-page-size="5">
+            <thead><tr><th>Date / Time</th><th>User</th><th>Event</th><th>Changes</th></tr></thead>
+            <tbody>
+              <tr><td class="mono">Jun 03, 2026 05:21 PM</td><td class="user-cell">Jonrich Bascug</td><td><span class="badge badge-slate">MFA disabled</span></td><td><button class="btn btn-sm btn-ghost"><svg><use href="#i-eye"/></svg> View Details</button></td></tr>
+              <tr><td class="mono">Jun 03, 2026 05:19 PM</td><td class="user-cell">Jonrich Bascug</td><td><span class="badge badge-blue">User logged in (Email OTP)</span></td><td><button class="btn btn-sm btn-ghost"><svg><use href="#i-eye"/></svg> View Details</button></td></tr>
+              <tr><td class="mono">Jun 03, 2026 05:19 PM</td><td class="user-cell">Jonrich Bascug</td><td><span class="badge badge-red">Failed login attempt</span></td><td><button class="btn btn-sm btn-ghost"><svg><use href="#i-eye"/></svg> View Details</button></td></tr>
+              <tr><td class="mono">Jun 03, 2026 09:55 AM</td><td class="user-cell">Test Create</td><td><span class="badge badge-amber">User changed expired password</span></td><td><button class="btn btn-sm btn-ghost"><svg><use href="#i-eye"/></svg> View Details</button></td></tr>
+              <tr><td class="mono">Jun 03, 2026 09:55 AM</td><td class="user-cell">Test Create</td><td><span class="badge badge-blue">User logged in</span></td><td><button class="btn btn-sm btn-ghost"><svg><use href="#i-eye"/></svg> View Details</button></td></tr>
+              <tr><td class="mono">Jun 03, 2026 09:54 AM</td><td class="user-cell">Test Create</td><td><span class="badge badge-slate">Inactive account login attempt</span></td><td><button class="btn btn-sm btn-ghost"><svg><use href="#i-eye"/></svg> View Details</button></td></tr>
+              <tr><td class="mono">Jun 03, 2026 09:47 AM</td><td class="user-cell">Jonrich Bascug</td><td><span class="badge badge-green">User created</span></td><td><button class="btn btn-sm btn-ghost"><svg><use href="#i-eye"/></svg> View Details</button></td></tr>
+            </tbody>
+          </table>
+          <div class="pager"><span class="meta" data-meta></span><nav data-pager></nav></div>
+        </section>
+      </section>
+
+      <!-- Active Users -->
+      <section data-panel="users">
+        <section class="card">
+          <div class="card-header"><svg><use href="#i-users"/></svg><h2 class="card-title">Active Users</h2><span class="badge badge-outline">Dev</span></div>
+          <div class="toolbar">
+            <span class="label">Filter by role</span>
+            <div class="select">
+              <select aria-label="Filter by role"><option>All roles</option><option>Developer</option><option>User</option></select>
+              <svg><use href="#i-chev"/></svg>
+            </div>
+            <span class="count">3 online</span>
+          </div>
+          <table class="table" data-table data-page-size="4">
+            <thead><tr><th>User</th><th>Email</th><th>Role</th><th>Last Activity</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td><div class="cell-user"><span class="avatar-sm">JB</span> Jonrich Bascug</div></td><td>jonrich.bascug@cdo.com.ph</td><td><span class="badge badge-slate">dev</span></td><td>2 minutes ago</td><td><span class="badge badge-online">Online</span></td></tr>
+              <tr><td><div class="cell-user"><span class="avatar-sm">TC</span> Test Create</div></td><td>testcreate@cdo.com.ph</td><td><span class="badge badge-slate">user</span></td><td>7 hours ago</td><td><span class="badge badge-online">Online</span></td></tr>
+              <tr><td><div class="cell-user"><span class="avatar-sm">TA</span> Test Account 2</div></td><td>test2@cdo.com.ph</td><td><span class="badge badge-slate">user</span></td><td>7 hours ago</td><td><span class="badge badge-online">Online</span></td></tr>
+              <tr><td><div class="cell-user"><span class="avatar-sm">RG</span> Reception Guard</div></td><td>reception.guard@cdo.com.ph</td><td><span class="badge badge-slate">user</span></td><td>Yesterday</td><td><span class="badge badge-slate">Offline</span></td></tr>
+            </tbody>
+          </table>
+          <div class="pager"><span class="meta" data-meta></span><nav data-pager></nav></div>
+        </section>
+      </section>
+
+    </main>
+  </div>
+</div>
+
+<script src="assets/app.js"></script>
+</body>
+</html>
