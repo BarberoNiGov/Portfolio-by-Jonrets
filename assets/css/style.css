@@ -266,24 +266,20 @@ a:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  border: 1.5px solid var(--border);
+  width: 21px;
+  height: 21px;
   cursor: pointer;
-  transition: border-color 0.2s, background 0.2s;
 }
 
-.contact-icon:hover {
-  border-color: var(--accent);
-  background: var(--bg-alt);
-}
-
-.contact-img {
-  width: 18px;
-  height: 18px;
-  object-fit: contain;
+.contact-icon svg {
+  width: 17px;
+  height: 17px;
+  color: var(--text);
   pointer-events: none;
+}
+
+.contact-icon:hover svg {
+  color: var(--accent);
 }
 
 .callout {
@@ -515,37 +511,61 @@ a:hover {
 .skills-group {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+}
+
+.skills-category {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 6px 40px;
+  align-items: start;
+  padding: 18px 0;
+  border-top: 1px solid var(--border);
+}
+
+.skills-category:first-child {
+  border-top: none;
+  padding-top: 0;
 }
 
 .skills-category h3 {
-  font-size: 0.85rem;
+  margin: 0;
+  padding-top: 2px;
+  font-size: 0.78rem;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.06em;
   color: var(--text-secondary);
-  margin-bottom: 8px;
 }
 
 .skills-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
+  display: block;
+  line-height: 2.1;
 }
 
 .skill-tag {
   display: inline-block;
-  padding: 4px 12px;
-  border-radius: 20px;
+  padding: 2px 10px;
   font-size: 0.85rem;
-  border: 1px solid var(--border);
+  line-height: 1.6;
   color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 4px;
   background: var(--bg-alt);
+  margin-right: 6px;
   transition: border-color 0.2s, background 0.2s;
 }
 
 .skill-tag:hover {
   border-color: var(--accent);
   background: transparent;
+}
+
+@media (max-width: 768px) {
+  .skills-category {
+    grid-template-columns: 1fr;
+    gap: 6px;
+    padding: 16px 0;
+  }
 }
 
 /* ─── Experience ─── */
