@@ -139,84 +139,6 @@
 
   var systemsData = [
     {
-      id: 'ui-redesign',
-      name: 'UI Redesign — Internal Security & Admin Tools',
-      shortDesc: 'Rebuilt three shipped enterprise screens in a modern component system — audit trail, MFA settings, and active users',
-      longDesc: 'Redesigned three real internal systems I maintain and support (complaint tracking, clinic, and business card management) in a modern component language: consistent density, calmer chrome, clearer hierarchy, and a legible security-vs-friction tradeoff. Every screen has a before/after comparison and a live, clickable HTML mockup.',
-      techStack: ['HTML5', 'CSS3', 'Design System', 'Figma', 'Information Architecture'],
-      features: [
-        'Before/after redesign of three shipped enterprise screens',
-        'Shared component system: tokens, badges, tables, forms, states',
-        'CCTR audit trail — scannable table with tabular numerals',
-        'Clinic MFA settings — method-selection card clarifying the security tradeoff',
-        'BizCard active users — roster with role filtering and status chips',
-        'Live, clickable HTML mockups'
-      ],
-      link: { href: 'case-study-redesign.html', label: 'View full UI Redesign case study' },
-      images: [
-        'assets/img/redesign/cctr-audit-trail.png',
-        'assets/img/redesign/clinic-mfa-settings.png',
-        'assets/img/redesign/bizcard-active-users.png'
-      ]
-    },
-    {
-      id: 'e-raffle',
-      name: 'Event Management + E-Raffle System',
-      shortDesc: 'Replacing manual tickets for a whole workforce with a self-service event system',
-      longDesc: 'Company events required designing and physically cutting raffle and attendance tickets for the entire workforce, and check-in was manual and slow. I designed the in/out flow across two plant sites and shipped a session-based event system: timestamped eligibility rules that block duplicate and late entries, a live participant dashboard for real-time turnout instead of paper reconciliation, prize sequencing with winner registration, and a CMS-style theme designer that lets non-technical staff customize registration and raffle pages themselves. Designed for bursts of simultaneous check-ins on event day.',
-      techStack: ['Laravel', 'PHP', 'MySQL', 'JavaScript', 'AJAX'],
-      features: [
-        'Automated event in/out + E-Raffle — removed manual ticket design and cutting',
-        'Timestamped eligibility rules (blocks duplicate and late entries)',
-        'Live participant dashboard — real-time turnout, no paper reconciliation',
-        'Prize sequencing engine with winner registration UI',
-        'CMS-style theme designer for self-service registration and raffle page customization',
-        'Failure states handled: duplicate scan, invalid ticket, dropped connection'
-      ],
-      images: [
-        {
-          type: 'video',
-          src: 'assets/img/Portfolio Images/E-Raffle/1.mp4',
-          poster: 'assets/img/Portfolio Images/E-Raffle/2.jpeg'
-        },
-        'assets/img/Portfolio Images/E-Raffle/2.jpeg'
-      ]
-    },
-    {
-      id: 'it-week',
-      name: 'IT Week (Tech\'ka Muna!)',
-      shortDesc: 'Led implementation, 500+ attendees at P2 site — three original interactive web systems, leadership endorsed annual recurrence',
-      longDesc: 'Led implementation for IT Week (Tech\'ka Muna!) with 500+ attendees at the P2 site. Game Developer & Tech Support Lead for the first company-wide IT week-long booth and game show. Leadership said the event should be annual because it made IT visible to the company. Featured three original web systems built for the event.',
-      type: 'container',
-      children: ['image-carousel', 'real-or-fake', 'iconic-memory'],
-      images: [
-        {
-          type: 'video',
-          src: 'assets/img/Portfolio Images/IT Week/Overview/1.mp4',
-          poster: 'assets/img/Portfolio Images/IT Week/Overview/2.jpg'
-        },
-        'assets/img/Portfolio Images/IT Week/Overview/2.jpg',
-        'assets/img/Portfolio Images/IT Week/Overview/3.jpg',
-        'assets/img/Portfolio Images/IT Week/Overview/4.jpg'
-      ]
-    },
-    {
-      id: 'vapt',
-      name: 'Post-Incident Security Hardening (VAPT Mitigation)',
-      shortDesc: 'Adding MFA, lockouts, and audit logging across five systems without making daily life worse',
-      longDesc: 'After an incident, five internal systems (CMS, MES-OEE, ePaySlip, CCTR, BizCard) carried 100+ vulnerabilities from legacy dependencies. New controls were mandatory, but security controls add friction and friction creates workarounds. I led the hardening program and designed the login and MFA experience: Email OTP + Authenticator (including a mode for deskless and shared-terminal staff), auto-lock after 3 failed attempts tuned against support-ticket load, password expiry with proactive messaging instead of surprise lockouts, and Spatie audit logging that stays invisible to users but gives admins a full trail.',
-      techStack: ['Laravel', 'PHP', 'MySQL', 'MFA (Email OTP + Authenticator)', 'Spatie Audit Logging', 'OWASP / npm audit'],
-      features: [
-        'Remediated 100+ vulnerabilities across five legacy internal systems',
-        'MFA (Email OTP + Authenticator) with a mode for deskless/shared-terminal staff',
-        'Auto-lock after 3 failed attempts — tuned against support-ticket load',
-        'Password expiry with proactive messaging, not surprise lockouts',
-        'Spatie audit logging: invisible to users, full trail for admins',
-        'Closed critical vulnerabilities and passed security review'
-      ],
-      images: []
-    },
-    {
       id: 'cctr',
       name: 'Customer Complaint Tracking System (CCTR)',
       shortDesc: 'Complaint dashboard with multi-dimension filters, analysis charts, and AI data analysis',
@@ -244,6 +166,84 @@
       ]
     },
     {
+      id: 'vapt',
+      name: 'Post-Incident Security Hardening',
+      shortDesc: 'Adding MFA, lockouts, and audit logging across five systems without making daily life worse',
+      longDesc: 'After an incident, five internal systems (CMS, MES-OEE, ePaySlip, CCTR, BizCard) carried 100+ vulnerabilities from legacy dependencies. New controls were mandatory, but security controls add friction and friction creates workarounds. I led the hardening program and designed the login and MFA experience: Email OTP + Authenticator (including a mode for deskless and shared-terminal staff), auto-lock after 3 failed attempts tuned against support-ticket load, password expiry with proactive messaging instead of surprise lockouts, and Spatie audit logging that stays invisible to users but gives admins a full trail.',
+      techStack: ['Laravel', 'PHP', 'MySQL', 'MFA (Email OTP + Authenticator)', 'Spatie Audit Logging', 'OWASP / npm audit'],
+      features: [
+        'Remediated 100+ vulnerabilities across five legacy internal systems',
+        'MFA (Email OTP + Authenticator) with a mode for deskless/shared-terminal staff',
+        'Auto-lock after 3 failed attempts — tuned against support-ticket load',
+        'Password expiry with proactive messaging, not surprise lockouts',
+        'Spatie audit logging: invisible to users, full trail for admins',
+        'Closed critical vulnerabilities and passed security review'
+      ],
+      images: []
+    },
+    {
+      id: 'e-raffle',
+      name: 'Event Management & E-Raffle',
+      shortDesc: 'Replacing manual tickets for a whole workforce with a self-service event system',
+      longDesc: 'Company events required designing and physically cutting raffle and attendance tickets for the entire workforce, and check-in was manual and slow. I designed the in/out flow across two plant sites and shipped a session-based event system: timestamped eligibility rules that block duplicate and late entries, a live participant dashboard for real-time turnout instead of paper reconciliation, prize sequencing with winner registration, and a CMS-style theme designer that lets non-technical staff customize registration and raffle pages themselves. Designed for bursts of simultaneous check-ins on event day.',
+      techStack: ['Laravel', 'PHP', 'MySQL', 'JavaScript', 'AJAX'],
+      features: [
+        'Automated event in/out + E-Raffle — removed manual ticket design and cutting',
+        'Timestamped eligibility rules (blocks duplicate and late entries)',
+        'Live participant dashboard — real-time turnout, no paper reconciliation',
+        'Prize sequencing engine with winner registration UI',
+        'CMS-style theme designer for self-service registration and raffle page customization',
+        'Failure states handled: duplicate scan, invalid ticket, dropped connection'
+      ],
+      images: [
+        {
+          type: 'video',
+          src: 'assets/img/Portfolio Images/E-Raffle/1.mp4',
+          poster: 'assets/img/Portfolio Images/E-Raffle/2.jpeg'
+        },
+        'assets/img/Portfolio Images/E-Raffle/2.jpeg'
+      ]
+    },
+    {
+      id: 'ui-redesign',
+      name: 'Enterprise UX Redesign — Internal Security & Admin Tools',
+      shortDesc: 'Rebuilt three shipped enterprise screens — audit trail, MFA settings, and active users — around hierarchy, usability, and security-sensitive workflows',
+      longDesc: 'Redesigned three production internal systems I maintain and support (complaint tracking, clinic, and business card management) around information hierarchy, usability, permissions, and security-sensitive workflows. Every screen has a before/after comparison and a live, clickable HTML mockup.',
+      techStack: ['HTML5', 'CSS3', 'Design System', 'Figma', 'Information Architecture'],
+      features: [
+        'Before/after redesign of three shipped enterprise screens',
+        'Shared component system: tokens, badges, tables, forms, states',
+        'CCTR audit trail — scannable table with tabular numerals',
+        'Clinic MFA settings — method-selection card clarifying the security tradeoff',
+        'BizCard active users — roster with role filtering and status chips',
+        'Live, clickable HTML mockups'
+      ],
+      link: { href: 'case-study-redesign.html', label: 'View full Enterprise UX Redesign case study' },
+      images: [
+        'assets/img/redesign/cctr-audit-trail.png',
+        'assets/img/redesign/clinic-mfa-settings.png',
+        'assets/img/redesign/bizcard-active-users.png'
+      ]
+    },
+    {
+      id: 'it-week',
+      name: 'IT Week (Tech\'ka Muna!)',
+      shortDesc: 'Led implementation, 500+ attendees at P2 site — three original interactive web systems, leadership endorsed annual recurrence',
+      longDesc: 'Led implementation for IT Week (Tech\'ka Muna!) with 500+ attendees at the P2 site. Game Developer & Tech Support Lead for the first company-wide IT week-long booth and game show. Leadership said the event should be annual because it made IT visible to the company. Featured three original web systems built for the event.',
+      type: 'container',
+      children: ['image-carousel', 'real-or-fake', 'iconic-memory'],
+      images: [
+        {
+          type: 'video',
+          src: 'assets/img/Portfolio Images/IT Week/Overview/1.mp4',
+          poster: 'assets/img/Portfolio Images/IT Week/Overview/2.jpg'
+        },
+        'assets/img/Portfolio Images/IT Week/Overview/2.jpg',
+        'assets/img/Portfolio Images/IT Week/Overview/3.jpg',
+        'assets/img/Portfolio Images/IT Week/Overview/4.jpg'
+      ]
+    },
+    {
       id: 'clinic',
       name: 'Clinic Management System',
       shortDesc: 'Optimized clinic workflows \u2014 reduced manual data entry and improved data accuracy across administrative and clinical teams',
@@ -259,7 +259,7 @@
     {
       id: 'image-carousel',
       skipGrid: true,
-      name: 'Image Carousel Display System',
+      name: 'Smart TV-synced Image Carousel',
       shortDesc: 'Dual-storage gallery with 3-second AJAX sync to Smart TVs and AI PhotoBooth integration using Gemini AI',
       longDesc: 'Built a dual-storage gallery (Google Drive/Local) with 3-second AJAX sync deployed to Smart TVs during the first company-wide IT Week (Tech\'ka Muna!) with 500+ attendees. Uses a driver pattern architecture enabling seamless storage switching without code changes. Integrated an AI PhotoBooth pipeline using Gemini AI, automatically syncing photos from capture to display within 3-6 seconds; staff adopted the AI-generated photos as Gmail and Facebook profile pictures.',
       techStack: ['Laravel', 'PHP', 'MySQL', 'JavaScript', 'AJAX', 'Google Drive API'],
@@ -278,7 +278,7 @@
     {
       id: 'real-or-fake',
       skipGrid: true,
-      name: 'Real Or Fake \u2013 AI Detection Quiz',
+      name: 'Anti-cheat AI vs Real Detection Quiz',
       shortDesc: 'Interactive quiz with anti-cheat (shuffled questions) and admin CRUD, deployed at company-wide IT Week',
       longDesc: 'Created a session-based quiz game for the first company-wide IT Week where players identify AI-generated versus real media. Features session-based progression with cookie-persisted tokens, anti-cheat mechanism using composite database indexes to block repeat perfect-score attempts within 24 hours, random question rendering via PHP shuffle(), and an admin dashboard with full CRUD for image (25MB) and video (100MB) uploads.',
       techStack: ['Laravel', 'PHP', 'MySQL', 'JavaScript', 'AJAX'],
@@ -298,7 +298,7 @@
     {
       id: 'iconic-memory',
       skipGrid: true,
-      name: 'Icon-ic Memory Matching Game',
+      name: '6\u00d76 Memory Game with Live Leaderboard',
       shortDesc: '6x6 game with employee voiceovers, ranked #1 for engagement at company-wide IT Week, featuring millisecond timer, JSON session management, and real-time leaderboard',
       longDesc: 'Developed a 6\u00d76 cognitive training game featuring pre-recorded employee voiceovers and 3D tile flip animations, deployed at the first company-wide IT Week where it ranked #1 for engagement. Features millisecond-precision timer with score calculation (100 pts/match + time bonus), database-backed session management storing game state as JSON enabling pause/resume, and a real-time leaderboard with AJAX polling and department-based filtering. Includes comprehensive audio feedback (flip, match, wrong, completion sounds) and duplicate user prevention.',
       techStack: ['Laravel', 'PHP', 'MySQL', 'JavaScript', 'AJAX'],
