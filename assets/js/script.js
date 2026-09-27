@@ -141,14 +141,14 @@
     {
       id: 'cctr',
       name: 'Customer Complaint Tracking System (CCTR)',
-      shortDesc: 'Complaint dashboard with multi-dimension filters, analysis charts, and AI data analysis',
-      longDesc: 'CCTR records and tracks customer complaints end to end. I maintain and support the system and added dashboard and analysis features: multi-dimension complaint filters, KPI summaries, and analysis charts. Its AI data analysis view summarizes complaint records, surfaces trends, suggests likely root causes, and answers natural-language questions about the data. The system also includes account security screens — MFA settings, login history, audit trail, and active users — used to monitor and protect access.',
-      techStack: ['Laravel', 'PHP', 'MySQL', 'JavaScript', 'AJAX', 'AI Data Analysis'],
+      shortDesc: 'Complaint dashboard with multi-dimensional filters, analysis charts, and AI-assisted analysis',
+      longDesc: 'CCTR records and tracks customer complaints end to end. I maintain and support the system and added dashboard and analysis features: multi-dimensional complaint filters, KPI summaries, and analysis charts. Its AI-assisted analysis view summarizes complaint records, surfaces trends, suggests likely root causes, and answers natural-language questions about the data. The system also includes account security screens — MFA settings, login history, audit trail, and active users — used to monitor and protect access.',
+      techStack: ['Laravel', 'PHP', 'MySQL', 'JavaScript', 'AJAX', 'AI-assisted Data Analysis'],
       features: [
-        'Dashboard with multi-dimension complaint filters',
+        'Dashboard with multi-dimensional complaint filters',
         'KPI summaries — total complaints received and valid plant-related (VPR) share',
         'Analysis charts — monthly complaint trend and VPR vs. VNPR',
-        'AI data analysis: summarizes records, detects trends, suggests root causes, and answers natural-language questions',
+        'AI-assisted analysis: summarizes records, detects trends, suggests root causes, and answers natural-language questions',
         'Account security screens: MFA settings, login history, audit trail, and active users',
         'Maintains and supports the system; added the dashboard and analysis features'
       ],
@@ -246,11 +246,11 @@
     {
       id: 'clinic',
       name: 'Clinic Management System',
-      shortDesc: 'Optimized clinic workflows \u2014 reduced manual data entry and improved data accuracy across administrative and clinical teams',
-      longDesc: 'Optimized clinic workflows by reducing manual data entry and improving data accuracy across administrative and clinical teams, supporting daily enterprise clinic operations.',
+      shortDesc: 'Mapped clinic intake and records workflows \u2014 reduced manual data entry and improved data accuracy for staff and administrators',
+      longDesc: 'Mapped clinic intake and records workflows and developed a clinic management system that reduced manual data entry and improved data accuracy for staff and administrators, supporting daily enterprise clinic operations.',
       techStack: ['Laravel', 'PHP', 'MySQL', 'JavaScript', 'AJAX'],
       features: [
-        'Optimized clinic workflows across administrative and clinical teams',
+        'Mapped intake and records workflows for staff and administrators',
         'Reduced manual data entry',
         'Improved data accuracy'
       ],
