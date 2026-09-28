@@ -228,7 +228,7 @@
     {
       id: 'it-week',
       name: 'IT Week (Tech\'ka Muna!)',
-      shortDesc: 'Led implementation, 500+ attendees at P2 site — three original interactive web systems, leadership endorsed annual recurrence',
+      shortDesc: 'Led implementation — 500+ attendees, three original interactive web systems shipped to production in one month; leadership endorsed annual recurrence',
       longDesc: 'Led implementation for IT Week (Tech\'ka Muna!) with 500+ attendees at the P2 site. Game Developer & Tech Support Lead for the first company-wide IT week-long booth and game show. Leadership said the event should be annual because it made IT visible to the company. Featured three original web systems built for the event.',
       type: 'container',
       children: ['image-carousel', 'real-or-fake', 'iconic-memory'],
@@ -260,7 +260,7 @@
       id: 'image-carousel',
       skipGrid: true,
       name: 'Smart TV-synced Image Carousel',
-      shortDesc: 'Dual-storage gallery with 3-second AJAX sync to Smart TVs and AI PhotoBooth integration using Gemini AI',
+      shortDesc: 'Dual-storage gallery with 3-second AJAX sync to Smart TVs and an AI PhotoBooth (200+ photos) using Gemini AI',
       longDesc: 'Built a dual-storage gallery (Google Drive/Local) with 3-second AJAX sync deployed to Smart TVs during the first company-wide IT Week (Tech\'ka Muna!) with 500+ attendees. Uses a driver pattern architecture enabling seamless storage switching without code changes. Integrated an AI PhotoBooth pipeline using Gemini AI, automatically syncing photos from capture to display within 3-6 seconds; staff adopted the AI-generated photos as Gmail and Facebook profile pictures.',
       techStack: ['Laravel', 'PHP', 'MySQL', 'JavaScript', 'AJAX', 'Google Drive API'],
       features: [
@@ -300,7 +300,7 @@
       skipGrid: true,
       name: '6\u00d76 Memory Game with Live Leaderboard',
       shortDesc: '6x6 game with employee voiceovers, ranked #1 for engagement at company-wide IT Week, featuring millisecond timer, JSON session management, and real-time leaderboard',
-      longDesc: 'Developed a 6\u00d76 cognitive training game featuring pre-recorded employee voiceovers and 3D tile flip animations, deployed at the first company-wide IT Week where it ranked #1 for engagement. Features millisecond-precision timer with score calculation (100 pts/match + time bonus), database-backed session management storing game state as JSON enabling pause/resume, and a real-time leaderboard with AJAX polling and department-based filtering. Includes comprehensive audio feedback (flip, match, wrong, completion sounds) and duplicate user prevention.',
+      longDesc: 'Developed a 6\u00d76 cognitive training game featuring pre-recorded employee voiceovers and 3D tile flip animations, deployed at the first company-wide IT Week where it ranked #1 for engagement with 500+ unique players and 1,000+ sessions. Features millisecond-precision timer with score calculation (100 pts/match + time bonus), database-backed session management storing game state as JSON enabling pause/resume, and a real-time leaderboard with AJAX polling and department-based filtering. Includes comprehensive audio feedback (flip, match, wrong, completion sounds) and duplicate user prevention.',
       techStack: ['Laravel', 'PHP', 'MySQL', 'JavaScript', 'AJAX'],
       features: [
         '6\u00d76 grid with pre-recorded employee voiceovers',
