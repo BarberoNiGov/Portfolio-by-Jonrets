@@ -1,0 +1,9 @@
+# Personal / sensitive — never commit or push
+dont-push-these/
+don-push-these/
+Job Finder/
+
+# OS junk
+.DS_Store
+Thumbs.db
+desktop.ini

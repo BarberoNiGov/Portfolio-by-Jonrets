@@ -139,6 +139,60 @@
 
   var systemsData = [
     {
+      id: 'notilog',
+      name: 'NotiLog — Private Notification History Log',
+      section: 'exploration',
+      shortDesc: 'Live on Google Play: private, encrypted on-device notification history — never miss a dismissed message',
+      longDesc: 'Personal project, live on Google Play (Tools, updated Sep 17, 2026). NotiLog keeps a private history of notifications even after they are dismissed, cleared, or missed. Privacy-first: no account, no ads, no analytics, no internet access — all data stays on device, encrypted at rest (SQLCipher + Android Keystore). Uninstalling erases everything.',
+      techStack: ['Kotlin', 'Android', 'Notification Access', 'Foreground Service', 'SQLCipher', 'Android Keystore'],
+      features: [
+        'Automatic capture in background once Notification Access is granted, with auto-reconnect even after reboot',
+        'Organized by app and conversation, like a chat thread of notifications',
+        'Full-text search with filters by app and date',
+        'Favorites and pinned apps/conversations, detail view with full content + metadata',
+        'App and keyword exclusions — banking, 2FA, password manager, OTP excluded by default',
+        'Optional PIN against accidental deletion; encrypted backup/restore with user-controlled passphrase',
+        'Privacy-first: no account, no ads, no analytics, no internet — data never leaves device'
+      ],
+      link: { href: 'https://play.google.com/store/apps/details?id=com.notilog.app&hl=en', label: 'View on Google Play' },
+      images: [
+        'assets/img/Portfolio Images/NotiLog/1.webp',
+        'assets/img/Portfolio Images/NotiLog/2.webp',
+        'assets/img/Portfolio Images/NotiLog/3.webp',
+        'assets/img/Portfolio Images/NotiLog/4.webp',
+        'assets/img/Portfolio Images/NotiLog/5.webp'
+      ]
+    },
+    {
+      id: 'laya-jev',
+      name: 'Laya-Jev — Exploring TypeSafe Jev Use Cases',
+      section: 'exploration',
+      shortDesc: 'Personal exploration (not production): testing what TypeSafe Jev can do — typed decisions with calibrated confidence',
+      longDesc: 'Personal exploration — not used in production. Self-directed project focused on exploring the use cases and capabilities of the Jev model from TypeSafe AI (System One Model, not chat). Jev returns typed decisions with calibrated confidence instead of strings, so Python owns all control flow and side effects behind confidence gates. Two test demos — customer-support agent (SQLite tools, money-action gating, Tagalog/Taglish) and robot arm planner — served through hand-built web UIs that visualize each decision trace. Verified with a 67-test offline pytest suite plus live end-to-end runs.',
+      techStack: ['Python', 'TypeSafe Jev (System One Model)', 'SQLite', 'Three.js', 'pytest'],
+      features: [
+        'Explores Jev capabilities: typed outputs software can act on, with calibrated confidence per decision',
+        'Tests Jev vs chat LLMs: decisions, not strings — thresholds decide when to act vs escalate',
+        'Customer-support demo: SQLite tools, money actions always escalate, Tagalog/Taglish inputs',
+        'Robot-arm planner demo: closed action set, agent picks from menu only, never free-form commands',
+        'Per-decision audit trail (JSONL) with probabilities for every run',
+        '67-test pytest suite, all green offline with mocked Jev clients',
+        'Live-verified: refund request correctly escalated at 0.99 confidence'
+      ],
+      images: [
+        {
+          type: 'video',
+          src: 'assets/img/Portfolio Images/Laya-Jev/Video Project 2-compressed.mp4',
+          poster: 'assets/img/Portfolio Images/Laya-Jev/Video Project 2-poster.webp'
+        },
+        {
+          type: 'video',
+          src: 'assets/img/Portfolio Images/Laya-Jev/Video Project 1-compressed.mp4',
+          poster: 'assets/img/Portfolio Images/Laya-Jev/Video Project 1-poster.webp'
+        }
+      ]
+    },
+    {
       id: 'cctr',
       name: 'Customer Complaint Tracking System (CCTR)',
       shortDesc: 'Complaint dashboard with multi-dimensional filters, analysis charts, and AI-assisted analysis',
@@ -319,6 +373,7 @@
   ];
 
   var grid = document.getElementById('systems-grid');
+  var explorationGrid = document.getElementById('exploration-grid');
   var overlay = document.getElementById('modal-overlay');
   var modal = document.getElementById('modal');
   var closeBtn = document.getElementById('modal-close');
@@ -334,6 +389,8 @@
 
   systemsData.forEach(function (sys) {
     if (sys.skipGrid) return;
+    var targetGrid = sys.section === 'exploration' ? explorationGrid : grid;
+    if (!targetGrid) targetGrid = grid;
     var card = document.createElement('div');
     card.className = 'system-card';
     var first = sys.images && sys.images.length ? sys.images[0] : null;
@@ -349,7 +406,7 @@
     card.addEventListener('click', function () {
       openModal(sys.id);
     });
-    grid.appendChild(card);
+    targetGrid.appendChild(card);
   });
 
   function buildCarousel(images) {
