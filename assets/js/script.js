@@ -429,13 +429,17 @@
   var lightboxIndex = 0;
 
   var lazyCards = [];
+  var gridCounts = { systems: 0, exploration: 0 };
+  var CARD_PLACEHOLDER = 'linear-gradient(135deg, #1f2937 0%, #111827 100%)';
 
   systemsData.forEach(function (sys) {
     if (sys.skipGrid) return;
-    var targetGrid = sys.section === 'exploration' ? explorationGrid : grid;
+    var isExploration = sys.section === 'exploration';
+    var targetGrid = isExploration ? explorationGrid : grid;
     if (!targetGrid) targetGrid = grid;
     var card = document.createElement('div');
     card.className = 'system-card';
+    card.style.backgroundImage = CARD_PLACEHOLDER;
     var first = sys.images && sys.images.length ? sys.images[0] : null;
     var fallbackBg = sys.gradient || 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
     var cardBg;
@@ -447,7 +451,6 @@
       cardBg = cssBg(mediaSrc(first));
     }
     card.setAttribute('data-bg', cardBg);
-    lazyCards.push(card);
     card.setAttribute('data-system-id', sys.id);
     card.innerHTML = '<div class="system-card-overlay">' +
       (sys.badge ? '<span class="system-card-badge">' + sys.badge + '</span>' : '') +
@@ -456,14 +459,35 @@
       openModal(sys.id);
     });
     targetGrid.appendChild(card);
+
+    // The first row of each grid starts loading right away; the rest wait
+    // until they are near the viewport. Every card keeps its placeholder
+    // gradient until the real image has actually decoded.
+    var gridKey = isExploration ? 'exploration' : 'systems';
+    if (gridCounts[gridKey] < 3) {
+      applyCardBg(card);
+    } else {
+      lazyCards.push(card);
+    }
+    gridCounts[gridKey]++;
   });
 
   function applyCardBg(card) {
     var bg = card.getAttribute('data-bg');
-    if (bg) {
+    if (!bg) return;
+    card.removeAttribute('data-bg');
+
+    var match = bg.match(/url\(['"]?([^'")]+)['"]?\)/);
+    if (!match) {
       card.style.backgroundImage = bg;
-      card.removeAttribute('data-bg');
+      return;
     }
+
+    var preload = new Image();
+    preload.onload = function () {
+      card.style.backgroundImage = bg;
+    };
+    preload.src = match[1];
   }
 
   if ('IntersectionObserver' in window) {
@@ -474,7 +498,7 @@
           cardObserver.unobserve(entry.target);
         }
       });
-    }, { rootMargin: '300px 0px' });
+    }, { rootMargin: '800px 0px' });
     lazyCards.forEach(function (card) { cardObserver.observe(card); });
   } else {
     lazyCards.forEach(applyCardBg);

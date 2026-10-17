@@ -1,0 +1,18 @@
+# Netlify cache policy.
+# Default Netlify behaviour is max-age=0, must-revalidate for every asset,
+# which forces a round trip per image before anything paints.
+
+/assets/img/*
+  Cache-Control: public, max-age=86400, stale-while-revalidate=604800
+
+/assets/resume/*
+  Cache-Control: public, max-age=86400, stale-while-revalidate=604800
+
+/assets/css/*
+  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+
+/assets/js/*
+  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+
+/build/files/*
+  Cache-Control: public, max-age=86400
