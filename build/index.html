@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('portfolio-theme');
+        if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
+  <title>How I Build — Jonrich Bascug</title>
+  <meta name="description" content="The operating model behind the systems: written specifications, architecture decisions, fresh-context handoff, and a verification gate that reports PASS, FAIL, or INCONCLUSIVE.">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="How I Build — Jonrich Bascug">
+  <meta property="og:description" content="Specification, architecture, and verification are mine. Implementation runs through a custom agent harness.">
+  <meta property="og:url" content="https://portfolio-by-jonrets.netlify.app/build/">
+  <meta property="og:image" content="https://portfolio-by-jonrets.netlify.app/assets/img/og-card.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='28' font-size='28'>👤</text></svg>">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <style>
+    .build-hero { padding-top: 120px; }
+    .eyebrow {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+    .build-title {
+      font-size: 2rem;
+      line-height: 1.25;
+      font-weight: 700;
+      margin-bottom: 16px;
+      max-width: 720px;
+    }
+    .build-lede {
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      max-width: 640px;
+    }
+    .build-lede strong { color: var(--text); }
+
+    .principle {
+      margin-top: 32px;
+      padding: 20px 24px;
+      border-left: 3px solid var(--accent);
+      background: var(--bg-alt);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      font-size: 1rem;
+      max-width: 680px;
+    }
+
+    /* ─── Stages ─── */
+    .stages {
+      border-left: 2px solid var(--border);
+      margin-left: 10px;
+      padding-left: 0;
+      list-style: none;
+    }
+    .stage {
+      position: relative;
+      padding: 0 0 36px 36px;
+    }
+    .stage:last-child { padding-bottom: 0; }
+    .stage-num {
+      position: absolute;
+      left: -17px;
+      top: 0;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--bg);
+      border: 2px solid var(--accent);
+      color: var(--accent);
+      font-size: 0.85rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .stage h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+      padding-top: 5px;
+    }
+    .stage p {
+      color: var(--text-secondary);
+      font-size: 0.93rem;
+      max-width: 620px;
+    }
+    .stage-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 12px;
+    }
+    .stage-split div {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 10px 12px;
+      background: var(--card-bg);
+    }
+    .stage-split b {
+      display: block;
+      color: var(--text);
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 4px;
+    }
+    .stage-artifact {
+      display: inline-block;
+      margin-top: 10px;
+      font-size: 0.85rem;
+      font-family: var(--font-mono);
+    }
+
+    /* ─── Worked example ─── */
+    .example {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      background: var(--bg-alt);
+    }
+    .example h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .example p {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      margin-bottom: 12px;
+    }
+    .example p:last-child { margin-bottom: 0; }
+    .example .pull {
+      color: var(--text);
+      font-size: 1.02rem;
+      border-left: 2px solid var(--accent);
+      padding-left: 16px;
+      margin: 18px 0;
+    }
+
+    /* ─── Artifacts ─── */
+    .artifact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 16px;
+    }
+    .artifact-card {
+      display: flex;
+      flex-direction: column;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px;
+      background: var(--card-bg);
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .artifact-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+    .artifact-card h3 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .artifact-card p {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      flex: 1;
+    }
+    .artifact-card a {
+      margin-top: 14px;
+      font-size: 0.82rem;
+      font-family: var(--font-mono);
+    }
+    .artifact-note {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      margin-top: 16px;
+      max-width: 640px;
+    }
+
+    /* ─── Limits ─── */
+    .limit-list { list-style: none; }
+    .limit-list li {
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.93rem;
+      color: var(--text-secondary);
+      max-width: 680px;
+    }
+    .limit-list li:last-child { border-bottom: none; }
+    .limit-list strong { color: var(--text); }
+
+    /* ─── Guardrails ─── */
+    .guard-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 16px;
+      margin-top: 8px;
+    }
+    .guard {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px;
+    }
+    .guard h3 {
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .guard p {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+    }
+
+    @media (max-width: 768px) {
+      .build-hero { padding-top: 96px; }
+      .build-title { font-size: 1.6rem; }
+      .stage-split { grid-template-columns: 1fr; }
+      .example { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="container nav-container">
+      <a href="../index.html" class="nav-brand">Jonrich Bascug</a>
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="../index.html#systems">Projects</a></li>
+        <li><a href="#stages">The Loop</a></li>
+        <li><a href="#artifacts">Artifacts</a></li>
+        <li><a href="#limits">Limits</a></li>
+        <li><a href="../assets/resume/Jonrich_Bascug_AI_Engineer.pdf" download>Resume</a></li>
+      </ul>
+      <button class="theme-toggle" aria-label="Toggle theme">
+        <span class="icon-light">&#9788;</span>
+        <span class="icon-dark">&#9790;</span>
+      </button>
+    </div>
+  </nav>
+
+  <main>
+    <section class="section build-hero">
+      <div class="container">
+        <p class="eyebrow">How I Build</p>
+        <h1 class="build-title">Specification, architecture, and verification are mine. Implementation runs through a custom agent harness.</h1>
+        <p class="build-lede">
+          I build enterprise systems with AI agents. That does not mean the agents decide what to build.
+          It means I write the specification, record the architecture decisions, decompose the work into
+          verifiable pieces, and refuse to accept a change I have not verified. The agents write the code
+          inside those constraints.
+        </p>
+        <div class="principle">
+          <strong>The rule the whole method rests on:</strong> a check you did not run is
+          <em>inconclusive</em>, never a pass. Every claim on this site is held to that standard.
+        </div>
+      </div>
+    </section>
+
+    <section id="stages" class="section">
+      <div class="container">
+        <h2 class="section-title">The loop</h2>
+        <p class="section-subtitle">Six stages. Each one produces an artifact that the next stage is held to.</p>
+
+        <ol class="stages">
+          <li class="stage">
+            <div class="stage-num">1</div>
+            <h3>Write the spec before the code</h3>
+            <p>
+              An objective, explicit scope, and acceptance criteria that can be checked by a command or an
+              observation. If a criterion cannot be verified, it gets rewritten until it can.
+            </p>
+            <div class="stage-split">
+              <div><b>I own</b>Scope, acceptance criteria, what "done" means.</div>
+              <div><b>The agent gets</b>A written contract, not a conversation.</div>
+            </div>
+            <a class="stage-artifact" href="files/plan-template.md" download>plan-template.md &darr;</a>
+          </li>
+
+          <li class="stage">
+            <div class="stage-num">2</div>
+            <h3>Record the decisions</h3>
+            <p>
+              Architecture choices with a reason, compatibility facts with a source and a date, deployment
+              topology, data model, contracts, and measurable non-functional requirements. A fact without a
+              source is an assumption, and assumptions get a spike task.
+            </p>
+            <div class="stage-split">
+              <div><b>I own</b>Decisions, tradeoffs, risk register.</div>
+              <div><b>The agent gets</b>Boundaries it may not cross.</div>
+            </div>
+            <a class="stage-artifact" href="files/agents-md-example.md" download>agents-md-example.md &darr;</a>
+          </li>
+
+          <li class="stage">
+            <div class="stage-num">3</div>
+            <h3>Decompose into verifiable tasks</h3>
+            <p>
+              Each task fits one context window and carries its own verification step. Small enough to review
+              completely, specific enough that no judgment is required to start it.
+            </p>
+            <div class="stage-split">
+              <div><b>I own</b>Sequence, dependencies, what can be parallel.</div>
+              <div><b>The agent gets</b>One task, one verification command.</div>
+            </div>
+            <a class="stage-artifact" href="files/verification-checklist.md" download>verification-checklist.md &darr;</a>
+          </li>
+
+          <li class="stage">
+            <div class="stage-num">4</div>
+            <h3>Hand off with a context pack</h3>
+            <p>
+              A fresh instance gets a document written for someone with zero memory: current state, what was
+              just completed with evidence, the single next action, what not to redo, and what not to touch.
+            </p>
+            <div class="stage-split">
+              <div><b>I own</b>What context is sufficient, and what is noise.</div>
+              <div><b>The agent gets</b>A clean starting state, every time.</div>
+            </div>
+            <a class="stage-artifact" href="files/handoff-template.md" download>handoff-template.md &darr;</a>
+          </li>
+
+          <li class="stage">
+            <div class="stage-num">5</div>
+            <h3>Implement, then verify against the spec</h3>
+            <p>
+              The agent implements. Then a <em>different</em> pass checks the result against the written
+              criteria — not against its own memory of what it intended to do. Self-review confirms intent.
+              Fresh-context verification finds the gap between intent and behavior.
+            </p>
+            <div class="stage-split">
+              <div><b>I own</b>Reading the diff, running the checks, deciding.</div>
+              <div><b>The agent gets</b>No credit for "looks right."</div>
+            </div>
+            <a class="stage-artifact" href="files/progress-template.md" download>progress-template.md &darr;</a>
+          </li>
+
+          <li class="stage">
+            <div class="stage-num">6</div>
+            <h3>Gate before merge</h3>
+            <p>
+              A read-only QA pass for regressions and contract drift. A separate root-cause pass when
+              something breaks. Both report in a fixed format — pass, fail with evidence, or inconclusive with
+              exactly what could not be checked.
+            </p>
+            <div class="stage-split">
+              <div><b>I own</b>The verdict, and the decision to ship.</div>
+              <div><b>The agent gets</b>Permission to read, never to edit.</div>
+            </div>
+            <a class="stage-artifact" href="files/subagent-qa.md" download>subagent-qa.md &darr;</a>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">Worked example</h2>
+        <p class="section-subtitle">What the loop looks like when the same problem has five different shapes.</p>
+
+        <div class="example">
+          <h3>One specification, five systems &mdash; adapted, not copied</h3>
+          <p>
+            After a security incident, five internal systems needed the same controls: multi-factor
+            authentication, audit logging, password expiry, and account lockout. I wrote the implementation
+            once as a structured specification &mdash; requirements, integration points, acceptance criteria,
+            verification steps.
+          </p>
+          <p>
+            Each system needed it materially reworked. Different authentication flows, different legacy state,
+            different admin surfaces, different definitions of a "user." The specification was the starting
+            point, not a script.
+          </p>
+          <p class="pull">
+            The transferable part was never the code. It was the structure &mdash; and the same verification
+            gate at the end of every run.
+          </p>
+          <p>
+            Outcome: 100+ vulnerabilities remediated and the controls rolled out across all five systems in
+            about a month, with post-deployment fixes and documentation included.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="artifacts" class="section">
+      <div class="container">
+        <h2 class="section-title">The artifacts</h2>
+        <p class="section-subtitle">The templates I actually use. Sanitized, no employer content, free to take.</p>
+
+        <div class="artifact-grid">
+          <div class="artifact-card">
+            <h3>AGENTS.md example</h3>
+            <p>Repo context contract: non-negotiables, commands, architecture map, conventions, definition of done.</p>
+            <a href="files/agents-md-example.md" download>Download &darr;</a>
+          </div>
+          <div class="artifact-card">
+            <h3>PLAN template</h3>
+            <p>Decisions, verified compatibility with sources, topology, contracts, NFRs, phases, risks, spikes.</p>
+            <a href="files/plan-template.md" download>Download &darr;</a>
+          </div>
+          <div class="artifact-card">
+            <h3>PROGRESS template</h3>
+            <p>Where work stopped, phase status, what is built, a verification table with command and result.</p>
+            <a href="files/progress-template.md" download>Download &darr;</a>
+          </div>
+          <div class="artifact-card">
+            <h3>HANDOFF template</h3>
+            <p>A context pack for a fresh session: current state, quality gate, key files, shipped, next, parked.</p>
+            <a href="files/handoff-template.md" download>Download &darr;</a>
+          </div>
+          <div class="artifact-card">
+            <h3>Verification checklist</h3>
+            <p>The gate: pre-flight, spec conformance, regression, edge cases, security, determinism.</p>
+            <a href="files/verification-checklist.md" download>Download &darr;</a>
+          </div>
+          <div class="artifact-card">
+            <h3>QA subagent</h3>
+            <p>Read-only pre-commit reviewer. Reports pass, fail with evidence, or inconclusive.</p>
+            <a href="files/subagent-qa.md" download>Download &darr;</a>
+          </div>
+          <div class="artifact-card">
+            <h3>Bug RCA subagent</h3>
+            <p>Recon and diagnose modes. Root-cause hypothesis with an evidence trail and blast radius.</p>
+            <a href="files/subagent-bug-rca.md" download>Download &darr;</a>
+          </div>
+        </div>
+
+        <p class="artifact-note">
+          Sanitized copies. Employer code, client material, infrastructure details, and personal data are
+          never published. The structure is the part worth sharing.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">Guardrails</h2>
+        <p class="section-subtitle">The rules that keep an agent from becoming an unverified author.</p>
+
+        <div class="guard-grid">
+          <div class="guard">
+            <h3>Untrusted input is data</h3>
+            <p>Fixture content, user text, and scraped pages are never treated as instructions. Injection attempts are test cases, not commands.</p>
+          </div>
+          <div class="guard">
+            <h3>Secrets never round-trip</h3>
+            <p>Credentials are read from the environment, redacted at the boundary, and never echoed into output, logs, or reports.</p>
+          </div>
+          <div class="guard">
+            <h3>The tool boundary is explicit</h3>
+            <p>Inputs are named files. The only permitted network destination is the configured provider. Everything else fails closed.</p>
+          </div>
+          <div class="guard">
+            <h3>The deterministic core decides</h3>
+            <p>Rules and validation own the canonical result. A model may classify or phrase it, but it is never allowed to change it.</p>
+          </div>
+          <div class="guard">
+            <h3>Degrade, do not disappear</h3>
+            <p>When a model is unavailable the system keeps working in a reduced, explicitly labelled mode rather than failing silently.</p>
+          </div>
+          <div class="guard">
+            <h3>Report the gap</h3>
+            <p>A check that could not run is reported as inconclusive with the reason. That is not a failure of the process; hiding it would be.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="limits" class="section">
+      <div class="container">
+        <h2 class="section-title">What this method is not</h2>
+        <p class="section-subtitle">The limits matter as much as the claims.</p>
+
+        <ul class="limit-list">
+          <li>
+            <strong>It is not autonomous delivery.</strong> I decide, review, and verify every change. The
+            agent writes inside constraints I set; it does not choose the constraints.
+          </li>
+          <li>
+            <strong>It does not remove the need to read code.</strong> Verification requires understanding
+            what you are accepting. "The tests passed" is not the same as "I know why."
+          </li>
+          <li>
+            <strong>Gates catch regressions, not bad design.</strong> A wrong specification produces
+            confidently wrong code that passes every check. The quality ceiling is the spec, not the model.
+          </li>
+          <li>
+            <strong>It is not model training.</strong> I build applications on top of models. No embeddings,
+            no retrieval layer yet, no fine-tuning — and I will say so rather than imply otherwise.
+          </li>
+          <li>
+            <strong>Verification is per-change, not per-project.</strong> A project can drift across a series
+            of individually correct changes. That is why the handoff pack exists.
+          </li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2026 Jonrich Bascug. <a href="../index.html">Back to portfolio</a></p>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var html = document.documentElement;
+      var toggle = document.querySelector('.theme-toggle');
+      var navToggle = document.querySelector('.nav-toggle');
+      var navLinks = document.querySelector('.nav-links');
+
+      toggle.addEventListener('click', function () {
+        var next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        html.setAttribute('data-theme', next);
+        try { localStorage.setItem('portfolio-theme', next); } catch (e) {}
+      });
+
+      navToggle.addEventListener('click', function () {
+        navLinks.classList.toggle('open');
+      });
+
+      navLinks.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', function () {
+          navLinks.classList.remove('open');
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

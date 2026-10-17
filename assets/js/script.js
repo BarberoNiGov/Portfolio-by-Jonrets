@@ -139,20 +139,60 @@
 
   var systemsData = [
     {
-      id: 'notilog',
-      name: 'NotiLog — Private Notification History Log',
-      section: 'exploration',
-      shortDesc: 'Live on Google Play: private, encrypted on-device notification history — never miss a dismissed message',
-      longDesc: 'Personal project, live on Google Play (Tools, updated Sep 17, 2026). NotiLog keeps a private history of notifications even after they are dismissed, cleared, or missed. Privacy-first: no account, no ads, no analytics, no internet access — all data stays on device, encrypted at rest (SQLCipher + Android Keystore). Uninstalling erases everything.',
-      techStack: ['Kotlin', 'Android', 'Notification Access', 'Foreground Service', 'SQLCipher', 'Android Keystore'],
+      id: 'agentic-delivery',
+      name: 'Job Finder Platform for AI Agents — Architecture Package',
+      shortDesc: 'Case study: 57 requirements, 6 ADRs, and a 1,047-line API contract for an agent marketplace — produced through a 4-agent pipeline',
+      longDesc: 'A complete pre-implementation architecture and design package for a platform where people register AI agents, publish agent resumes, post work, and other agents apply. Produced through a four-agent sequential pipeline with explicit handoff documents between stages: requirements and flows, then system design and decision records, then implementation, then documentation. Status: design complete, implementation not started. This is the pre-code layer, not a shipped product.',
+      badge: 'Case study',
+      gradient: 'linear-gradient(135deg, #0f172a 0%, #1e3a8a 55%, #0366d6 100%)',
+      techStack: ['System Design', 'Architecture Decision Records', 'Requirements Engineering', 'API Contracts', 'Multi-agent Pipeline', 'Laravel'],
       features: [
-        'Automatic capture in background once Notification Access is granted, with auto-reconnect even after reboot',
-        'Organized by app and conversation, like a chat thread of notifications',
-        'Full-text search with filters by app and date',
-        'Favorites and pinned apps/conversations, detail view with full content + metadata',
-        'App and keyword exclusions — banking, 2FA, password manager, OTP excluded by default',
-        'Optional PIN against accidental deletion; encrypted backup/restore with user-controlled passphrase',
-        'Privacy-first: no account, no ads, no analytics, no internet — data never leaves device'
+        '57 functional requirements across 7 domains',
+        '40+ non-functional requirements with measurable targets',
+        '6 architecture decision records with options and rationale',
+        '7-module modular monolith with explicit dependency rules',
+        '1,047-line API contract and complete data model',
+        'Four-agent pipeline with written handoffs between stages',
+        'Status: design complete, implementation not started'
+      ],
+      link: { href: 'case-study-agentic-delivery.html', label: 'Read the full case study' },
+      images: []
+    },
+    {
+      id: 'recipe-corpus',
+      name: 'Recipe Corpus Ingestion',
+      section: 'exploration',
+      shortDesc: '1,574 documents normalized from a sitemap index — throttled, checkpointed, and resumable',
+      longDesc: 'Enumerated 1,574 URLs from a three-part sitemap index and extracted normalized records from JSON-LD rather than parsing HTML, which avoids the fragility of layout-dependent scraping. Hard 1 request/second throttle, 3-retry exponential backoff, checkpointed batch writes, and resume-from-checkpoint for interrupted runs. About 3.8 MB of normalized output across 5 batches. Personal research use; no source content republished.',
+      gradient: 'linear-gradient(135deg, #7c2d12 0%, #c2410c 55%, #f59e0b 100%)',
+      techStack: ['Python', 'requests', 'Sitemap Parsing', 'JSON-LD', 'Checkpointing', 'Exponential Backoff'],
+      features: [
+        '1,574 URLs enumerated from a three-part sitemap index',
+        'Normalized extraction from JSON-LD instead of HTML layout',
+        'Hard 1 req/s throttle to stay within polite crawl limits',
+        '3-retry exponential backoff on transient responses',
+        'Checkpointed batch writes with resume-from-checkpoint',
+        '~3.8 MB of normalized output across 5 batches',
+        'Personal research use — no source content republished'
+      ],
+      images: []
+    },
+    {
+      id: 'notilog',
+      name: 'NotiLog — Notification Log',
+      section: 'exploration',
+      shortDesc: 'Private, encrypted on-device notification history — plus optional end-to-end encrypted sharing with one trusted person',
+      longDesc: 'Personal project, live on Google Play (Productivity, updated Oct 17, 2026). NotiLog keeps a private history of notifications even after they are dismissed, cleared, or missed — including messages a sender unsends. Privacy-first: no account, no ads, no analytics, and no server; history is encrypted at rest with SQLCipher and the Android Keystore. Optional partner sharing pairs two phones by QR and sends content only to that paired device, end-to-end encrypted and off by default. Uninstalling erases everything.',
+      techStack: ['Kotlin', 'Android', 'Notification Access', 'SQLCipher', 'Android Keystore', 'End-to-end Encryption', 'QR Pairing'],
+      features: [
+        'Background capture once Notification Access is granted, with auto-reconnect after reboot',
+        'Read dismissed, cleared, and deleted notifications again — including messages a sender unsends',
+        'Organized by app and conversation, with full-text search and date/app filters',
+        'Favorites and pinned apps; detail view with full content and metadata',
+        'Banking, 2FA, password manager, and OTP notifications excluded by default; custom app and keyword exclusions',
+        'Optional PIN, plus encrypted backup and restore with a user-controlled passphrase',
+        'Optional partner sharing: QR pairing, end-to-end encrypted, off by default, unpair anytime',
+        'No account, no ads, no analytics; notification history stays encrypted on-device'
       ],
       link: { href: 'https://play.google.com/store/apps/details?id=com.notilog.app&hl=en', label: 'View on Google Play' },
       images: [
@@ -160,7 +200,8 @@
         'assets/img/Portfolio Images/NotiLog/2.webp',
         'assets/img/Portfolio Images/NotiLog/3.webp',
         'assets/img/Portfolio Images/NotiLog/4.webp',
-        'assets/img/Portfolio Images/NotiLog/5.webp'
+        'assets/img/Portfolio Images/NotiLog/5.webp',
+        'assets/img/Portfolio Images/NotiLog/6.webp'
       ]
     },
     {
@@ -222,16 +263,16 @@
     {
       id: 'vapt',
       name: 'Post-Incident Security Hardening',
-      shortDesc: 'Adding MFA, lockouts, and audit logging across five systems without making daily life worse',
-      longDesc: 'After an incident, five internal systems (CMS, MES-OEE, ePaySlip, CCTR, BizCard) carried 100+ vulnerabilities from legacy dependencies. New controls were mandatory, but security controls add friction and friction creates workarounds. I led the hardening program and designed the login and MFA experience: Email OTP + Authenticator (including a mode for deskless and shared-terminal staff), auto-lock after 3 failed attempts tuned against support-ticket load, password expiry with proactive messaging instead of surprise lockouts, and Spatie audit logging that stays invisible to users but gives admins a full trail.',
-      techStack: ['Laravel', 'PHP', 'MySQL', 'MFA (Email OTP + Authenticator)', 'Spatie Audit Logging', 'OWASP / npm audit'],
+      shortDesc: 'One implementation spec, reworked across five systems — 100+ vulnerabilities remediated and MFA, audit logging, and lockout shipped in ~1 month',
+      longDesc: 'After an incident, five internal systems carried 100+ vulnerabilities from legacy dependencies. I wrote the MFA, audit logging, password expiry, and account lockout implementation once as a structured specification — requirements, integration points, acceptance criteria, verification steps — then reworked and executed it per system through a phased agent loop. Each system had different auth flows, legacy state, and admin surfaces; the invariant was the structure and the verification gate at the end of every run. Designed for a mixed workforce: email OTP and authenticator modes including deskless and shared terminals, recovery codes, auto-lock tuned against support-ticket load, and proactive expiry messaging instead of surprise lockouts.',
+      techStack: ['Laravel', 'PHP', 'MySQL', 'MFA (Email OTP + Authenticator)', 'Spatie Audit Logging', 'OWASP / npm audit', 'Agent-assisted Delivery'],
       features: [
-        'Remediated 100+ vulnerabilities across five legacy internal systems',
-        'MFA (Email OTP + Authenticator) with a mode for deskless/shared-terminal staff',
-        'Auto-lock after 3 failed attempts — tuned against support-ticket load',
-        'Password expiry with proactive messaging, not surprise lockouts',
+        'Authored one implementation spec, then adapted and executed it across five systems through a phased agent loop',
+        'Remediated 100+ vulnerabilities; shipped MFA, audit logging, password expiry, and 3-attempt auto-lock in ~1 month',
+        'Email OTP and authenticator modes, including a mode for deskless and shared-terminal staff',
+        'Bcrypt-hashed recovery codes and proactive expiry messaging instead of surprise lockouts',
         'Spatie audit logging: invisible to users, full trail for admins',
-        'Closed critical vulnerabilities and passed security review'
+        'Same acceptance criteria and verification gate applied to every system'
       ],
       images: []
     },
@@ -394,15 +435,18 @@
     var card = document.createElement('div');
     card.className = 'system-card';
     var first = sys.images && sys.images.length ? sys.images[0] : null;
+    var fallbackBg = sys.gradient || 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
     if (!first) {
-      card.style.backgroundImage = cssBg('linear-gradient(135deg, #667eea 0%, #764ba2 100%)');
+      card.style.backgroundImage = cssBg(fallbackBg);
     } else if (mediaType(first) === 'video') {
-      card.style.backgroundImage = cssBg(mediaPoster(first) || 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)');
+      card.style.backgroundImage = cssBg(mediaPoster(first) || fallbackBg);
     } else {
       card.style.backgroundImage = cssBg(mediaSrc(first));
     }
     card.setAttribute('data-system-id', sys.id);
-    card.innerHTML = '<div class="system-card-overlay"><h3>' + sys.name + '</h3><p>' + sys.shortDesc + '</p></div>';
+    card.innerHTML = '<div class="system-card-overlay">' +
+      (sys.badge ? '<span class="system-card-badge">' + sys.badge + '</span>' : '') +
+      '<h3>' + sys.name + '</h3><p>' + sys.shortDesc + '</p></div>';
     card.addEventListener('click', function () {
       openModal(sys.id);
     });

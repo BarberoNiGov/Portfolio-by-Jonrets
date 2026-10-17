@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>
+  (function () {
+    try {
+      var t = localStorage.getItem('portfolio-theme');
+      if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
+  })();
+</script>
+<title>Designing an Agent Marketplace — Architecture &amp; Design Package | Jonrich Bascug</title>
+<meta name="description" content="A 3,500-line architecture and requirements package for a job platform where AI agents apply to work — produced through a four-agent pipeline with handoffs and a design review gate.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Designing a Job Platform for AI Agents — Case Study">
+<meta property="og:description" content="57 requirements, 6 ADRs, and a 1,047-line API contract — the pre-code layer, produced through a four-agent pipeline.">
+<meta property="og:url" content="https://portfolio-by-jonrets.netlify.app/case-study-agentic-delivery.html">
+<meta property="og:image" content="https://portfolio-by-jonrets.netlify.app/assets/img/og-card.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='28' font-size='28'>👤</text></svg>">
+<link rel="stylesheet" href="assets/css/style.css">
+<style>
+  .cs-hero { padding: 120px 0 40px; }
+  .cs-eyebrow { font-size: 0.85rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+  .cs-title { font-size: 2rem; font-weight: 700; line-height: 1.2; margin-bottom: 16px; max-width: 720px; }
+  .cs-lede { color: var(--text-secondary); max-width: 660px; margin-bottom: 24px; }
+  .cs-note { font-size: 0.85rem; color: var(--text-secondary); border: 1px solid var(--border); border-radius: var(--radius); background: var(--bg-alt); padding: 12px 16px; max-width: 660px; }
+  .cs-note strong { color: var(--text); }
+
+  .cs-section { padding: 48px 0; border-top: 1px solid var(--border); }
+  .cs-section h2 { font-size: 1.25rem; font-weight: 700; margin-bottom: 10px; }
+  .cs-section h3 { font-size: 1rem; font-weight: 700; margin: 24px 0 8px; }
+  .cs-section p { color: var(--text-secondary); font-size: 0.95rem; max-width: 680px; margin-bottom: 12px; }
+  .cs-section p strong { color: var(--text); }
+  .cs-section ul { max-width: 680px; margin: 0 0 12px 20px; color: var(--text-secondary); font-size: 0.95rem; }
+  .cs-section li { margin-bottom: 6px; }
+
+  .cs-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 20px 0 8px; }
+  .cs-stat { border: 1px solid var(--border); border-radius: var(--radius); padding: 16px; background: var(--card-bg); }
+  .cs-stat b { display: block; font-size: 1.4rem; font-weight: 700; color: var(--text); line-height: 1.2; }
+  .cs-stat span { font-size: 0.8rem; color: var(--text-secondary); }
+
+  .cs-flow { list-style: none; margin: 16px 0 0 0; border-left: 2px solid var(--border); padding-left: 0; }
+  .cs-flow li { position: relative; padding: 0 0 24px 32px; }
+  .cs-flow li:last-child { padding-bottom: 0; }
+  .cs-flow .dot { position: absolute; left: -15px; top: 0; width: 28px; height: 28px; border-radius: 50%; background: var(--bg); border: 2px solid var(--accent); color: var(--accent); font-size: 0.75rem; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+  .cs-flow h4 { font-size: 0.95rem; font-weight: 700; margin: 4px 0 4px; }
+  .cs-flow p { font-size: 0.9rem; margin-bottom: 0; }
+  .cs-flow code { font-family: var(--font-mono); font-size: 0.82rem; color: var(--text); }
+
+  .cs-table { width: 100%; border-collapse: collapse; margin: 12px 0 8px; font-size: 0.9rem; }
+  .cs-table th, .cs-table td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  .cs-table th { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-secondary); font-weight: 600; }
+  .cs-table td { color: var(--text-secondary); }
+  .cs-table td:first-child { color: var(--text); font-weight: 500; }
+
+  .cs-pull { border-left: 3px solid var(--accent); background: var(--bg-alt); padding: 16px 20px; border-radius: 0 var(--radius) var(--radius) 0; margin: 20px 0; max-width: 680px; }
+  .cs-pull p { margin: 0; color: var(--text); font-size: 0.98rem; }
+
+  .cs-limits { list-style: none; margin: 12px 0 0; padding: 0; max-width: 680px; }
+  .cs-limits li { padding: 12px 0; border-bottom: 1px solid var(--border); font-size: 0.93rem; color: var(--text-secondary); }
+  .cs-limits li:last-child { border-bottom: none; }
+  .cs-limits strong { color: var(--text); }
+
+  .cs-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 24px; }
+  .cs-foot { padding: 40px 0 64px; text-align: center; }
+
+  @media (max-width: 768px) {
+    .cs-hero { padding-top: 96px; }
+    .cs-title { font-size: 1.55rem; }
+    .cs-stats { grid-template-columns: repeat(2, 1fr); }
+    .cs-table { font-size: 0.85rem; }
+    .cs-table th, .cs-table td { padding: 8px; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="container nav-container">
+    <a href="index.html" class="nav-brand">&larr; Jonrich Bascug</a>
+    <a href="build/index.html" class="btn btn-outline" style="margin-left:auto;">How I build</a>
+  </div>
+</nav>
+
+<main class="container">
+
+  <header class="cs-hero">
+    <div class="cs-eyebrow">Case Study &middot; Architecture &amp; Design Package</div>
+    <h1 class="cs-title">Designing a job platform for AI agents</h1>
+    <p class="cs-lede">
+      A platform where people register AI agents, publish agent resumes, post work, and let other agents
+      apply. This package is the complete pre-implementation layer: requirements, architecture, decision
+      records, API contracts, and data model &mdash; produced through a four-agent pipeline with explicit
+      handoffs between stages.
+    </p>
+    <p class="cs-note">
+      <strong>Status: design complete, implementation not started.</strong> This page documents the
+      architecture and the process that produced it. It is not a shipped product, and I am not presenting
+      it as one. The value here is the pre-code layer &mdash; the part that decides whether the code will be
+      worth writing.
+    </p>
+  </header>
+
+  <section class="cs-section">
+    <h2>The problem</h2>
+    <p>
+      If agents are going to work, they need the same things people need: an identity, a resume, a way to
+      find work, a way to apply, and a channel to talk. The interesting constraint is that the primary users
+      are not humans clicking through a UI &mdash; they are agents connecting through an API. Every interaction
+      has to exist twice: once for the person configuring the agent, and once for the agent acting on its
+      behalf.
+    </p>
+    <p>
+      That constraint shaped the whole design. Resumes are Markdown, not a form. Applications need a
+      machine-readable state machine, not an inbox. Credentials for third-party agent platforms need
+      encryption at rest, not a settings row.
+    </p>
+
+    <div class="cs-stats">
+      <div class="cs-stat"><b>57</b><span>functional requirements across 7 domains</span></div>
+      <div class="cs-stat"><b>40+</b><span>non-functional requirements with measurable targets</span></div>
+      <div class="cs-stat"><b>6</b><span>architecture decision records</span></div>
+      <div class="cs-stat"><b>7</b><span>modules in a modular monolith</span></div>
+      <div class="cs-stat"><b>3,542</b><span>lines of requirements, architecture, and process documentation</span></div>
+      <div class="cs-stat"><b>0</b><span>lines of application code</span></div>
+    </div>
+  </section>
+
+  <section class="cs-section">
+    <h2>The architecture</h2>
+    <p>
+      A modular monolith, chosen deliberately over microservices. One codebase, seven modules with explicit
+      dependencies, and a boundary that would let any module be extracted later without rewriting its
+      consumers. For a system with no traffic yet, distributed complexity would be a cost with no return.
+    </p>
+
+    <table class="cs-table">
+      <thead>
+        <tr><th>Module</th><th>Responsibility</th><th>Depends on</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Auth</td><td>Registration, sessions, tokens, password reset</td><td>None</td></tr>
+        <tr><td>Agent</td><td>Agent profiles, resumes, visibility, credentials</td><td>Auth</td></tr>
+        <tr><td>Posting</td><td>Job creation, discovery, filtering</td><td>Agent</td></tr>
+        <tr><td>Application</td><td>Apply, track, shortlist, accept</td><td>Agent, Posting</td></tr>
+        <tr><td>Messaging</td><td>Threads between agents and owners</td><td>Auth, Agent</td></tr>
+        <tr><td>Integration</td><td>External agent platforms, webhooks, encrypted credentials</td><td>Auth</td></tr>
+        <tr><td>Notification</td><td>In-app and email delivery with per-user preferences</td><td>Auth</td></tr>
+      </tbody>
+    </table>
+
+    <p>
+      The dependency column is the part that matters. It is a rule, not documentation: no module reaches
+      sideways. Application may depend on Agent and Posting; Posting may not depend on Application. That
+      single constraint is what keeps the monolith modular instead of gradually becoming a pile.
+    </p>
+
+    <div class="cs-pull">
+      <p>
+        The decision that saved the most future work: treat the resume as a versioned document with a
+        schema, not as fields on a profile. Agents need to export it, other agents need to parse it, and
+        the shape has to survive both.
+      </p>
+    </div>
+  </section>
+
+  <section class="cs-section">
+    <h2>The pipeline that produced it</h2>
+    <p>
+      Four agents in sequence, each with one responsibility and a handoff artifact. The point of splitting
+      them was not speed. It was to stop requirements, architecture, and implementation from being decided
+      in the same breath &mdash; which is how a design quietly becomes whatever was easiest to build.
+    </p>
+
+    <ol class="cs-flow">
+      <li>
+        <span class="dot">1</span>
+        <h4>Requirements designer</h4>
+        <p>Functional and non-functional requirements, user flows, and API contracts. <code>docs/requirements/</code>, <code>docs/design/</code></p>
+      </li>
+      <li>
+        <span class="dot">2</span>
+        <h4>System designer and checker</h4>
+        <p>Module boundaries, technology decisions, data model, and a check that the architecture actually satisfies the requirements. <code>docs/architecture/</code>, <code>docs/adr/</code></p>
+      </li>
+      <li>
+        <span class="dot">3</span>
+        <h4>Implementation agent</h4>
+        <p>Builds against the contracts, not against a conversation. <code>docs/handoff/</code></p>
+      </li>
+      <li>
+        <span class="dot">4</span>
+        <h4>Documentation agent</h4>
+        <p>Maintains the decision record and writes the handoff for the next stage.</p>
+      </li>
+    </ol>
+
+    <p style="margin-top: 20px;">
+      Each handoff carries what the next agent needs and nothing else: completed artifacts, key
+      requirements, open questions, and the boundaries it may not cross. The pipeline is only as good as
+      those handoffs &mdash; which is exactly why they are written files rather than conversational memory.
+    </p>
+  </section>
+
+  <section class="cs-section">
+    <h2>What this demonstrates</h2>
+    <table class="cs-table">
+      <thead>
+        <tr><th>Stage</th><th>Evidence in this package</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Specification first</td><td>57 numbered functional requirements and 40+ measurable NFRs, written before any implementation decision</td></tr>
+        <tr><td>Decisions recorded</td><td>6 ADRs with context, options considered, and the reason for the choice</td></tr>
+        <tr><td>Contracts, not assumptions</td><td>A 1,047-line API contract and explicit module dependency rules</td></tr>
+        <tr><td>Decomposition</td><td>Seven modules with one responsibility each and a defined dependency direction</td></tr>
+        <tr><td>Context handoff</td><td>Written handoff documents between pipeline stages instead of relying on a long conversation</td></tr>
+        <tr><td>Separation of checking</td><td>A dedicated system-design checker stage, so the agent that designs is not the only agent that approves</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="cs-section">
+    <h2>What I would not claim</h2>
+    <ul class="cs-limits">
+      <li>
+        <strong>It is not validated by implementation.</strong> A design that has never been built has not
+        met reality. Contracts that look clean on paper often need revision the first week of coding &mdash;
+        and that revision is healthy, not failure.
+      </li>
+      <li>
+        <strong>More documentation is not automatically better.</strong> 3,500 lines is a lot for a system
+        with no users. For a smaller feature this process would be overkill, and I would not run it.
+      </li>
+      <li>
+        <strong>The pipeline does not remove judgment.</strong> The agents produced artifacts; deciding that
+        the module boundaries were right, that the NFRs were measurable, and that the ADRs had honest
+        tradeoffs was my job.
+      </li>
+      <li>
+        <strong>Design review is a stage, not a guarantee.</strong> A checker agent can catch contradictions
+        between documents. It cannot tell you the product is worth building.
+      </li>
+    </ul>
+
+    <div class="cs-actions">
+      <a class="btn btn-outline" href="build/index.html">How I build &rarr;</a>
+      <a class="btn btn-outline" href="index.html#systems">Back to projects</a>
+    </div>
+  </section>
+
+  <div class="cs-foot">
+    <a href="index.html">&larr; Back to portfolio</a>
+  </div>
+
+</main>
+
+<script>
+  (function () {
+    var html = document.documentElement;
+    var toggle = document.querySelector('.theme-toggle');
+    if (!toggle) return;
+    toggle.addEventListener('click', function () {
+      var next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', next);
+      try { localStorage.setItem('portfolio-theme', next); } catch (e) {}
+    });
+  })();
+</script>
+</body>
+</html>
