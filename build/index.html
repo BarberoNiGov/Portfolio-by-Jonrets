@@ -123,6 +123,31 @@
       font-family: var(--font-mono);
     }
 
+    /* ─── Loop map ─── */
+    .loop-map {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      margin: 4px 0 28px;
+    }
+    .loop-step {
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 6px 14px;
+      font-size: 0.85rem;
+      background: var(--card-bg);
+      white-space: nowrap;
+    }
+    .loop-step b { color: var(--accent); margin-right: 6px; }
+    .loop-arrow { color: var(--text-secondary); font-size: 0.85rem; }
+    .loop-return {
+      flex-basis: 100%;
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      margin-top: 2px;
+    }
+
     /* ─── Worked example ─── */
     .example {
       border: 1px solid var(--border);
@@ -229,6 +254,8 @@
       .build-title { font-size: 1.6rem; }
       .stage-split { grid-template-columns: 1fr; }
       .example { padding: 20px; }
+      .loop-arrow { display: none; }
+      .loop-step { flex: 1 1 calc(50% - 8px); text-align: center; }
     }
   </style>
 </head>
@@ -272,10 +299,55 @@
       </div>
     </section>
 
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">Worked example</h2>
+        <p class="section-subtitle">What the loop looks like when the same problem has five different shapes.</p>
+
+        <div class="example">
+          <h3>One specification, five systems &mdash; adapted, not copied</h3>
+          <p>
+            After a security incident, five internal systems needed the same controls: multi-factor
+            authentication, audit logging, password expiry, and account lockout. I wrote the implementation
+            once as a structured specification &mdash; requirements, integration points, acceptance criteria,
+            verification steps.
+          </p>
+          <p>
+            Each system needed it materially reworked. Different authentication flows, different legacy state,
+            different admin surfaces, different definitions of a "user." The specification was the starting
+            point, not a script.
+          </p>
+          <p class="pull">
+            The transferable part was never the code. It was the structure &mdash; and the same verification
+            gate at the end of every run.
+          </p>
+          <p>
+            Outcome: 100+ vulnerabilities remediated and the controls rolled out across all five systems in
+            about a month, with post-deployment fixes and documentation included.
+          </p>
+        </div>
+      </div>
+    </section>
+
     <section id="stages" class="section">
       <div class="container">
         <h2 class="section-title">The loop</h2>
         <p class="section-subtitle">Six stages. Each one produces an artifact that the next stage is held to.</p>
+
+        <div class="loop-map" role="img" aria-label="Six-stage loop: spec, decisions, decomposition, handoff, verify, gate. A failed gate returns to the spec.">
+          <span class="loop-step"><b>1</b>Spec</span>
+          <span class="loop-arrow">&rarr;</span>
+          <span class="loop-step"><b>2</b>Decisions</span>
+          <span class="loop-arrow">&rarr;</span>
+          <span class="loop-step"><b>3</b>Decompose</span>
+          <span class="loop-arrow">&rarr;</span>
+          <span class="loop-step"><b>4</b>Handoff</span>
+          <span class="loop-arrow">&rarr;</span>
+          <span class="loop-step"><b>5</b>Verify</span>
+          <span class="loop-arrow">&rarr;</span>
+          <span class="loop-step"><b>6</b>Gate</span>
+          <span class="loop-return">&larr; a failed gate goes back to the spec, not to the code</span>
+        </div>
 
         <ol class="stages">
           <li class="stage">
@@ -365,36 +437,6 @@
             <a class="stage-artifact" href="files/subagent-qa.md" download>subagent-qa.md &darr;</a>
           </li>
         </ol>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <h2 class="section-title">Worked example</h2>
-        <p class="section-subtitle">What the loop looks like when the same problem has five different shapes.</p>
-
-        <div class="example">
-          <h3>One specification, five systems &mdash; adapted, not copied</h3>
-          <p>
-            After a security incident, five internal systems needed the same controls: multi-factor
-            authentication, audit logging, password expiry, and account lockout. I wrote the implementation
-            once as a structured specification &mdash; requirements, integration points, acceptance criteria,
-            verification steps.
-          </p>
-          <p>
-            Each system needed it materially reworked. Different authentication flows, different legacy state,
-            different admin surfaces, different definitions of a "user." The specification was the starting
-            point, not a script.
-          </p>
-          <p class="pull">
-            The transferable part was never the code. It was the structure &mdash; and the same verification
-            gate at the end of every run.
-          </p>
-          <p>
-            Outcome: 100+ vulnerabilities remediated and the controls rolled out across all five systems in
-            about a month, with post-deployment fixes and documentation included.
-          </p>
-        </div>
       </div>
     </section>
 

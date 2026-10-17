@@ -294,9 +294,9 @@
         {
           type: 'video',
           src: 'assets/img/Portfolio Images/E-Raffle/1.mp4',
-          poster: 'assets/img/Portfolio Images/E-Raffle/2.jpeg'
+          poster: 'assets/img/Portfolio Images/E-Raffle/2.webp'
         },
-        'assets/img/Portfolio Images/E-Raffle/2.jpeg'
+        'assets/img/Portfolio Images/E-Raffle/2.webp'
       ]
     },
     {
@@ -331,9 +331,9 @@
         {
           type: 'video',
           src: 'assets/img/Portfolio Images/IT Week/Overview/1.mp4',
-          poster: 'assets/img/Portfolio Images/IT Week/Overview/2.jpg'
+          poster: 'assets/img/Portfolio Images/IT Week/Overview/2.webp'
         },
-        'assets/img/Portfolio Images/IT Week/Overview/2.jpg',
+        'assets/img/Portfolio Images/IT Week/Overview/2.webp',
         'assets/img/Portfolio Images/IT Week/Overview/3.jpg',
         'assets/img/Portfolio Images/IT Week/Overview/4.jpg'
       ]
@@ -428,6 +428,8 @@
   var lightboxImages = [];
   var lightboxIndex = 0;
 
+  var lazyCards = [];
+
   systemsData.forEach(function (sys) {
     if (sys.skipGrid) return;
     var targetGrid = sys.section === 'exploration' ? explorationGrid : grid;
@@ -436,13 +438,16 @@
     card.className = 'system-card';
     var first = sys.images && sys.images.length ? sys.images[0] : null;
     var fallbackBg = sys.gradient || 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
+    var cardBg;
     if (!first) {
-      card.style.backgroundImage = cssBg(fallbackBg);
+      cardBg = cssBg(fallbackBg);
     } else if (mediaType(first) === 'video') {
-      card.style.backgroundImage = cssBg(mediaPoster(first) || fallbackBg);
+      cardBg = cssBg(mediaPoster(first) || fallbackBg);
     } else {
-      card.style.backgroundImage = cssBg(mediaSrc(first));
+      cardBg = cssBg(mediaSrc(first));
     }
+    card.setAttribute('data-bg', cardBg);
+    lazyCards.push(card);
     card.setAttribute('data-system-id', sys.id);
     card.innerHTML = '<div class="system-card-overlay">' +
       (sys.badge ? '<span class="system-card-badge">' + sys.badge + '</span>' : '') +
@@ -452,6 +457,28 @@
     });
     targetGrid.appendChild(card);
   });
+
+  function applyCardBg(card) {
+    var bg = card.getAttribute('data-bg');
+    if (bg) {
+      card.style.backgroundImage = bg;
+      card.removeAttribute('data-bg');
+    }
+  }
+
+  if ('IntersectionObserver' in window) {
+    var cardObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          applyCardBg(entry.target);
+          cardObserver.unobserve(entry.target);
+        }
+      });
+    }, { rootMargin: '300px 0px' });
+    lazyCards.forEach(function (card) { cardObserver.observe(card); });
+  } else {
+    lazyCards.forEach(applyCardBg);
+  }
 
   function buildCarousel(images) {
     carouselTrack.innerHTML = '';
