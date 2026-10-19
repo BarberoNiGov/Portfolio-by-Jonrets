@@ -120,7 +120,7 @@ FULLSTACK = {
     ],
     "projects": [
         ("NotiLog \u2014 Private Notification History", "Live on Google Play", "2026", [
-            "Shipped a Kotlin Android app that keeps an encrypted, on-device history of dismissed notifications \u2014 no account, no analytics, no server \u2014 plus optional end-to-end encrypted partner sharing (SQLCipher + Android Keystore).",
+            "Shipped a Kotlin Android app that keeps an encrypted, on-device history of dismissed notifications \u2014 no account, no analytics, no backend that stores notifications \u2014 plus optional end-to-end encrypted partner sharing (SQLCipher + Android Keystore).",
         ]),
         ("Job Finder Platform for AI Agents \u2014 Architecture Package", "Design complete", "2026", [
             "Produced 57 functional requirements, 40+ measurable non-functional requirements, 6 architecture decision records, and a 1,047-line API contract for an agent marketplace.",

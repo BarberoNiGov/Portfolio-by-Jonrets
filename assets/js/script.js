@@ -182,7 +182,7 @@
       name: 'NotiLog — Notification Log',
       section: 'exploration',
       shortDesc: 'Private, encrypted on-device notification history — plus optional end-to-end encrypted sharing with one trusted person',
-      longDesc: 'Personal project, live on Google Play (Productivity, updated Oct 17, 2026). NotiLog keeps a private history of notifications even after they are dismissed, cleared, or missed — including messages a sender unsends. Privacy-first: no account, no ads, no analytics, and no server; history is encrypted at rest with SQLCipher and the Android Keystore. Optional partner sharing pairs two phones by QR and sends content only to that paired device, end-to-end encrypted and off by default. Uninstalling erases everything.',
+      longDesc: 'Personal project, live on Google Play (Productivity, updated Oct 19, 2026). NotiLog keeps a private history of notifications even after they are dismissed, cleared, or missed — including messages a sender unsends. Privacy-first: no account, no ads, no analytics, and no backend that stores notifications; history is encrypted at rest with SQLCipher (AES-256) and the Android Keystore. Optional partner sharing pairs two phones by QR and sends content only to that paired device, end-to-end encrypted and off by default; the ciphertext is relayed through the public ntfy.sh service, which cannot read it but can observe metadata such as timing and IP address. Uninstalling erases everything.',
       techStack: ['Kotlin', 'Android', 'Notification Access', 'SQLCipher', 'Android Keystore', 'End-to-end Encryption', 'QR Pairing'],
       features: [
         'Background capture once Notification Access is granted, with auto-reconnect after reboot',
@@ -200,8 +200,7 @@
         'assets/img/Portfolio Images/NotiLog/2.webp',
         'assets/img/Portfolio Images/NotiLog/3.webp',
         'assets/img/Portfolio Images/NotiLog/4.webp',
-        'assets/img/Portfolio Images/NotiLog/5.webp',
-        'assets/img/Portfolio Images/NotiLog/6.webp'
+        'assets/img/Portfolio Images/NotiLog/5.webp'
       ]
     },
     {
