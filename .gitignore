@@ -2,6 +2,9 @@
 dont-push-these/
 Job Finder/
 
+# Raw case-study screenshots — never deploy
+assets/Stripes&Bloom/
+
 # OS junk
 .DS_Store
 Thumbs.db

@@ -278,6 +278,7 @@
     {
       id: 'e-raffle',
       name: 'Event Management & E-Raffle',
+      badge: '2 systems',
       shortDesc: 'Replacing manual tickets for a whole workforce with a self-service event system',
       longDesc: 'Company events required designing and physically cutting raffle and attendance tickets for the entire workforce, and check-in was manual and slow. I designed the in/out flow across two plant sites and shipped a session-based event system: timestamped eligibility rules that block duplicate and late entries, a live participant dashboard for real-time turnout instead of paper reconciliation, prize sequencing with winner registration, and a CMS-style theme designer that lets non-technical staff customize registration and raffle pages themselves. Designed for bursts of simultaneous check-ins on event day.',
       techStack: ['Laravel', 'PHP', 'MySQL', 'JavaScript', 'AJAX'],
@@ -289,6 +290,8 @@
         'CMS-style theme designer for self-service registration and raffle page customization',
         'Failure states handled: duplicate scan, invalid ticket, dropped connection'
       ],
+      children: ['reverse-bingo'],
+      childrenLabel: 'More from this platform',
       images: [
         {
           type: 'video',
@@ -296,6 +299,32 @@
           poster: 'assets/img/Portfolio Images/E-Raffle/2.webp'
         },
         'assets/img/Portfolio Images/E-Raffle/2.webp'
+      ]
+    },
+    {
+      id: 'reverse-bingo',
+      skipGrid: true,
+      name: 'Reverse Bingo — Live Event Platform',
+      shortDesc: 'Laravel + Vue live-event platform built for a 600-person corporate event — cards settle before the event, so game night never depends on the venue network',
+      longDesc: 'Built at CDO Foodsphere for a 600-person corporate event. Cards are claimed and locked before the event, so game night needs only two or three browser clients. Online phones mark hits automatically; offline players use a PNG or installable PWA card and tap their own tally. The server stays authoritative: every draw is validated, eliminations are written in a transaction, and clients receive a revision-stamped broadcast, resyncing from a snapshot if they detect a gap. At registration close, attendance and raffle eligibility are frozen into a snapshot; the pot and the cut follow that set. Host controls include draw, eliminate/restore, revert, and end, with a stage reveal for the champion.',
+      techStack: ['Laravel', 'PHP', 'Vue 3', 'Inertia.js', 'Reverb (WebSockets)', 'SQL Server', 'Queue Worker', 'k6'],
+      features: [
+        'Built for a 600-person corporate event — cards are claimed and locked before game night',
+        'Game night needs only 2–3 browser clients: host, stage, and desk',
+        'Two phone modes: automatic hits online; manual tally from a PNG or offline PWA card',
+        'Server-authoritative draws with revision-stamped broadcasts and resync on a revision gap',
+        'Registration close freezes attendance and eligibility; the pot and cut follow the snapshot',
+        'Unique cards by signature; fail-closed cut for unlocked or ineligible cards',
+        'Host controls: draw, eliminate/restore, revert, end; stage reveal for the champion',
+        '287 tests / 1,668 assertions; k6 harness targeting p95 < 500 ms at 1,200 connections'
+      ],
+      mediaFit: 'contain',
+      carouselTall: true,
+      images: [
+        'assets/img/Portfolio Images/Reverse Bingo/1.webp',
+        'assets/img/Portfolio Images/Reverse Bingo/2.webp',
+        'assets/img/Portfolio Images/Reverse Bingo/3.webp',
+        'assets/img/Portfolio Images/Reverse Bingo/4.webp'
       ]
     },
     {
@@ -326,6 +355,7 @@
       longDesc: 'Led implementation for IT Week (Tech\'ka Muna!) with 500+ attendees at the P2 site. Game Developer & Tech Support Lead for the first company-wide IT week-long booth and game show. Leadership said the event should be annual because it made IT visible to the company. Featured three original web systems built for the event.',
       type: 'container',
       children: ['image-carousel', 'real-or-fake', 'iconic-memory'],
+      childrenLabel: 'Systems Built for This Event',
       images: [
         {
           type: 'video',
@@ -503,7 +533,11 @@
     lazyCards.forEach(applyCardBg);
   }
 
-  function buildCarousel(images) {
+  function buildCarousel(sys) {
+    var images = sys.images || [];
+    var fit = sys.mediaFit || 'cover';
+    var modalCarousel = document.getElementById('modal-carousel');
+    modalCarousel.classList.toggle('modal-carousel-tall', !!sys.carouselTall);
     carouselTrack.innerHTML = '';
     carouselDots.innerHTML = '';
     currentSlide = 0;
@@ -567,6 +601,7 @@
         });
       } else {
         slide.style.backgroundImage = cssBg(mediaSrc(item));
+        slide.style.backgroundSize = fit;
       }
 
       slide.addEventListener('click', function () {
@@ -612,10 +647,11 @@
     if (!sys) return;
 
     var modalCarousel = document.getElementById('modal-carousel');
+    modalCarousel.classList.remove('modal-carousel-tall');
     if (sys.images && sys.images.length) {
       modal.classList.remove('no-carousel');
       modalCarousel.style.display = '';
-      buildCarousel(sys.images);
+      buildCarousel(sys);
     } else {
       modal.classList.add('no-carousel');
       modalCarousel.style.display = 'none';
@@ -626,9 +662,29 @@
     modalDesc.textContent = sys.longDesc;
     modalDetails.innerHTML = '';
 
-    if (sys.type === 'container') {
+    var detailsHtml = '';
+    if (sys.techStack && sys.techStack.length) {
+      detailsHtml += '<h4>Tech Stack</h4><div class="tech-tags">';
+      sys.techStack.forEach(function (t) {
+        detailsHtml += '<span class="tech-tag">' + t + '</span>';
+      });
+      detailsHtml += '</div>';
+    }
+    if (sys.features && sys.features.length) {
+      detailsHtml += '<h4>Key Features</h4><ul class="feature-list">';
+      sys.features.forEach(function (f) {
+        detailsHtml += '<li>' + f + '</li>';
+      });
+      detailsHtml += '</ul>';
+    }
+    if (sys.link) {
+      detailsHtml += '<a class="btn btn-outline modal-link" href="' + sys.link.href + '">' + sys.link.label + '</a>';
+    }
+    modalDetails.innerHTML = detailsHtml;
+
+    if (sys.children && sys.children.length) {
       var subHeading = document.createElement('h4');
-      subHeading.textContent = 'Systems Built for This Event';
+      subHeading.textContent = sys.childrenLabel || 'Related Systems';
       modalDetails.appendChild(subHeading);
       var subList = document.createElement('div');
       subList.className = 'subsystem-list';
@@ -637,32 +693,21 @@
         if (!child) return;
         var item = document.createElement('div');
         item.className = 'subsystem-card';
+        item.setAttribute('role', 'button');
+        item.setAttribute('tabindex', '0');
         item.innerHTML = '<h5>' + child.name + '</h5><p>' + child.shortDesc + '</p>';
         item.addEventListener('click', function () {
           openModal(child.id);
         });
+        item.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            openModal(child.id);
+          }
+        });
         subList.appendChild(item);
       });
       modalDetails.appendChild(subList);
-    } else {
-      var techHtml = '<h4>Tech Stack</h4><div class="tech-tags">';
-      sys.techStack.forEach(function (t) {
-        techHtml += '<span class="tech-tag">' + t + '</span>';
-      });
-      techHtml += '</div>';
-
-      var featHtml = '<h4>Key Features</h4><ul class="feature-list">';
-      sys.features.forEach(function (f) {
-        featHtml += '<li>' + f + '</li>';
-      });
-      featHtml += '</ul>';
-
-      var linkHtml = '';
-      if (sys.link) {
-        linkHtml = '<a class="btn btn-outline modal-link" href="' + sys.link.href + '">' + sys.link.label + '</a>';
-      }
-
-      modalDetails.innerHTML = techHtml + featHtml + linkHtml;
     }
 
     overlay.classList.add('open');

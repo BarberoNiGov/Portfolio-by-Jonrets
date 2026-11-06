@@ -804,8 +804,25 @@ a:hover {
   height: 220px;
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
   flex-shrink: 0;
   position: relative;
+}
+
+.modal-carousel-tall .carousel-track,
+.modal-carousel-tall .carousel-slide {
+  height: 360px;
+}
+
+.modal-carousel-tall .carousel-slide {
+  background-color: var(--bg-alt);
+}
+
+@media (max-width: 768px) {
+  .modal-carousel-tall .carousel-track,
+  .modal-carousel-tall .carousel-slide {
+    height: 240px;
+  }
 }
 
 .carousel-slide-video {
@@ -977,6 +994,12 @@ a:hover {
 .subsystem-card:hover {
   border-color: var(--accent);
   box-shadow: var(--shadow);
+}
+
+.subsystem-card:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-color: var(--accent);
 }
 
 .subsystem-card h5 {
