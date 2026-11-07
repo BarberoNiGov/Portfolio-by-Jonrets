@@ -52,12 +52,12 @@ AI = {
         ("Agentic Engineering", "Spec-driven development, context engineering, context handoff, subagent orchestration, verification gates, structured output validation, MCP tool boundaries"),
         ("AI Integration", "LLM API integration, prompt design, JSON Schema validation, LLM triage, provider fallback, injection-resistant boundaries"),
         ("Systems & Security", "System design, architecture decision records, non-functional requirements, failure-state design, RBAC, MFA, audit logging, OWASP"),
-        ("Application Development", "Laravel, PHP, MySQL, Python, FastAPI, REST APIs, JavaScript, Vue 3, Inertia.js, Blade"),
-        ("Tools", "Git, GitLab, OpenCode, Claude Code, Codex, Docker, pytest, Figma"),
+        ("Application Development", "Laravel, PHP, MySQL, SQL Server, Python, FastAPI, REST APIs, JavaScript, Vue 3, Inertia.js, Blade"),
+        ("Tools", "Git, GitLab, OpenCode, Claude Code, Codex, Docker, pytest, k6, Figma"),
     ],
     "groups": [
         ("AI & Agentic Delivery", [
-            "Authored a shared implementation spec for MFA, audit logging, password expiry, and account lockout, then adapted and executed it across five internal systems through a phased agent loop with a verification gate per system.",
+            "Authored one implementation spec for MFA, audit logging, password expiry, and account lockout, then adapted and executed it across five internal systems through a phased agent loop with a verification gate per system.",
             "Built an AI-assisted analysis interface for the complaint tracking system that summarizes records, surfaces trends, and answers natural-language questions in 3-7 seconds for 100+ complaints per month across 20+ departments.",
             "Worked through written specs, context handoff packs, and read-only QA passes; reviewed every diff and validated each change in staging before release.",
         ]),
@@ -68,7 +68,7 @@ AI = {
         ]),
         ("Enterprise Systems", [
             "Shipped an event-driven check-in system across two plant sites for company-wide events (700-5,000+ attendees), cutting per-person check-in from 1-2 minutes to a 2-3 second scan.",
-            "Built a clinic system handling 2,000-5,000 patient records per quarter, and a CMS-style event system that lets non-technical staff customize registration and raffle pages.",
+            "Built a clinic system handling 2,000-5,000 patient records per quarter, plus an event platform: a CMS-style raffle builder for non-technical staff and Reverse Bingo, a 600-person live-event system with pre-event card lock, offline PNG/PWA fallback, and revision-stamped WebSocket draws.",
         ]),
     ],
     "projects": [
@@ -94,12 +94,12 @@ FULLSTACK = {
         "verification gate before release."
     ),
     "skills": [
-        ("Application Development", "Laravel, PHP, MySQL, REST APIs, JavaScript, jQuery, AJAX, Blade, Vue 3, Inertia.js, Tailwind, Python, FastAPI"),
+        ("Application Development", "Laravel, PHP, MySQL, SQL Server, REST APIs, JavaScript, jQuery, AJAX, Blade, Vue 3, Inertia.js, Tailwind, Python, FastAPI"),
         ("Systems & Product", "System design, workflow analysis, information architecture, requirements discovery, process mapping, failure-state design, RBAC"),
         ("Security & Reliability", "MFA (TOTP + email OTP), audit logging, password policy and expiry, brute-force protection, OWASP, secrets redaction, CVE audit"),
         ("Design & UX", "UI/UX design, user flows, forms, tables, data-entry UX, dashboards, admin interfaces, security-sensitive UX, Figma"),
         ("Agentic Engineering", "Spec-driven development, context engineering, context handoff, subagent orchestration, verification gates, structured output validation"),
-        ("Tools", "Git, GitHub, GitLab, Bitbucket, OpenCode, Claude Code, Codex, Docker, pytest"),
+        ("Tools", "Git, GitHub, GitLab, Bitbucket, OpenCode, Claude Code, Codex, Docker, pytest, k6"),
     ],
     "groups": [
         ("Enterprise Systems", [
@@ -115,18 +115,18 @@ FULLSTACK = {
         ]),
         ("Product, Data & Modernization", [
             "Maintained and enhanced the Customer Complaint Tracking System (CCTR), handling 100+ complaints per month for 20+ departments; added filtering, KPI summaries, charts, and an AI-assisted analysis view answering in 3-7 seconds.",
-            "Led a major-version front-end migration across 60+ Blade files (Bootstrap 4 to 5.3, AdminLTE 3 to 4, DataTables 1.10 to 2.3) with a phase-by-phase audit, per-phase verification, and a documented rollback plan.",
+            "Led the phased major-version front-end migration across 60+ Blade files (Bootstrap 4 to 5.3, AdminLTE 3 to 4, DataTables 1.10 to 2.3), with a phase-by-phase audit, per-phase verification, and a documented rollback plan.",
         ]),
     ],
     "projects": [
         ("NotiLog \u2014 Private Notification History", "Live on Google Play", "2026", [
             "Shipped a Kotlin Android app that keeps an encrypted, on-device history of dismissed notifications \u2014 no account, no analytics, no backend that stores notifications \u2014 plus optional end-to-end encrypted partner sharing (SQLCipher + Android Keystore).",
         ]),
-        ("Job Finder Platform for AI Agents \u2014 Architecture Package", "Design complete", "2026", [
+        ("Job Finder Platform for AI Agents \u2014 Architecture Package", "Design complete, not implemented", "2026", [
             "Produced 57 functional requirements, 40+ measurable non-functional requirements, 6 architecture decision records, and a 1,047-line API contract for an agent marketplace.",
         ]),
-        ("Laya-Jev \u2014 Typed Decision Agent", "Personal exploration", "2026", [
-            "Built two demos on a typed-decision model with calibrated confidence gates, verified by a 67-test offline pytest suite and per-decision audit trails.",
+        ("Reverse Bingo \u2014 Live Event Platform", "Laravel + Vue, 600-person event", "2026", [
+            "Built pre-event card lock, an offline PNG/PWA fallback, and revision-stamped WebSocket draws so game night needs only 2-3 browser clients and never depends on the venue network; 287 tests / 1,668 assertions.",
         ]),
     ],
     "also": None,
