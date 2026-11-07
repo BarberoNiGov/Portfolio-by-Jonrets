@@ -6,7 +6,7 @@
   Cache-Control: public, max-age=86400, stale-while-revalidate=604800
 
 /assets/resume/*
-  Cache-Control: public, max-age=86400, stale-while-revalidate=604800
+  Cache-Control: public, max-age=0, must-revalidate
 
 /assets/css/*
   Cache-Control: public, max-age=3600, stale-while-revalidate=86400

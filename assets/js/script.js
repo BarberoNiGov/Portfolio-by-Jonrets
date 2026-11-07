@@ -715,6 +715,7 @@
   }
 
   function closeModal() {
+    if (!overlay.classList.contains('open')) return;
     overlay.classList.remove('open');
     document.body.style.overflow = '';
   }
@@ -874,4 +875,118 @@
       activeCallout = null;
     }
   });
+
+  var RESUME_VARIANTS = {
+    ai: {
+      pdf: 'assets/resume/Jonrich_Bascug_AI_Engineer.pdf',
+      file: 'Jonrich_Bascug_AI_Engineer.pdf',
+      label: 'AI Application Engineer'
+    },
+    fullstack: {
+      pdf: 'assets/resume/Jonrich_Bascug_Fullstack.pdf',
+      file: 'Jonrich_Bascug_Fullstack.pdf',
+      label: 'Full-Stack'
+    }
+  };
+
+  var resumeOverlay = document.getElementById('resume-overlay');
+  var resumeModal = document.getElementById('resume-modal');
+  var resumeClose = document.getElementById('resume-modal-close');
+  var resumeIframe = document.getElementById('resume-iframe');
+  var resumeDownload = document.getElementById('resume-download');
+  var resumeOpen = document.getElementById('resume-open');
+  var resumeTabs = Array.prototype.slice.call(document.querySelectorAll('.resume-tab'));
+  var resumeTriggers = Array.prototype.slice.call(document.querySelectorAll('[data-resume]'));
+  var resumeTrigger = null;
+
+  if (resumeOverlay && resumeModal && resumeClose && resumeIframe && resumeDownload && resumeOpen) {
+    var setResumeVariant = function (variant) {
+      var data = RESUME_VARIANTS[variant] || RESUME_VARIANTS.ai;
+      var key = RESUME_VARIANTS[variant] ? variant : 'ai';
+
+      resumeTabs.forEach(function (tab) {
+        var active = tab.getAttribute('data-resume-variant') === key;
+        tab.classList.toggle('active', active);
+        tab.setAttribute('aria-pressed', active ? 'true' : 'false');
+      });
+
+      resumeIframe.title = 'Jonrich Bascug — ' + data.label + ' resume';
+      resumeIframe.src = data.pdf + '#view=FitH';
+      resumeDownload.href = data.pdf;
+      resumeDownload.setAttribute('download', data.file);
+      resumeDownload.setAttribute('aria-label', 'Download ' + data.label + ' PDF');
+      resumeOpen.href = data.pdf;
+      resumeOpen.setAttribute('aria-label', 'Open ' + data.label + ' PDF in a new tab');
+    };
+
+    var openResume = function (variant, trigger) {
+      resumeTrigger = trigger || document.activeElement;
+      setResumeVariant(variant);
+      resumeOverlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      setTimeout(function () {
+        resumeClose.focus();
+      }, 0);
+    };
+
+    var closeResume = function () {
+      if (!resumeOverlay.classList.contains('open')) return;
+      resumeOverlay.classList.remove('open');
+      document.body.style.overflow = '';
+      if (resumeTrigger && typeof resumeTrigger.focus === 'function') {
+        resumeTrigger.focus();
+      }
+      resumeTrigger = null;
+    };
+
+    resumeTriggers.forEach(function (trigger) {
+      trigger.addEventListener('click', function (e) {
+        if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+        e.preventDefault();
+        openResume(trigger.getAttribute('data-resume'), trigger);
+      });
+    });
+
+    resumeTabs.forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        setResumeVariant(tab.getAttribute('data-resume-variant'));
+      });
+    });
+
+    resumeClose.addEventListener('click', closeResume);
+
+    resumeOverlay.addEventListener('click', function (e) {
+      if (e.target === resumeOverlay) closeResume();
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (!resumeOverlay.classList.contains('open')) return;
+
+      if (e.key === 'Escape') {
+        closeResume();
+        return;
+      }
+
+      if (e.key === 'Tab') {
+        var focusables = resumeModal.querySelectorAll('a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])');
+        if (!focusables.length) return;
+        var first = focusables[0];
+        var last = focusables[focusables.length - 1];
+
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
+    });
+
+    document.addEventListener('focusin', function (e) {
+      if (resumeOverlay.classList.contains('open') && !resumeModal.contains(e.target)) {
+        resumeClose.focus();
+      }
+    });
+  }
 })();

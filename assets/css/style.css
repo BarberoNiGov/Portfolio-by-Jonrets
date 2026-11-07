@@ -787,6 +787,155 @@ a:hover {
   background: rgba(0,0,0,0.7);
 }
 
+/* ─── Resume modal ─── */
+
+.resume-overlay {
+  z-index: 2500;
+  padding: 24px;
+}
+
+.resume-modal {
+  max-width: min(1000px, 94vw);
+  height: min(90vh, 900px);
+  max-height: 90vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.resume-modal-head {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding: 16px 56px 12px 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+.resume-modal-head h2 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.resume-tabs {
+  display: inline-flex;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.resume-tab {
+  background: transparent;
+  border: 0;
+  padding: 7px 12px;
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.resume-tab:hover:not(.active) {
+  background: var(--bg-alt);
+  color: var(--text);
+}
+
+.resume-tab.active {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+.resume-tab:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: -2px;
+}
+
+.resume-modal .modal-close {
+  background: var(--bg-alt);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+.resume-modal .modal-close:hover {
+  background: var(--border);
+}
+
+.resume-modal-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding: 10px 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+.resume-open {
+  font-size: 0.85rem;
+}
+
+.resume-frame {
+  flex: 1;
+  min-height: 0;
+  background: #fff;
+}
+
+.resume-frame iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: #fff;
+}
+
+.resume-hint {
+  padding: 8px 20px 12px;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+@media (max-width: 768px) {
+  .resume-overlay {
+    padding: 12px;
+  }
+
+  .resume-modal {
+    max-width: 100%;
+    height: 92vh;
+    max-height: 92vh;
+  }
+
+  .resume-modal-head {
+    gap: 10px;
+    padding: 12px 52px 10px 14px;
+  }
+
+  .resume-modal-head h2 {
+    font-size: 1rem;
+  }
+
+  .resume-tabs {
+    width: 100%;
+  }
+
+  .resume-tab {
+    flex: 1;
+    padding: 7px 6px;
+    font-size: 0.75rem;
+  }
+
+  .resume-modal-actions {
+    padding: 10px 14px;
+  }
+
+  .resume-hint {
+    padding: 8px 14px 10px;
+  }
+}
+
 .modal-carousel {
   position: relative;
   border-radius: 12px 12px 0 0;
