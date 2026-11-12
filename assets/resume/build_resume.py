@@ -105,7 +105,7 @@ FULLSTACK = {
         ("Enterprise Systems", [
             "Shipped an event-driven check-in system across two plant sites for company-wide events (700-5,000+ attendees), cutting per-person check-in from 1-2 minutes to a 2-3 second scan.",
             "Mapped clinic intake and records workflows and built a clinic management system handling 2,000-5,000 patient records per quarter; replaced paper intake and cut HRIS patient lookup from ~10s to ~2s.",
-            "Built a CMS-style event and raffle system that lets non-technical staff customize registration and raffle pages themselves.",
+            "Built an event-day platform: CMS-style registration/raffle pages, registration and token kiosks, and Deal or No Deal (20 briefcase holders + Player of the Night), removing the recurring developer ticket for every template change.",
             "Led technical delivery for IT Week with 500+ attendees; shipped three interactive web systems in one month, including a 200+ photo AI pipeline and a 6x6 game with 500+ unique players.",
         ]),
         ("Security & Reliability", [
