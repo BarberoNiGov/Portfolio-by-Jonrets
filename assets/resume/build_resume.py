@@ -89,9 +89,9 @@ FULLSTACK = {
     "title": "Web Application Developer \u2014 Enterprise Systems, Security & UX",
     "summary": (
         "Web application developer with a product and UX mindset, focused on internal enterprise systems. "
-        "Experienced designing, building, securing, and improving applications across HR, clinic, complaints, "
-        "events, payroll, and admin. Builds with AI agents using written specifications, context handoff, and a "
-        "verification gate before release."
+        "Experienced designing, building, securing, and improving applications across complaint tracking, company "
+        "events, clinic operations, and operational workflows. Builds with AI agents using written specifications, "
+        "context handoff, and a verification gate before release."
     ),
     "skills": [
         ("Application Development", "Laravel, PHP, MySQL, SQL Server, REST APIs, JavaScript, jQuery, AJAX, Blade, Vue 3, Inertia.js, Tailwind, Python, FastAPI"),
