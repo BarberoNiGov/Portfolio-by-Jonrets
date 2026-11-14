@@ -159,6 +159,32 @@
       images: []
     },
     {
+      id: 'troupe',
+      name: 'Troupe — Persona-Conditioned Coding Agents',
+      section: 'exploration',
+      badge: 'Meta Hackathon',
+      shortDesc: 'Selected for the 2026 Meta Global AI Developer Hackathon — 11 persona-conditioned coding agents generate and blind-score eight motion directions from one brief',
+      longDesc: 'Built during the 2026 Meta Global AI Developer Hackathon, selected as one of 20,000 participants from 34,000+ applicants. Troupe is a controlled experiment: eleven coding agents, each with a Big Five-inspired record and design kernel, independently generate a self-contained HTML motion graphic from the same brief. The studio validates every output, measures visual and palette diversity, and hides identities for a blind vote. On Meta’s Muse Spark 1.3, the core eight generated 8/8 in 2D, 3D, and Hybrid with zero render errors; 2D was the most diverse (0.46 visual similarity), Hybrid the most legible and most homogeneous (0.62); a full run costs about $0.01. The repo is public and MIT-licensed. This is a pilot, not a study — one brief, one model, a handful of runs.',
+      techStack: ['Python', 'FastAPI', 'Meta Muse Spark 1.3', 'OpenRouter', 'Three.js', 'JavaScript', 'pytest', 'Playwright'],
+      features: [
+        'Selected as one of 20,000 participants from 34,000+ applicants',
+        '11 persona-conditioned coding agents, 8 in the room, one brief',
+        '8/8 outputs in 2D/3D/Hybrid with zero render errors',
+        'Blind vote plus visual and palette diversity metrics',
+        'Self-contained HTML outputs; sandboxed, offline, CSP, vendored Three.js',
+        '56 tests; public MIT repo',
+        'Pilot, not a study: one brief, one model, a handful of runs'
+      ],
+      link: { href: 'https://github.com/BarberoNiGov/Troupe-Meta', label: 'View the public repo' },
+      mediaFit: 'contain',
+      carouselTall: true,
+      images: [
+        'assets/img/Portfolio Images/Troupe/1.webp',
+        'assets/img/Portfolio Images/Troupe/2.webp',
+        'assets/img/Portfolio Images/Troupe/3.webp'
+      ]
+    },
+    {
       id: 'recipe-corpus',
       name: 'Recipe Corpus Ingestion',
       section: 'exploration',

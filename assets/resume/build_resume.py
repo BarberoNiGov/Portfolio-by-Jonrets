@@ -59,7 +59,7 @@ AI = {
         ("AI & Agentic Delivery", [
             "Authored one implementation spec for MFA, audit logging, password expiry, and account lockout, then adapted and executed it across five internal systems through a phased agent loop with a verification gate per system.",
             "Built an AI-assisted analysis interface for the complaint tracking system that summarizes records, surfaces trends, and answers natural-language questions in 3-7 seconds for 100+ complaints per month across 20+ departments.",
-            "Worked through written specs, context handoff packs, and read-only QA passes; reviewed every diff and validated each change in staging before release.",
+            "Introduced agentic AI workflows to a small team and shared informal guidance on MCP-based tooling (Chrome DevTools MCP) for QA, testing, debugging, and code generation.",
         ]),
         ("Security & Reliability", [
             "Remediated 100+ vulnerabilities across five legacy systems and rolled out MFA, audit logging, password expiry, and 3-attempt auto-lock in ~1 month (2-3 months with post-deployment fixes and documentation).",
@@ -75,8 +75,8 @@ AI = {
         ("AI Security Analysis Agent", "Locked output contract, deterministic core, LLM triage", "2026", [
             "Built a static-analysis agent returning schema-validated JSON against a locked output contract, with a deterministic detection core and an LLM triage layer; 190+ tests, a CLI/REST parity check, and an MCP tool boundary in a read-only container.",
         ]),
-        ("Job Finder Platform for AI Agents \u2014 Architecture Package", "Design complete, not implemented", "2026", [
-            "Produced 57 functional requirements, 40+ measurable non-functional requirements, 6 architecture decision records, and a 1,047-line API contract for an agent marketplace through a four-agent pipeline with written handoffs.",
+        ("Troupe \u2014 Persona-Conditioned Coding Agents", "Meta Global AI Developer Hackathon 2026 \u00b7 Public repo", "2026", [
+            "Built a multi-agent studio where 11 persona-conditioned coding agents independently generate self-contained HTML motion graphics from one brief; 8/8 in 2D/3D/Hybrid with zero render errors, blind-voted and measured for visual/palette diversity; 56 tests; MIT-licensed public repo.",
         ]),
         ("Laya-Jev \u2014 Typed Decision Agent", "Personal exploration", "2026", [
             "Explored typed decisions with calibrated confidence gates, verified by a 67-test offline pytest suite and per-decision audit trails.",
@@ -122,14 +122,11 @@ FULLSTACK = {
         ("NotiLog \u2014 Private Notification History", "Live on Google Play", "2026", [
             "Shipped a Kotlin Android app that keeps an encrypted, on-device history of dismissed notifications \u2014 no account, no analytics, no backend that stores notifications \u2014 plus optional end-to-end encrypted partner sharing (SQLCipher + Android Keystore).",
         ]),
-        ("Job Finder Platform for AI Agents \u2014 Architecture Package", "Design complete, not implemented", "2026", [
-            "Produced 57 functional requirements, 40+ measurable non-functional requirements, 6 architecture decision records, and a 1,047-line API contract for an agent marketplace.",
-        ]),
         ("Reverse Bingo \u2014 Live Event Platform", "Laravel + Vue, 600-person event", "2026", [
             "Built pre-event card lock, an offline PNG/PWA fallback, and revision-stamped WebSocket draws so game night needs only 2-3 browser clients and never depends on the venue network; 287 tests / 1,668 assertions.",
         ]),
     ],
-    "also": None,
+    "also": "Also: selected for the 2026 Meta Global AI Developer Hackathon; built Troupe (public repo).",
 }
 
 EDUCATION = {
