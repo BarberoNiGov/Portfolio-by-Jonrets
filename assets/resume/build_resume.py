@@ -35,8 +35,8 @@ CONTACT = [
 
 EXPERIENCE = {
     "company": "CDO Foodsphere, Inc.",
-    "location": "Valenzuela City, Philippines",
-    "role": "Web Application Developer / Application Support Specialist",
+    "location": "Valenzuela City, Philippines | Remote-first",
+    "role": "Application Support Specialist",
     "dates": "Dec 2024 - Present",
 }
 
@@ -44,89 +44,92 @@ AI = {
     "title": "AI Application Engineer \u2014 Agentic Systems & Enterprise Software",
     "summary": (
         "AI application engineer who designs enterprise systems and builds them with AI agents. "
-        "Specification, architecture, and verification are mine; a custom agent harness handles implementation. "
-        "Led a five-system security hardening program by writing one implementation spec and adapting it per "
-        "system through a phased agent loop."
+        "I own specification, architecture, code review, and verification; a custom agent harness handles "
+        "implementation. Delivered a paid AI security-analysis trial, hardened five legacy systems, and "
+        "shipped an AI-assisted analysis view used by operations managers and executives."
     ),
     "skills": [
         ("Agentic Engineering", "Spec-driven development, context engineering, context handoff, subagent orchestration, verification gates, structured output validation, MCP tool boundaries"),
-        ("AI Integration", "LLM API integration, prompt design, JSON Schema validation, LLM triage, provider fallback, injection-resistant boundaries"),
+        ("AI Integration", "LLM API integration (OpenAI, Gemini, OpenRouter), prompt design, JSON Schema validation, LLM triage, provider fallback, injection-resistant boundaries"),
         ("Systems & Security", "System design, architecture decision records, non-functional requirements, failure-state design, RBAC, MFA, audit logging, OWASP"),
-        ("Application Development", "Laravel, PHP, MySQL, SQL Server, Python, FastAPI, REST APIs, JavaScript, Vue 3, Inertia.js, Blade"),
-        ("Tools", "Git, GitLab, OpenCode, Claude Code, Codex, Docker, pytest, k6, Figma"),
+        ("Application Development", "Laravel, PHP, MySQL, SQL Server, Vue 3, Inertia.js, Blade, Python, FastAPI, REST APIs"),
+        ("Tools", "Git, GitHub, GitLab, Bitbucket, Docker, pytest, k6"),
+        ("AI Coding", "OpenCode, Claude Code, Codex, custom agent harness"),
     ],
     "groups": [
         ("AI & Agentic Delivery", [
-            "Authored one implementation spec for MFA, audit logging, password expiry, and account lockout, then adapted and executed it across five internal systems through a phased agent loop with a verification gate per system.",
-            "Built an AI-assisted analysis interface for the complaint tracking system that summarizes records, surfaces trends, and answers natural-language questions in 3-7 seconds for 100+ complaints per month across 20+ departments.",
+            "Owned a five-system hardening program end to end: one implementation spec, adapted per system, executed through a phased agent loop with a verification gate; remediated 100+ vulnerable dependencies and upgraded legacy Laravel/PHP systems to supported releases.",
+            "Built an AI-assisted analysis view for the complaint tracking system, used by the Customer Operations Manager, QA, and executives, answering questions in 3\u20137 seconds across a system serving 20+ departments, with OpenAI fallback.",
             "Introduced agentic AI workflows to a small team and shared informal guidance on MCP-based tooling (Chrome DevTools MCP) for QA, testing, debugging, and code generation.",
         ]),
         ("Security & Reliability", [
-            "Remediated 100+ vulnerabilities across five legacy systems and rolled out MFA, audit logging, password expiry, and 3-attempt auto-lock in ~1 month (2-3 months with post-deployment fixes and documentation).",
-            "Designed MFA for a mixed workforce: TOTP and email OTP, bcrypt-hashed recovery codes, a deskless/shared-terminal mode, and proactive expiry messaging.",
-            "Designed a three-tier audit logging architecture (global observer, trait-based, manual) with device and location enrichment and explicit fallback behavior.",
+            "Designed MFA for a mixed workforce \u2014 TOTP and email OTP, bcrypt recovery codes, and a deskless/shared-terminal mode; lockout and reset tickets rose for three weeks, then returned to normal.",
+            "Designed three-tier audit logging \u2014 global observer, trait-based per-model, and manual for non-CRUD events \u2014 with device/location enrichment, explicit fallback, and the admin screens that expose it.",
         ]),
         ("Enterprise Systems", [
-            "Shipped an event-driven check-in system across two plant sites for company-wide events (700-5,000+ attendees), cutting per-person check-in from 1-2 minutes to a 2-3 second scan.",
-            "Built a clinic system handling 2,000-5,000 patient records per quarter, plus an event platform: a CMS-style raffle builder for non-technical staff and Reverse Bingo, a 600-person live-event system with pre-event card lock, offline PNG/PWA fallback, and revision-stamped WebSocket draws.",
+            "Shipped an event check-in system across two plant sites for four events a year (700\u20135,000+ attendees), cutting check-in from 1\u20132 minutes to a 2\u20133 second scan.",
+            "Built a clinic system used by 15+ nurses and doctors across two sites and both shifts, managing 2,000\u20135,000 records a quarter; replaced paper intake and cut lookup from ~10s to ~2s.",
+            "Built an event platform that has run 15+ company events, plus Reverse Bingo, a 600-person live-event system with pre-event card lock, offline PNG/PWA fallback, and revision-stamped WebSocket draws.",
         ]),
     ],
     "projects": [
-        ("AI Security Analysis Agent", "Locked output contract, deterministic core, LLM triage", "2026", [
-            "Built a static-analysis agent returning schema-validated JSON against a locked output contract, with a deterministic detection core and an LLM triage layer; 190+ tests, a CLI/REST parity check, and an MCP tool boundary in a read-only container.",
+        ("AI Security Agent", "Paid trial | Client accepted", "2026", [
+            "Built a static-analysis agent for legacy Laravel/PHP systems under a locked output contract: schema-validated JSON, a deterministic detection core, LLM triage, 190+ tests, CLI/REST parity, an MCP tool boundary, and a read-only container.",
         ]),
-        ("Troupe \u2014 Persona-Conditioned Coding Agents", "Meta Global AI Developer Hackathon 2026 \u00b7 Public repo", "2026", [
-            "Built a multi-agent studio where 11 persona-conditioned coding agents independently generate self-contained HTML motion graphics from one brief; 8/8 in 2D/3D/Hybrid with zero render errors, blind-voted and measured for visual/palette diversity; 56 tests; MIT-licensed public repo.",
+        ("Troupe \u2014 Persona-Conditioned Coding Agents", "Meta Global AI Developer Hackathon | Public MIT repo", "2026", [
+            "Selected as one of 20,000 participants from 34,000+ applicants. Built a studio where 11 persona-conditioned agents generated 8/8 valid outputs in 2D, 3D, and Hybrid with zero render errors; 56 tests; blind-voted for visual and palette diversity.",
         ]),
-        ("Laya-Jev \u2014 Typed Decision Agent", "Personal exploration", "2026", [
-            "Explored typed decisions with calibrated confidence gates, verified by a 67-test offline pytest suite and per-decision audit trails.",
+        ("NotiLog \u2014 Private Notification History", "Live on Google Play | 70+ installs", "2026", [
+            "Shipped a Kotlin Android app: encrypted on-device notification history, no account/ads/analytics, plus optional end-to-end encrypted partner sharing.",
         ]),
     ],
-    "also": "Also shipped: NotiLog, a Kotlin Android app live on Google Play \u2014 encrypted on-device notification history with no account and no analytics, plus optional end-to-end encrypted partner sharing.",
+    "also": "Also built: Laya-Jev, a typed-decision exploration with calibrated confidence gates, a 67-test offline suite, and per-decision audit trails.",
 }
 
 FULLSTACK = {
-    "title": "Web Application Developer \u2014 Enterprise Systems, Security & UX",
+    "title": "Full-Stack Web Application Developer",
+    "scope": "Builds and maintains internal business applications in Laravel/PHP/MySQL/Vue.",
     "summary": (
-        "Web application developer with a product and UX mindset, focused on internal enterprise systems. "
-        "Experienced designing, building, securing, and improving applications across complaint tracking, company "
-        "events, clinic operations, and operational workflows. Builds with AI agents using written specifications, "
-        "context handoff, and a verification gate before release."
+        "Full-stack web application developer who builds and maintains internal business systems end to end \u2014 "
+        "workflow, database, UI, security, and deployment. Shipped systems across complaint tracking, company "
+        "events, clinic operations, and operational workflows, hardened five legacy systems, and moved them onto "
+        "supported Laravel/PHP releases. Product and UX mindset; I use AI agents to accelerate implementation while keeping "
+        "specification, code review, and verification in human hands."
     ),
     "skills": [
-        ("Application Development", "Laravel, PHP, MySQL, SQL Server, REST APIs, JavaScript, jQuery, AJAX, Blade, Vue 3, Inertia.js, Tailwind, Python, FastAPI"),
-        ("Systems & Product", "System design, workflow analysis, information architecture, requirements discovery, process mapping, failure-state design, RBAC"),
-        ("Security & Reliability", "MFA (TOTP + email OTP), audit logging, password policy and expiry, brute-force protection, OWASP, secrets redaction, CVE audit"),
-        ("Design & UX", "UI/UX design, user flows, forms, tables, data-entry UX, dashboards, admin interfaces, security-sensitive UX, Figma"),
-        ("Agentic Engineering", "Spec-driven development, context engineering, context handoff, subagent orchestration, verification gates, structured output validation"),
-        ("Tools", "Git, GitHub, GitLab, Bitbucket, OpenCode, Claude Code, Codex, Docker, pytest, k6"),
+        ("Application Development", "Laravel, PHP, MySQL, SQL Server, Vue 3, Inertia.js, Blade, Tailwind, jQuery, AJAX, REST APIs, Python, FastAPI"),
+        ("Systems & Product", "System design, workflow analysis, information architecture, requirements discovery, failure-state design, RBAC"),
+        ("Security & Reliability", "MFA (TOTP + email OTP), audit logging, password policy and expiry, brute-force protection, OWASP, dependency/CVE remediation"),
+        ("UI/UX", "UI design, user flows, forms, tables, data-entry UX, dashboards, admin interfaces, Figma"),
+        ("AI-Assisted Delivery", "Spec-driven development, context handoff, verification gates, MCP-based tooling, LLM integration (OpenAI, Gemini, OpenRouter)"),
+        ("Tools", "Git, GitHub, GitLab, Bitbucket, Docker, pytest, k6"),
     ],
     "groups": [
         ("Enterprise Systems", [
-            "Shipped an event-driven check-in system across two plant sites for company-wide events (700-5,000+ attendees), cutting per-person check-in from 1-2 minutes to a 2-3 second scan.",
-            "Mapped clinic intake and records workflows and built a clinic management system handling 2,000-5,000 patient records per quarter; replaced paper intake and cut HRIS patient lookup from ~10s to ~2s.",
-            "Built an event-day platform: CMS-style registration/raffle pages, registration and token kiosks, and Deal or No Deal (20 briefcase holders + Player of the Night), removing the recurring developer ticket for every template change.",
-            "Led technical delivery for IT Week with 500+ attendees; shipped three interactive web systems in one month, including a 200+ photo AI pipeline and a 6x6 game with 500+ unique players.",
+            "Shipped an event check-in system across two plant sites for four events a year (700\u20135,000+ attendees), cutting check-in from 1\u20132 minutes to a 2\u20133 second scan and replacing manual name-and-detail writing.",
+            "Built a clinic system used by 15+ nurses and doctors across P2 and P3 on both shifts, managing 2,000\u20135,000 records a quarter; replaced paper intake and cut lookup from ~10s to ~2s.",
+            "Built an event platform that has run 15+ company events \u2014 CMS-style registration/raffle pages, kiosks, participant management, and Deal or No Deal \u2014 removing the recurring developer ticket for every template change.",
+            "Led development of three interactive systems for IT Week in one month for 500+ attendees, including a 200+ photo AI pipeline and a 6x6 game ranked #1 for engagement with 500+ players and 1,000+ sessions; coordinated a 30+ person IT department, and the IT Head endorsed an annual repeat.",
         ]),
         ("Security & Reliability", [
-            "Led a post-incident hardening program across five internal systems: authored one implementation spec for MFA, audit logging, password expiry, and account lockout, adapted it per system, remediated 100+ vulnerabilities, and shipped the controls in ~1 month.",
-            "Designed MFA for a mixed workforce \u2014 TOTP and email OTP, bcrypt-hashed recovery codes, a deskless/shared-terminal mode, and proactive expiry messaging instead of surprise lockouts.",
-            "Designed a three-tier audit logging architecture (global observer, trait-based, manual) with device and location enrichment, plus the admin interfaces that expose it.",
+            "Owned a five-system hardening program end to end: remediated 100+ vulnerable dependencies in legacy Laravel 6/7 and PHP systems, upgraded them to supported releases, and shipped MFA, audit logging, password expiry, and 3-attempt auto-lock; the follow-up scan showed fewer findings.",
+            "Designed MFA for a mixed workforce \u2014 TOTP and email OTP, bcrypt recovery codes, and a deskless/shared-terminal mode; lockout and reset tickets rose for three weeks, then returned to normal.",
+            "Designed three-tier audit logging \u2014 global observer, trait-based per-model, and manual for non-CRUD events \u2014 with device/location enrichment and the admin screens that expose it.",
         ]),
-        ("Product, Data & Modernization", [
-            "Maintained and enhanced the Customer Complaint Tracking System (CCTR), handling 100+ complaints per month for 20+ departments; added filtering, KPI summaries, charts, and an AI-assisted analysis view answering in 3-7 seconds.",
-            "Led the phased major-version front-end migration across 60+ Blade files (Bootstrap 4 to 5.3, AdminLTE 3 to 4, DataTables 1.10 to 2.3), with a phase-by-phase audit, per-phase verification, and a documented rollback plan.",
+        ("Product & Modernization", [
+            "Built an AI-assisted analysis view for the Customer Complaint Tracking System (CCTR), used by the Customer Operations Manager, QA, and executives; answers questions in 3\u20137 seconds across a system serving 20+ departments, with OpenAI fallback.",
+            "Completed a 60+ file Blade migration (Bootstrap 4 to 5.3, AdminLTE 3 to 4, DataTables 1.10 to 2.3) with faster page load and build time, no regressions, and an unused rollback plan; also redesigned and shipped three internal security/admin screens.",
         ]),
     ],
     "projects": [
-        ("NotiLog \u2014 Private Notification History", "Live on Google Play", "2026", [
-            "Shipped a Kotlin Android app that keeps an encrypted, on-device history of dismissed notifications \u2014 no account, no analytics, no backend that stores notifications \u2014 plus optional end-to-end encrypted partner sharing (SQLCipher + Android Keystore).",
+        ("Reverse Bingo \u2014 Live Event Platform", "Laravel + Vue | 600-person live event", "2026", [
+            "Built a live-event platform that ran at a 600-person event on 2\u20133 browser clients: cards lock before the event, offline players use a PNG/PWA card, and revision-stamped WebSocket draws resync on a gap; 287 tests / 1,668 assertions.",
         ]),
-        ("Reverse Bingo \u2014 Live Event Platform", "Laravel + Vue, 600-person event", "2026", [
-            "Built pre-event card lock, an offline PNG/PWA fallback, and revision-stamped WebSocket draws so game night needs only 2-3 browser clients and never depends on the venue network; 287 tests / 1,668 assertions.",
+        ("NotiLog \u2014 Private Notification History", "Kotlin | Android | Google Play | 70+ installs", "2026", [
+            "Shipped a Kotlin Android app, live on Google Play: encrypted on-device notification history with no account, ads, or analytics, plus optional end-to-end encrypted partner sharing.",
         ]),
     ],
-    "also": "Also: selected for the 2026 Meta Global AI Developer Hackathon; built Troupe (public repo).",
+    "also": None,
 }
 
 EDUCATION = {
@@ -247,6 +250,12 @@ def build_docx(variant, out_path: Path):
     _spacing(p, after=1, line=1.0)
     p.paragraph_format.keep_with_next = True
 
+    if variant.get("scope"):
+        p = doc.add_paragraph()
+        _run(p, variant["scope"], italic=True, size=9, color=(0x55, 0x55, 0x55))
+        _spacing(p, after=2, line=1.0)
+        p.paragraph_format.keep_with_next = True
+
     for heading, bullets in variant["groups"]:
         p = doc.add_paragraph()
         _run(p, heading, bold=True, size=9.5, color=(0x03, 0x66, 0xD6))
@@ -314,6 +323,8 @@ def build_html(variant, out_path: Path):
         f'<div class="line"><b>{esc(EXPERIENCE["company"])}</b><span>{esc(EXPERIENCE["dates"])}</span></div>'
         f'<p class="role">{esc(EXPERIENCE["role"])} &mdash; <span class="muted">{esc(EXPERIENCE["location"])}</span></p>'
     )
+    if variant.get("scope"):
+        b.append(f'<p class="scope">{esc(variant["scope"])}</p>')
     for heading, bullets in variant["groups"]:
         b.append(f'<p class="group">{esc(heading)}</p><ul>')
         b.extend(f"<li>{esc(x)}</li>" for x in bullets)
@@ -374,6 +385,7 @@ def build_html(variant, out_path: Path):
   .line {{ display: flex; justify-content: space-between; gap: 12pt; }}
   .line span {{ color: #444; font-size: 8.8pt; white-space: nowrap; }}
   .role {{ font-size: 9pt; margin: 0 0 1.5pt; }}
+  .scope {{ font-size: 9pt; font-style: italic; color: #555; margin: 0 0 2pt; }}
   .muted {{ color: #555; }}
   .group {{ font-weight: bold; font-size: 9.5pt; color: #0366d6; margin: 3.5pt 0 1pt; }}
   ul {{ margin: 0 0 1.5pt; padding-left: 13pt; }}

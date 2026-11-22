@@ -163,7 +163,7 @@
       name: 'Troupe — Persona-Conditioned Coding Agents',
       section: 'exploration',
       badge: 'Meta Hackathon',
-      shortDesc: 'Selected for the 2026 Meta Global AI Developer Hackathon — 11 persona-conditioned coding agents generate and blind-score eight motion directions from one brief',
+      shortDesc: 'Selected from 34,000+ applicants for the 2026 Meta Global AI Developer Hackathon — 11 persona-conditioned agents generate and blind-score eight motion directions from one brief',
       longDesc: 'Built during the 2026 Meta Global AI Developer Hackathon, selected as one of 20,000 participants from 34,000+ applicants. Troupe is a controlled experiment: eleven coding agents, each with a Big Five-inspired record and design kernel, independently generate a self-contained HTML motion graphic from the same brief. The studio validates every output, measures visual and palette diversity, and hides identities for a blind vote. On Meta’s Muse Spark 1.3, the core eight generated 8/8 in 2D, 3D, and Hybrid with zero render errors; 2D was the most diverse (0.46 visual similarity), Hybrid the most legible and most homogeneous (0.62); a full run costs about $0.01. The repo is public and MIT-licensed. This is a pilot, not a study — one brief, one model, a handful of runs.',
       techStack: ['Python', 'FastAPI', 'Meta Muse Spark 1.3', 'OpenRouter', 'Three.js', 'JavaScript', 'pytest', 'Playwright'],
       features: [
@@ -207,8 +207,8 @@
       id: 'notilog',
       name: 'NotiLog — Notification Log',
       section: 'exploration',
-      shortDesc: 'Private, encrypted on-device notification history — plus optional end-to-end encrypted sharing with one trusted person',
-      longDesc: 'Personal project, live on Google Play (Productivity, updated Oct 19, 2026). NotiLog keeps a private history of notifications even after they are dismissed, cleared, or missed — including messages a sender unsends. Privacy-first: no account, no ads, no analytics, and no backend that stores notifications; history is encrypted at rest with SQLCipher (AES-256) and the Android Keystore. Optional partner sharing pairs two phones by QR and sends content only to that paired device, end-to-end encrypted and off by default; the ciphertext is relayed through the public ntfy.sh service, which cannot read it but can observe metadata such as timing and IP address. Uninstalling erases everything.',
+      shortDesc: 'Free, private, encrypted on-device notification history — live on Google Play with 70+ installs',
+      longDesc: 'Personal project, free and live on Google Play with 70+ installs (Productivity, updated Oct 19, 2026). NotiLog keeps a private history of notifications even after they are dismissed, cleared, or missed — including messages a sender unsends. Privacy-first: no account, no ads, no analytics, and no backend that stores notifications; history is encrypted at rest with SQLCipher (AES-256) and the Android Keystore. Optional partner sharing pairs two phones by QR and sends content only to that paired device, end-to-end encrypted and off by default; the ciphertext is relayed through the public ntfy.sh service, which cannot read it but can observe metadata such as timing and IP address. Uninstalling erases everything.',
       techStack: ['Kotlin', 'Android', 'Notification Access', 'SQLCipher', 'Android Keystore', 'End-to-end Encryption', 'QR Pairing'],
       features: [
         'Background capture once Notification Access is granted, with auto-reconnect after reboot',
@@ -218,6 +218,7 @@
         'Banking, 2FA, password manager, and OTP notifications excluded by default; custom app and keyword exclusions',
         'Optional PIN, plus encrypted backup and restore with a user-controlled passphrase',
         'Optional partner sharing: QR pairing, end-to-end encrypted, off by default, unpair anytime',
+        'Free, with 70+ installs on Google Play',
         'No account, no ads, no analytics; notification history stays encrypted on-device'
       ],
       link: { href: 'https://play.google.com/store/apps/details?id=com.notilog.app&hl=en', label: 'View on Google Play' },
@@ -261,16 +262,17 @@
     {
       id: 'cctr',
       name: 'Customer Complaint Tracking System (CCTR)',
-      shortDesc: 'Complaint dashboard with multi-dimensional filters, analysis charts, and AI-assisted analysis',
-      longDesc: 'CCTR records and tracks customer complaints end to end. I maintain and support the system and added dashboard and analysis features: multi-dimensional complaint filters, KPI summaries, and analysis charts. Its AI-assisted analysis view summarizes complaint records, surfaces trends, suggests likely root causes, and answers natural-language questions about the data. The system also includes account security screens — MFA settings, login history, audit trail, and active users — used to monitor and protect access.',
-      techStack: ['Laravel', 'PHP', 'MySQL', 'JavaScript', 'AJAX', 'AI-assisted Data Analysis'],
+      shortDesc: 'Complaint tracking for 20+ departments, with an AI analysis view used by operations, QA, and executives',
+      longDesc: 'CCTR records and tracks customer complaints end to end. I maintain and support the system and added dashboard and analysis features: multi-dimensional complaint filters, KPI summaries, and analysis charts. Its AI-assisted analysis view summarizes complaint records, surfaces trends, suggests likely root causes, and answers natural-language questions in 3–7 seconds. It is used by the Customer Operations Manager, QA, and executives; the system serves 20+ departments, with OpenAI configured as a fallback provider. The system also includes account security screens — MFA settings, login history, audit trail, and active users.',
+      techStack: ['Laravel', 'PHP', 'MySQL', 'JavaScript', 'AJAX', 'AI-assisted Data Analysis', 'OpenAI fallback'],
       features: [
         'Dashboard with multi-dimensional complaint filters',
         'KPI summaries — total complaints received and valid plant-related (VPR) share',
         'Analysis charts — monthly complaint trend and VPR vs. VNPR',
-        'AI-assisted analysis: summarizes records, detects trends, suggests root causes, and answers natural-language questions',
-        'Account security screens: MFA settings, login history, audit trail, and active users',
-        'Maintains and supports the system; added the dashboard and analysis features'
+        'AI-assisted analysis used by operations, QA, and executives; 3–7 second answers',
+        'System serves 20+ departments and 100+ complaints per month',
+        'OpenAI fallback provider for model availability',
+        'Account security screens: MFA settings, login history, audit trail, and active users'
       ],
       images: [
         {
@@ -288,16 +290,18 @@
     {
       id: 'vapt',
       name: 'Post-Incident Security Hardening',
-      shortDesc: 'One implementation spec, reworked across five systems — 100+ vulnerabilities remediated and MFA, audit logging, and lockout shipped in ~1 month',
-      longDesc: 'After an incident, five internal systems carried 100+ vulnerabilities from legacy dependencies. I wrote the MFA, audit logging, password expiry, and account lockout implementation once as a structured specification — requirements, integration points, acceptance criteria, verification steps — then reworked and executed it per system through a phased agent loop. Each system had different auth flows, legacy state, and admin surfaces; the invariant was the structure and the verification gate at the end of every run. Designed for a mixed workforce: email OTP and authenticator modes including deskless and shared terminals, recovery codes, auto-lock tuned against support-ticket load, and proactive expiry messaging instead of surprise lockouts.',
+      shortDesc: 'Post-incident hardening across five legacy systems — 100+ vulnerable dependencies remediated and Laravel/PHP upgraded to supported releases',
+      longDesc: 'After an incident, five internal systems carried 100+ vulnerable dependencies, mostly legacy Laravel 6/7 and old PHP. I owned the hardening end to end: remediated the findings, upgraded the systems to supported releases, and shipped MFA, audit logging, password expiry, and 3-attempt auto-lock. A follow-up scan showed fewer findings. MFA was designed for a mixed workforce — email OTP and authenticator modes including deskless and shared terminals, bcrypt-hashed recovery codes, and proactive expiry messaging. Lockout and reset tickets rose for the first three weeks after rollout, then returned to normal.',
       techStack: ['Laravel', 'PHP', 'MySQL', 'MFA (Email OTP + Authenticator)', 'Spatie Audit Logging', 'OWASP / npm audit', 'Agent-assisted Delivery'],
       features: [
-        'Authored one implementation spec, then adapted and executed it across five systems through a phased agent loop',
-        'Remediated 100+ vulnerabilities; shipped MFA, audit logging, password expiry, and 3-attempt auto-lock in ~1 month',
-        'Email OTP and authenticator modes, including a mode for deskless and shared-terminal staff',
-        'Bcrypt-hashed recovery codes and proactive expiry messaging instead of surprise lockouts',
-        'Spatie audit logging: invisible to users, full trail for admins',
-        'Same acceptance criteria and verification gate applied to every system'
+        'Owned the hardening end to end across five legacy systems',
+        'Remediated 100+ vulnerable dependencies, mostly Laravel 6/7 and old PHP',
+        'Upgraded systems to supported Laravel/PHP releases; follow-up scan showed fewer findings',
+        'MFA, audit logging, password expiry, and 3-attempt auto-lock shipped',
+        'Email OTP and authenticator modes, including deskless and shared-terminal staff',
+        'Bcrypt-hashed recovery codes and proactive expiry messaging',
+        'Lockout/reset tickets rose for three weeks, then returned to normal',
+        'Spatie audit logging: invisible to users, full trail for admins'
       ],
       images: []
     },
@@ -305,18 +309,18 @@
       id: 'e-raffle',
       name: 'Event Management & E-Raffle',
       badge: '3 systems',
-      shortDesc: 'Replacing manual tickets and check-ins with a self-service event platform: registration kiosks, e-Raffle, and Deal or No Deal',
-      longDesc: 'Company events required designing and physically cutting raffle and attendance tickets for the entire workforce, and check-in was manual and slow. I designed the in/out flow across two plant sites and shipped a session-based event system: timestamped eligibility rules that block duplicate and late entries, a live participant dashboard for real-time turnout instead of paper reconciliation, prize sequencing with winner registration, and a CMS-style theme designer that lets non-technical staff customize registration and raffle pages themselves. The platform also includes registration and token kiosks, attendee details and statistics, e-Raffle prize and participant management, and a Deal or No Deal game with 20 briefcase holders, a Player of the Night, a Pick A Name side raffle, and remote stage control. Designed for bursts of simultaneous check-ins on event day. Screenshots are from test/demo events; participant data is redacted.',
+      shortDesc: 'Event platform that has run 15+ company events — registration kiosks, e-Raffle, Deal or No Deal, and Reverse Bingo',
+      longDesc: 'Company events required designing and physically cutting raffle and attendance tickets for the entire workforce, and check-in was manual and slow. I designed the in/out flow across two plant sites and shipped a session-based event platform used for 15+ company events: timestamped eligibility rules that block duplicate and late entries, a live participant dashboard for real-time turnout, prize sequencing with winner registration, and a CMS-style theme designer that lets non-technical staff customize registration and raffle pages themselves. The platform also includes registration and token kiosks, attendee details and statistics, e-Raffle prize and participant management, Deal or No Deal (20 briefcase holders, Player of the Night, Pick A Name side raffle, remote stage control), and Reverse Bingo. It removed the recurring developer ticket for every template change. Screenshots are from test/demo events; participant data is redacted.',
       techStack: ['Laravel', 'PHP', 'MySQL', 'JavaScript', 'AJAX'],
       features: [
+        '15+ company events run on the platform',
         'Automated event in/out + E-Raffle — removed manual ticket design and cutting',
         'Timestamped eligibility rules (blocks duplicate and late entries)',
         'Live participant dashboard — real-time turnout, no paper reconciliation',
-        'Prize sequencing engine with winner registration UI',
-        'CMS-style theme designer for self-service registration and raffle page customization',
-        'Failure states handled: duplicate scan, invalid ticket, dropped connection',
+        'CMS-style theme designer for self-service registration and raffle customization',
         'Registration and token kiosks; attendee details, statistics, and participant management',
-        'Deal or No Deal: 20 briefcase holders + Player of the Night + Pick A Name side raffle'
+        'Deal or No Deal (20 briefcase holders + Player of the Night) and Reverse Bingo ran live',
+        'Failure states handled: duplicate scan, invalid ticket, dropped connection'
       ],
       children: ['reverse-bingo', 'dond'],
       childrenLabel: 'More from this platform',
@@ -337,11 +341,11 @@
       id: 'reverse-bingo',
       skipGrid: true,
       name: 'Reverse Bingo — Live Event Platform',
-      shortDesc: 'Laravel + Vue live-event platform built for a 600-person corporate event — cards settle before the event, so game night never depends on the venue network',
-      longDesc: 'Built at CDO Foodsphere for a 600-person corporate event. Cards are claimed and locked before the event, so game night needs only two or three browser clients. Online phones mark hits automatically; offline players use a PNG or installable PWA card and tap their own tally. The server stays authoritative: every draw is validated, eliminations are written in a transaction, and clients receive a revision-stamped broadcast, resyncing from a snapshot if they detect a gap. At registration close, attendance and raffle eligibility are frozen into a snapshot; the pot and the cut follow that set. The run of show spans six stages — prepare, distribute, close, play, crown, archive — with a desk playbook for re-issue and late entry. Host controls include draw, eliminate/restore, revert, and end, with a stage reveal for the champion. Screenshots are from test events; participant data is redacted.',
+      shortDesc: 'Laravel + Vue live-event platform that ran at a 600-person corporate event — cards settle before the event, so game night never depends on the venue network',
+      longDesc: 'Built at CDO Foodsphere and ran live at a 600-person corporate event. Cards are claimed and locked before the event, so game night needs only two or three browser clients. Online phones mark hits automatically; offline players use a PNG or installable PWA card and tap their own tally. The server stays authoritative: every draw is validated, eliminations are written in a transaction, and clients receive a revision-stamped broadcast, resyncing from a snapshot if they detect a gap. At registration close, attendance and raffle eligibility are frozen into a snapshot; the pot and the cut follow that set. The run of show spans six stages — prepare, distribute, close, play, crown, archive — with a desk playbook for re-issue and late entry. Host controls include draw, eliminate/restore, revert, and end, with a stage reveal for the champion. Screenshots are from test events; participant data is redacted.',
       techStack: ['Laravel', 'PHP', 'Vue 3', 'Inertia.js', 'Reverb (WebSockets)', 'SQL Server', 'Queue Worker', 'k6'],
       features: [
-        'Built for a 600-person corporate event — cards are claimed and locked before game night',
+        'Ran live at a 600-person event — cards are claimed and locked before game night',
         'Six-stage lifecycle: prepare, distribute, close, play, crown, archive',
         'Admin, host, stage, and claim surfaces; desk re-issue and late entry',
         'Game night needs only 2–3 browser clients: host, stage, and desk',
@@ -370,7 +374,7 @@
       skipGrid: true,
       name: 'Deal or No Deal — Event Game',
       shortDesc: 'Event-day Deal or No Deal: 20 briefcase holders, a Player of the Night, and a Pick A Name side raffle, with remote stage control',
-      longDesc: 'Built the Deal or No Deal event game into the Events Management platform. The stage draws 20 briefcase holders from the eligible time-in pool, then one Player of the Night; a Pick A Name side raffle, spin modes (All, One by one, Auto), respin/reset, participant sync, and remote stage control handle the run of show. The pool is fixed once holders are locked. Screenshots are from a test/demo event; participant names are redacted.',
+      longDesc: 'Built the Deal or No Deal event game into the Events Management platform and ran it live. The stage draws 20 briefcase holders from the eligible time-in pool, then one Player of the Night; a Pick A Name side raffle, spin modes (All, One by one, Auto), respin/reset, participant sync, and remote stage control handle the run of show. The pool is fixed once holders are locked. Screenshots are from a test/demo event; participant names are redacted.',
       techStack: ['Laravel', 'PHP', 'MySQL', 'JavaScript', 'AJAX'],
       features: [
         '20 briefcase holders + Player of the Night from the eligible time-in pool',
@@ -390,11 +394,11 @@
     {
       id: 'ui-redesign',
       name: 'Enterprise UX Redesign — Internal Security & Admin Tools',
-      shortDesc: 'Rebuilt three shipped enterprise screens — audit trail, MFA settings, and active users — around hierarchy, usability, and security-sensitive workflows',
-      longDesc: 'Redesigned three production internal systems I maintain and support (complaint tracking, clinic, and business card management) around information hierarchy, usability, permissions, and security-sensitive workflows. Every screen has a before/after comparison and a live, clickable HTML mockup.',
+      shortDesc: 'Redesigned and shipped three internal security and admin screens — audit trail, MFA settings, and active users',
+      longDesc: 'Redesigned and shipped three production internal systems I maintain and support (complaint tracking, clinic, and business card management) around information hierarchy, usability, permissions, and security-sensitive workflows. Every screen has a before/after comparison and a live, clickable HTML mockup.',
       techStack: ['HTML5', 'CSS3', 'Design System', 'Figma', 'Information Architecture'],
       features: [
-        'Before/after redesign of three shipped enterprise screens',
+        'Shipped redesign of three internal enterprise screens',
         'Shared component system: tokens, badges, tables, forms, states',
         'CCTR audit trail — scannable table with tabular numerals',
         'Clinic MFA settings — method-selection card clarifying the security tradeoff',
@@ -411,8 +415,8 @@
     {
       id: 'it-week',
       name: 'IT Week (Tech\'ka Muna!)',
-      shortDesc: 'Led implementation — 500+ attendees, three original interactive web systems shipped to production in one month; leadership endorsed annual recurrence',
-      longDesc: 'Led implementation for IT Week (Tech\'ka Muna!) with 500+ attendees at the P2 site. Game Developer & Tech Support Lead for the first company-wide IT week-long booth and game show. Leadership said the event should be annual because it made IT visible to the company. Featured three original web systems built for the event.',
+      shortDesc: 'Led development of three systems in one month for 500+ attendees; the IT Head endorsed an annual repeat',
+      longDesc: 'Led development of three interactive systems for IT Week (Tech\'ka Muna!) with 500+ attendees at the P2 site. The project involved a 30+ person IT department — technical support, SSO, network admins, and IT business partners. The IT Head endorsed an annual repeat because it improved IT visibility and reputation. The event featured three original web systems: a Smart TV photo pipeline, an AI-vs-real quiz, and a 6×6 memory game.',
       type: 'container',
       children: ['image-carousel', 'real-or-fake', 'iconic-memory'],
       childrenLabel: 'Systems Built for This Event',
@@ -430,13 +434,16 @@
     {
       id: 'clinic',
       name: 'Clinic Management System',
-      shortDesc: 'Mapped clinic intake and records workflows \u2014 reduced manual data entry and improved data accuracy for staff and administrators',
-      longDesc: 'Mapped clinic intake and records workflows and developed a clinic management system that reduced manual data entry and improved data accuracy for staff and administrators, supporting daily enterprise clinic operations.',
+      shortDesc: 'Clinic system used by 15+ nurses and doctors across two sites, with paper intake replaced and lookup cut from ~10s to ~2s',
+      longDesc: 'Mapped clinic intake and records workflows and built a clinic management system used by 15+ nurses and doctors across the P2 and P3 sites on day and night shifts, managing 2,000–5,000 patient records per quarter. It replaced paper intake and cut HRIS patient lookup from ~10s to ~2s, reducing manual data entry and improving data accuracy.',
       techStack: ['Laravel', 'PHP', 'MySQL', 'JavaScript', 'AJAX'],
       features: [
-        'Mapped intake and records workflows for staff and administrators',
-        'Reduced manual data entry',
-        'Improved data accuracy'
+        'Used by 15+ nurses and doctors across P2 and P3',
+        'Day and night shift coverage',
+        '2,000–5,000 patient records per quarter',
+        'Replaced paper intake',
+        'HRIS patient lookup cut from ~10s to ~2s',
+        'Reduced manual data entry and improved data accuracy'
       ],
       images: []
     },
@@ -521,7 +528,21 @@
   var gridCounts = { systems: 0, exploration: 0 };
   var CARD_PLACEHOLDER = 'linear-gradient(135deg, #1f2937 0%, #111827 100%)';
 
-  systemsData.forEach(function (sys) {
+  // Employer systems first, then personal projects. Parent entries keep their
+  // child systems attached regardless of this order.
+  var GRID_ORDER = [
+    'cctr', 'clinic', 'e-raffle', 'it-week', 'vapt', 'ui-redesign', 'agentic-delivery',
+    'troupe', 'notilog', 'laya-jev', 'recipe-corpus'
+  ];
+  var orderIndex = {};
+  GRID_ORDER.forEach(function (id, i) { orderIndex[id] = i; });
+  var renderList = systemsData.slice().sort(function (a, b) {
+    var ai = orderIndex[a.id] === undefined ? 999 : orderIndex[a.id];
+    var bi = orderIndex[b.id] === undefined ? 999 : orderIndex[b.id];
+    return ai - bi;
+  });
+
+  renderList.forEach(function (sys) {
     if (sys.skipGrid) return;
     var isExploration = sys.section === 'exploration';
     var targetGrid = isExploration ? explorationGrid : grid;

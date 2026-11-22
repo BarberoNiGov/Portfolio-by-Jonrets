@@ -350,6 +350,13 @@ a:hover {
   text-align: justify;
 }
 
+.hero-proof {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  margin: -8px 0 18px;
+  letter-spacing: 0.01em;
+}
+
 .hero-links {
   display: flex;
   gap: 10px;
@@ -428,8 +435,9 @@ a:hover {
   flex-direction: column;
   justify-content: flex-end;
   padding: 20px;
-  background: linear-gradient(transparent 40%, rgba(0,0,0,0.7));
+  background: linear-gradient(transparent 25%, rgba(0,0,0,0.85));
   color: #fff;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.8);
   transition: background 0.3s;
 }
 
