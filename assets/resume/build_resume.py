@@ -59,7 +59,7 @@ AI = {
     "groups": [
         ("AI & Agentic Delivery", [
             "Owned a five-system hardening program end to end: one implementation spec, adapted per system, executed through a phased agent loop with a verification gate; remediated 100+ vulnerable dependencies and upgraded legacy Laravel/PHP systems to supported releases.",
-            "Built an AI-assisted analysis view for the complaint tracking system, used by the Customer Operations Manager, QA, and executives, answering questions in 3\u20137 seconds across a system serving 20+ departments, with OpenAI fallback.",
+            "Built an AI-assisted analysis view for the complaint tracking system, used by the Customer Operations Manager, QA, and executives, answering questions in 3\u20137 seconds across a system serving 20+ departments, with a fallback LLM provider.",
             "Introduced agentic AI workflows to a small team and shared informal guidance on MCP-based tooling (Chrome DevTools MCP) for QA, testing, debugging, and code generation.",
         ]),
         ("Security & Reliability", [
@@ -117,8 +117,8 @@ FULLSTACK = {
             "Designed three-tier audit logging \u2014 global observer, trait-based per-model, and manual for non-CRUD events \u2014 with device/location enrichment and the admin screens that expose it.",
         ]),
         ("Product & Modernization", [
-            "Built an AI-assisted analysis view for the Customer Complaint Tracking System (CCTR), used by the Customer Operations Manager, QA, and executives; answers questions in 3\u20137 seconds across a system serving 20+ departments, with OpenAI fallback.",
-            "Completed a 60+ file Blade migration (Bootstrap 4 to 5.3, AdminLTE 3 to 4, DataTables 1.10 to 2.3) with faster page load and build time, no regressions, and an unused rollback plan; also redesigned and shipped three internal security/admin screens.",
+            "Built an AI-assisted analysis view for the Customer Complaint Tracking System (CCTR), used by the Customer Operations Manager, QA, and executives; answers questions in 3\u20137 seconds across a system serving 20+ departments, with a fallback LLM provider.",
+            "Completed a phased major-version migration of 60\u2013100+ Blade files across the five hardening systems (Bootstrap 4 to 5.3, AdminLTE 3 to 4, DataTables 1.10 to 2.3), with faster page load and build time, no regressions, and an unused rollback plan; also redesigned and shipped three internal security/admin screens.",
         ]),
     ],
     "projects": [

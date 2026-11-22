@@ -263,15 +263,15 @@
       id: 'cctr',
       name: 'Customer Complaint Tracking System (CCTR)',
       shortDesc: 'Complaint tracking for 20+ departments, with an AI analysis view used by operations, QA, and executives',
-      longDesc: 'CCTR records and tracks customer complaints end to end. I maintain and support the system and added dashboard and analysis features: multi-dimensional complaint filters, KPI summaries, and analysis charts. Its AI-assisted analysis view summarizes complaint records, surfaces trends, suggests likely root causes, and answers natural-language questions in 3–7 seconds. It is used by the Customer Operations Manager, QA, and executives; the system serves 20+ departments, with OpenAI configured as a fallback provider. The system also includes account security screens — MFA settings, login history, audit trail, and active users.',
-      techStack: ['Laravel', 'PHP', 'MySQL', 'JavaScript', 'AJAX', 'AI-assisted Data Analysis', 'OpenAI fallback'],
+      longDesc: 'CCTR records and tracks customer complaints end to end. I maintain and support the system and added dashboard and analysis features: multi-dimensional complaint filters, KPI summaries, and analysis charts. Its AI-assisted analysis view summarizes complaint records, surfaces trends, suggests likely root causes, and answers natural-language questions in 3–7 seconds. It is used by the Customer Operations Manager, QA, and executives; the system serves 20+ departments, with a fallback LLM provider. The system also includes account security screens — MFA settings, login history, audit trail, and active users.',
+      techStack: ['Laravel', 'PHP', 'MySQL', 'JavaScript', 'AJAX', 'AI-assisted Data Analysis', 'LLM provider fallback'],
       features: [
         'Dashboard with multi-dimensional complaint filters',
         'KPI summaries — total complaints received and valid plant-related (VPR) share',
         'Analysis charts — monthly complaint trend and VPR vs. VNPR',
         'AI-assisted analysis used by operations, QA, and executives; 3–7 second answers',
         'System serves 20+ departments and 100+ complaints per month',
-        'OpenAI fallback provider for model availability',
+        'Fallback LLM provider for model availability',
         'Account security screens: MFA settings, login history, audit trail, and active users'
       ],
       images: [
